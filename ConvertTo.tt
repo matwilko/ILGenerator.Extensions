@@ -1,0 +1,83 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+var typesNoOverflow = new Dictionary<Type, Operations> 
+{ 
+{ typeof(sbyte), new Operations("Conv_U1", "Conv_Ovf_U1", "a signed byte (8 bit integer)", "int32") },
+{ typeof(byte), new Operations("Conv_I1", "Conv_Ovf_I1", "an unsigned byte (8 bit integer)", "int32") },
+{ typeof(ushort), new Operations("Conv_U2", "Conv_Ovf_U2", "an unsigned short (16 bit integer)", "int32") },
+{ typeof(short), new Operations("Conv_I2", "Conv_Ovf_I2", "a signed short (16 bit integer)", "int32") },
+{ typeof(uint), new Operations("Conv_U4", "Conv_Ovf_U4", "an unsigned integer (32 bit integer)", "int32") },
+{ typeof(int), new Operations("Conv_I4", "Conv_Ovf_I4", "a signed integer (32 bit integer)", "int32") },
+{ typeof(ulong), new Operations("Conv_U8", "Conv_Ovf_U8", "an unsigned long (64 bit integer)", "int64") },
+{ typeof(long), new Operations("Conv_I8", "Conv_Ovf_I8", "a signed long (64 bit integer)", "int64") },
+{ typeof(float), new Operations("Conv_R4", null, "a single floating (8 bit integer)", "F") },
+{ typeof(double), new Operations("Conv_R8", null, "Conv_R_Un", "a signed byte (8 bit integer)", "F") }
+};
+#>
+using System;
+using System.Reflection.Emit;
+
+namespace ILGeneratorExtensions
+{
+	public static class ConvertTo
+	{
+<# foreach (var type in typesNoOverflow)
+{ #>
+		#region <#= type.Key.Name #>
+
+		/// <summary>
+		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with no overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
+		/// </summary>
+		public static void ConvertTo<#= type.Key.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.NoOverflow #>);
+<# if (type.Value.Overflow != null) { #>
+
+		/// <summary>
+		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
+		/// </summary>
+		public static void ConvertTo<#= type.Key.Name #>WithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.Overflow #>);
+<# } #>
+<# if (type.Value.FromUnsigned != null) { #>
+
+		/// <summary>
+		/// Converts the unsigned value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
+		/// </summary>
+		public static void ConvertTo<#= type.Key.Name #>FromUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.FromUnsigned #>);
+<# } #>
+
+		#endregion
+<# } #>
+	}
+}
+<#+
+	public class Operations
+	{
+		public string NoOverflow;
+		public string Overflow;
+		public string FromUnsigned;
+		public string Description;
+		public string StackType;
+
+		public Operations(string noOverflow, string overflow, string description, string stackType)
+		{
+			NoOverflow = noOverflow;
+			Overflow = overflow;
+			FromUnsigned = overflow == null ? null : overflow + "_Un";
+			Description = description;
+			StackType = stackType;
+		}
+
+		public Operations(string noOverflow, string overflow, string unsigned, string description, string stackType)
+		{
+			NoOverflow = noOverflow;
+			Overflow = overflow;
+			FromUnsigned = unsigned;
+			Description = description;
+			StackType = stackType;
+		}
+	}
+#>
