@@ -70,6 +70,7 @@
       <DependentUpon>LoadConstants.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StackOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BitOperations.tt">
