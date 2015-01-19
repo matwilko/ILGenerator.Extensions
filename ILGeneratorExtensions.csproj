@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Arguments.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Arguments.tt</DependentUpon>
+    </Compile>
     <Compile Include="BitOperations.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -73,6 +78,10 @@
     <Compile Include="StackOperations.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Arguments.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Arguments.cs</LastGenOutput>
+    </Content>
     <Content Include="BitOperations.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BitOperations.cs</LastGenOutput>
