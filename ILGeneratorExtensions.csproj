@@ -59,6 +59,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ArithmeticOperations.tt</DependentUpon>
     </Compile>
+    <Compile Include="Locals.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Locals.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyVersionInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,6 +98,10 @@
     <Content Include="ArithmeticOperations.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArithmeticOperations.cs</LastGenOutput>
+    </Content>
+    <Content Include="Locals.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Locals.cs</LastGenOutput>
     </Content>
     <Content Include="Properties\AssemblyVersionInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
