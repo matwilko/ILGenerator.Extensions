@@ -60,6 +60,7 @@
       <DependentUpon>ArithmeticOperations.tt</DependentUpon>
     </Compile>
     <Compile Include="ControlFlow.cs" />
+    <Compile Include="DebugOperations.cs" />
     <Compile Include="LoadConstants.cs" />
     <Compile Include="Locals.cs">
       <AutoGen>True</AutoGen>
