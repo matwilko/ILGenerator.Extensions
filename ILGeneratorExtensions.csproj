@@ -49,6 +49,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CompareAndBranch.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArithmeticOperations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArithmeticOperations.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyVersionInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -74,6 +79,10 @@
     <Content Include="CompareAndBranch.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CompareAndBranch.cs</LastGenOutput>
+    </Content>
+    <Content Include="ArithmeticOperations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArithmeticOperations.cs</LastGenOutput>
     </Content>
     <Content Include="Properties\AssemblyVersionInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
