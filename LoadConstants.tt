@@ -4,9 +4,6 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#
-var types = new [] { typeof(sbyte), typeof(byte), typeof(ushort), typeof(short), typeof(uint), typeof(int) };
-#>
 using System;
 using System.Reflection.Emit;
 
@@ -14,8 +11,7 @@ namespace ILGeneratorExtensions
 {
 	public static class LoadConstants
 	{
-<# foreach (var type in new [] { typeof(int), typeof(uint) } )
-{ #>
+<# foreach (var type in new [] { typeof(int), typeof(uint) } ) { #>
 		public static void LoadConstant(this ILGenerator generator, <#= type.Name #> value)
 		{
 			switch (value)
