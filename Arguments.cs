@@ -60,6 +60,18 @@ namespace ILGeneratorExtensions
             }
         }
 
+		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Char value)
+		{
+			generator.LoadConstant(value);
+			generator.StoreInArgument(argNum);
+		}
+		
+		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Boolean value)
+		{
+			generator.LoadConstant(value);
+			generator.StoreInArgument(argNum);
+		}
+		
 		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Int32 value)
 		{
 			generator.LoadConstant(value);

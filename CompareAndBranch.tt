@@ -15,7 +15,7 @@ new Operation("True", "", "Brtrue", false, null, ""),
 new Operation("False", "", "Brfalse", false, null, "")
 };
 
-var numericTypes = new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double)};
+var numericTypes = new [] { typeof(char), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double)};
 #>
 using System;
 using System.Reflection.Emit;
