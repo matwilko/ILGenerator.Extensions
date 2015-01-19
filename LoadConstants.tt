@@ -92,5 +92,7 @@ namespace ILGeneratorExtensions
         public static void LoadConstant(this ILGenerator generator, double value) => generator.Emit(OpCodes.Ldc_R8, value);
 
 		public static void LoadNull(this ILGenerator generator) => generator.Emit(OpCodes.Ldnull);
+
+		public static void LoadString(this ILGenerator generator, string str) => generator.Emit(OpCodes.Ldstr, str);
 	}
 }
