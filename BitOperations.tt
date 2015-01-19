@@ -1,0 +1,62 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+var ops = new []
+{
+new Operation("And", "And", false),
+new Operation("Complement", "Not", true), new Operation("Not", "Not", true),
+new Operation("Or", "Or", false),
+new Operation("ShiftLeft", "Shl", false, "By"),
+new Operation("ShiftRight", "Shr", false, "By"),
+new Operation("ShiftRightUnsigned", "Shr_Un", false, "By"),
+new Operation("Xor", "Xor", false)
+};
+#>
+using System;
+using System.Reflection.Emit;
+
+namespace ILGeneratorExtensions
+{
+	public static class BitOperations
+	{
+<# foreach (var op in ops) { #>
+		#region <#= op.Name #>
+
+		public static void <#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>);
+<# if (!op.Unary) { #>
+
+<# foreach (var type in new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong) }) { #>
+		public static void <#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
+		{
+			generator.LoadConstant(value);
+			generator.<#= op.Name #>();
+		}
+
+<# } // if #>
+<# } // foreach #>
+
+		#endregion
+<# } // foreach #>
+	}
+}
+<#+
+public class Operation
+{
+	public string Name;
+	public string Op;
+	public bool Unary;
+	public string Suffix;
+
+	public Operation(string name, string op, bool unary, string suffix = "With")
+	{
+		Name = name;
+		Op = op;
+		Unary = unary;
+		Suffix = suffix;
+	}
+}
+#>

@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitOperations.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BitOperations.tt</DependentUpon>
+    </Compile>
     <Compile Include="CompareAndBranch.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,6 +67,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BitOperations.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BitOperations.cs</LastGenOutput>
+    </Content>
     <Content Include="CompareAndBranch.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CompareAndBranch.cs</LastGenOutput>
