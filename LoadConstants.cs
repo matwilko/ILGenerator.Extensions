@@ -3,12 +3,15 @@ using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-	public static class LoadConstants
-	{
-		public static void LoadConstant(this ILGenerator generator, Int32 value)
-		{
-			switch (value)
+    public static class LoadConstants
+    {
+        public static void LoadConstant(this ILGenerator generator, Int32 value)
+        {
+            switch (value)
             {
+                case -1:
+                    generator.Emit(OpCodes.Ldc_I4_M1);
+                    break;
                 case 0:
                     generator.Emit(OpCodes.Ldc_I4_0);
                     break;
@@ -47,11 +50,11 @@ namespace ILGeneratorExtensions
                     }
                     break;
             }
-		}
+        }
 
-		public static void LoadConstant(this ILGenerator generator, UInt32 value)
-		{
-			switch (value)
+        public static void LoadConstant(this ILGenerator generator, UInt32 value)
+        {
+            switch (value)
             {
                 case 0:
                     generator.Emit(OpCodes.Ldc_I4_0);
@@ -81,7 +84,7 @@ namespace ILGeneratorExtensions
                     generator.Emit(OpCodes.Ldc_I4_8);
                     break;
                 default:
-                    if (value <= 127 && value >= -128)
+                    if (value <= 127)
                     {
                         generator.Emit(OpCodes.Ldc_I4_S, value);
                     }
@@ -91,13 +94,13 @@ namespace ILGeneratorExtensions
                     }
                     break;
             }
-		}
+        }
 
-		public static void LoadConstant(this ILGenerator generator, long value)
+        public static void LoadConstant(this ILGenerator generator, long value)
         {
             if (value <= int.MaxValue && value >= int.MinValue)
             {
-                generator.LoadConstant((int) value);
+                generator.LoadConstant((int)value);
                 generator.ConvertToInt64();
             }
             else
@@ -119,12 +122,12 @@ namespace ILGeneratorExtensions
             }
         }
 
-		public static void LoadConstant(this ILGenerator generator, float value) => generator.Emit(OpCodes.Ldc_R4, value);
+        public static void LoadConstant(this ILGenerator generator, float value) => generator.Emit(OpCodes.Ldc_R4, value);
 
         public static void LoadConstant(this ILGenerator generator, double value) => generator.Emit(OpCodes.Ldc_R8, value);
 
-		public static void LoadNull(this ILGenerator generator) => generator.Emit(OpCodes.Ldnull);
+        public static void LoadNull(this ILGenerator generator) => generator.Emit(OpCodes.Ldnull);
 
-		public static void LoadString(this ILGenerator generator, string str) => generator.Emit(OpCodes.Ldstr, str);
-	}
+        public static void LoadString(this ILGenerator generator, string str) => generator.Emit(OpCodes.Ldstr, str);
+    }
 }
