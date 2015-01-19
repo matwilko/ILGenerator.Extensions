@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompareAndBranch.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompareAndBranch.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyVersionInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -57,6 +62,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompareAndBranch.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CompareAndBranch.cs</LastGenOutput>
+    </Content>
     <Content Include="Properties\AssemblyVersionInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyVersionInfo.cs</LastGenOutput>

@@ -1,0 +1,131 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#
+var ops = new [] {
+new Operation("Equal", "To", "Beq", false, "Ceq", ""),
+new Operation("GreaterThanOrEqual", "To", "Bge", true, null, ""),
+new Operation("Greater", "Than", "Bgt", true, "Cgt", ""),
+new Operation("LessThanOrEqual", "To", "Ble", true, null, ""),
+new Operation("Less", "Than", "Blt", true, "Clt", ""),
+new Operation("True", "", "Brtrue", false, null, ""),
+new Operation("False", "", "Brfalse", false, null, "")
+};
+
+var numericTypes = new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double)};
+#>
+using System;
+using System.Reflection.Emit;
+
+namespace ILGeneratorExtensions
+{
+	public static class CompareAndBranch
+	{
+<# foreach (var op in ops) { #>
+		#region <#= op.Name #>
+
+		public static void BranchIf<#= op.Name #>(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>, label);
+		public static void BranchIf<#= op.Name #>ShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_S, label);
+		
+<# foreach (var type in numericTypes) { #>
+		public static void BranchIf<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIf<#= op.Name #>(label);
+		}
+
+		public static void BranchIf<#= op.Name #><#= op.Suffix #>ShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIf<#= op.Name #>ShortForm(label);
+		}
+<# } #>
+
+<# if (op.Signed) { #>
+		public static void BranchIf<#= op.Name #>Unsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un, label);
+		public static void BranchIf<#= op.Name #>UnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un_S, label);
+
+<# foreach (var type in numericTypes) { #>
+		public static void BranchIf<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIf<#= op.Name #>Unsigned(label);
+		}
+
+		public static void BranchIf<#= op.Name #><#= op.Suffix #>UnsignedShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIf<#= op.Name #>UnsignedShortForm(label);
+		}
+<# } #>
+
+<# } #>
+<# if (op.Compare != null) { #>
+		public static void Compare<#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>);
+
+<# foreach (var type in numericTypes) { #>
+		public static void Compare<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
+		{
+			generator.LoadConstant(value);
+			generator.Compare<#= op.Name #>();
+		}
+<# } #>
+
+<# }#>
+<# if (op.Compare != null && op.Signed) { #>
+		public static void Compare<#= op.Name #>Unsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>_Un);
+
+<# foreach (var type in numericTypes) { #>
+		public static void Compare<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
+		{
+			generator.LoadConstant(value);
+			generator.Compare<#= op.Name #>Unsigned();
+		}
+<# } #>
+
+<# } #>
+		#endregion
+
+<# } #>
+
+		#region null
+		
+		public static void BranchIfNull(this ILGenerator generator, Label label)
+		{
+			generator.LoadNull();
+			generator.BranchIfEqual(label);
+		}
+
+		public static void BranchIfNullShortForm(this ILGenerator generator, Label label)
+		{
+			generator.LoadNull();
+			generator.BranchIfEqualShortForm(label);
+		}
+
+		#endregion
+	}
+}
+<#+
+public class Operation
+{
+	public string Name;
+	public string Branch;
+	public string Suffix;
+	public bool Signed;
+	public string Compare;
+	public string Description;
+	
+	public Operation(string name, string suffix, string branch, bool signed, string compare, string description)
+	{
+		Name = name;
+		Branch = branch;
+		Suffix = suffix;
+		Signed = signed;
+		Compare = compare;
+		Description = description;
+	}
+}
+#>
