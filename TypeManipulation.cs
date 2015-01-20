@@ -48,5 +48,9 @@ namespace ILGeneratorExtensions
         public static void UnboxAny(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Unbox_Any, type);
 
         public static void UnboxAny<T>(this ILGenerator generator) => generator.UnboxAny(typeof (T));
+
+        public static void SizeOf(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Sizeof, type);
+
+        public static void SizeOf<T>(this ILGenerator generator) => generator.SizeOf(typeof(T));
     }
 }
