@@ -70,6 +70,22 @@ namespace ILGeneratorExtensions
 
         public static void LoadElementAtIndex<T>(this ILGenerator generator, uint index) => generator.LoadElementAtIndex(typeof(T), index);
 
+        public static void LoadElementAddress(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Ldelema, type);
+
+        public static void LoadElementAddressAtIndex(this ILGenerator generator, Type type, uint index)
+        {
+            generator.LoadConstant(index);
+            generator.LoadElementAddress(type);
+        }
+
+        public static void LoadElementAddress<T>(this ILGenerator generator) => generator.LoadElement(typeof(T));
+
+        public static void LoadElementAddressAtIndex<T>(this ILGenerator generator, uint index)
+        {
+            generator.LoadConstant(index);
+            generator.LoadElementAddress(typeof(T));
+        }
+
         public static void StoreElement(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
