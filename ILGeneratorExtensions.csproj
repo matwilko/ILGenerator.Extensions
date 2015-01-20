@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="MethodFlow.cs" />
     <Compile Include="ObjectCreation.cs" />
+    <Compile Include="ObjectManipulation.cs" />
     <Compile Include="Properties\AssemblyVersionInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
