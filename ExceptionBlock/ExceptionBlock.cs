@@ -157,7 +157,7 @@ namespace ILGeneratorExtensions
             hasFinallyBlock = true;
 
             generator.BeginFinallyBlock();
-            return new FinallyBlock(generator);
+            return new FinallyBlock();
         }
 
         public void Dispose()
