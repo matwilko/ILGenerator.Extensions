@@ -44,6 +44,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Arguments.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArrayManipulation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArrayManipulation.tt</DependentUpon>
+    </Compile>
     <Compile Include="BitOperations.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,6 +98,10 @@
     <Content Include="Arguments.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Arguments.cs</LastGenOutput>
+    </Content>
+    <Content Include="ArrayManipulation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ArrayManipulation.cs</LastGenOutput>
     </Content>
     <Content Include="BitOperations.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
