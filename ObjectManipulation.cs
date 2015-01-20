@@ -49,7 +49,46 @@ namespace ILGeneratorExtensions
                 throw new InvalidOperationException("This operation is not valid on reference types");
             }
 
-            generator.Emit(OpCodes.Ldobj, type);
+            if (type == typeof (sbyte))
+            {
+                generator.Emit(OpCodes.Ldind_I1);
+            }
+            else if (type == typeof (byte))
+            {
+                generator.Emit(OpCodes.Ldind_U1);
+            }
+            else if (type == typeof (short))
+            {
+                generator.Emit(OpCodes.Ldind_I2);
+            }
+            else if (type == typeof (ushort))
+            {
+                generator.Emit(OpCodes.Ldind_U2);
+            }
+            else if (type == typeof (int))
+            {
+                generator.Emit(OpCodes.Ldind_I4);
+            }
+            else if (type == typeof (uint))
+            {
+                generator.Emit(OpCodes.Ldind_U4);
+            }
+            else if (type == typeof(long) || type == typeof(ulong))
+            {
+                generator.Emit(OpCodes.Ldind_I8);
+            }
+            else if (type == typeof (float))
+            {
+                generator.Emit(OpCodes.Ldind_R4);
+            }
+            else if (type == typeof (double))
+            {
+                generator.Emit(OpCodes.Ldind_R8);
+            }
+            else
+            {
+                generator.Emit(OpCodes.Ldobj, type);
+            }
         }
 
         public static void LoadValueTypeOntoStack<T>(this ILGenerator generator) => generator.LoadValueTypeOntoStack(typeof (T));
@@ -62,7 +101,7 @@ namespace ILGeneratorExtensions
             }
 
             generator.Emit(OpCodes.Volatile);
-            generator.Emit(OpCodes.Ldobj, type);
+            generator.LoadValueTypeOntoStack(type);
         }
 
         public static void LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) => generator.LoadValueTypeOntoStackVolatile(typeof(T));
@@ -71,10 +110,37 @@ namespace ILGeneratorExtensions
         {
             if (!type.IsValueType)
             {
-                throw new InvalidOperationException("This operation is not valid on a reference type");
+                throw new InvalidOperationException("This operation is not valid on reference types");
             }
 
-            generator.Emit(OpCodes.Stobj, type);
+            if (type == typeof(sbyte) || type == typeof(byte))
+            {
+                generator.Emit(OpCodes.Ldind_I1);
+            }
+            else if (type == typeof(short) || type == typeof(ushort))
+            {
+                generator.Emit(OpCodes.Ldind_I2);
+            }
+            else if (type == typeof(int) || type == typeof(uint))
+            {
+                generator.Emit(OpCodes.Ldind_I4);
+            }
+            else if (type == typeof(long) || type == typeof(ulong))
+            {
+                generator.Emit(OpCodes.Ldind_I8);
+            }
+            else if (type == typeof(float))
+            {
+                generator.Emit(OpCodes.Ldind_R4);
+            }
+            else if (type == typeof(double))
+            {
+                generator.Emit(OpCodes.Ldind_R8);
+            }
+            else
+            {
+                generator.Emit(OpCodes.Ldobj, type);
+            }
         }
 
         public static void StoreValueTypeFromStack<T>(this ILGenerator generator) where T : struct
@@ -93,5 +159,20 @@ namespace ILGeneratorExtensions
 
         public static void StoreValueTypeFromStackVolatile<T>(this ILGenerator generator) where T : struct
             => generator.StoreValueTypeFromStack(typeof(T));
+
+        public static void LoadReferenceFromAddress(this ILGenerator generator, Type type)
+        {
+            if (type.IsValueType)
+            {
+                throw new InvalidOperationException("Cannot load reference for value type");
+            }
+
+            generator.Emit(OpCodes.Ldind_Ref, type);
+        }
+
+        public static void LoadReferenceFromAddress<T>(this ILGenerator generator)
+            => generator.LoadReferenceFromAddress(typeof (T));
+
+
     }
 }
