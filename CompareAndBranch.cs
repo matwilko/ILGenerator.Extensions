@@ -5,6 +5,7 @@ namespace ILGeneratorExtensions
 {
 	public static class CompareAndBranch
 	{
+
 		#region Equal
 
 		public static void BranchIfEqual(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Beq, label);
@@ -87,7 +88,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-
 		public static void CompareEqual(this ILGenerator generator) => generator.Emit(OpCodes.Ceq);
 
 		public static void CompareEqualTo(this ILGenerator generator, Char value)
@@ -124,6 +124,90 @@ namespace ILGeneratorExtensions
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
+		}
+
+		#endregion
+
+		#region NotEqual
+		public static void BranchIfNotEqualUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bne_Un, label);
+		public static void BranchIfNotEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bne_Un_S, label);
+
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Char value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Char value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
+		}
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Int32 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
+		}
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, UInt32 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
+		}
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Int64 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
+		}
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, UInt64 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
+		}
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Single value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Single value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
+		}
+		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Double value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsigned(label);
+		}
+
+		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Double value, Label label)
+		{
+			generator.LoadConstant(value);
+			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
 
 		#endregion
@@ -210,7 +294,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-
 		public static void BranchIfGreaterThanOrEqualUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bge_Un, label);
 		public static void BranchIfGreaterThanOrEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bge_Un_S, label);
 
@@ -376,7 +459,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-
 		public static void BranchIfGreaterUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bgt_Un, label);
 		public static void BranchIfGreaterUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bgt_Un_S, label);
 
@@ -618,7 +700,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-
 		public static void BranchIfLessThanOrEqualUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Ble_Un, label);
 		public static void BranchIfLessThanOrEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Ble_Un_S, label);
 
@@ -784,7 +865,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-
 		public static void BranchIfLessUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Blt_Un, label);
 		public static void BranchIfLessUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Blt_Un_S, label);
 
@@ -1026,7 +1106,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-
 		#endregion
 
 		#region False
@@ -1111,7 +1190,6 @@ namespace ILGeneratorExtensions
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-
 		#endregion
 
 

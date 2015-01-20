@@ -7,6 +7,7 @@
 <#
 var ops = new [] {
 new Operation("Equal", "To", "Beq", false, "Ceq", ""),
+new Operation("NotEqual", "To", "Bne", true, null, "", true),
 new Operation("GreaterThanOrEqual", "To", "Bge", true, null, ""),
 new Operation("Greater", "Than", "Bgt", true, "Cgt", ""),
 new Operation("LessThanOrEqual", "To", "Ble", true, null, ""),
@@ -24,8 +25,10 @@ namespace ILGeneratorExtensions
 {
 	public static class CompareAndBranch
 	{
+
 <# foreach (var op in ops) { #>
 		#region <#= op.Name #>
+<# if (!op.OnlyUnsigned) { #>
 
 		public static void BranchIf<#= op.Name #>(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>, label);
 		public static void BranchIf<#= op.Name #>ShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_S, label);
@@ -43,7 +46,7 @@ namespace ILGeneratorExtensions
 			generator.BranchIf<#= op.Name #>ShortForm(label);
 		}
 <# } #>
-
+<# } #>
 <# if (op.Signed) { #>
 		public static void BranchIf<#= op.Name #>Unsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un, label);
 		public static void BranchIf<#= op.Name #>UnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un_S, label);
@@ -117,8 +120,9 @@ public class Operation
 	public bool Signed;
 	public string Compare;
 	public string Description;
+	public bool OnlyUnsigned;
 	
-	public Operation(string name, string suffix, string branch, bool signed, string compare, string description)
+	public Operation(string name, string suffix, string branch, bool signed, string compare, string description, bool onlyUnsigned = false)
 	{
 		Name = name;
 		Branch = branch;
@@ -126,6 +130,7 @@ public class Operation
 		Signed = signed;
 		Compare = compare;
 		Description = description;
+		OnlyUnsigned = onlyUnsigned;
 	}
 }
 #>
