@@ -3,7 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ output extension=".cs" #>
+<#@ output extension=".autogen.cs" #>
 <#
 var typesNoOverflow = new Dictionary<Type, Operations> 
 { 

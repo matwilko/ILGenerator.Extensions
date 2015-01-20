@@ -3,81 +3,16 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ output extension=".cs" #>
+<#@ output extension=".autogen.cs" #>
 using System;
 using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-	public static class Locals
+	public static partial class Locals
 	{
-		public static void LoadLocal(this ILGenerator generator, LocalBuilder local)
-	    {
-	        switch (local.LocalIndex)
-	        {
-                case 0:
-                    generator.Emit(OpCodes.Ldloc_0);
-	                break;
-                case 1:
-                    generator.Emit(OpCodes.Ldloc_1);
-                    break;
-                case 2:
-                    generator.Emit(OpCodes.Ldloc_2);
-                    break;
-                default:
-	                if (local.LocalIndex <= 255)
-	                {
-	                    generator.Emit(OpCodes.Ldloc_S, local);
-	                }
-	                else
-	                {
-	                    generator.Emit(OpCodes.Ldloc, local);
-	                }
-
-                    break;
-            }
-	    }
-
-	    public static void LoadLocalAddress(this ILGenerator generator, LocalBuilder local)
-	    {
-	        if (local.LocalIndex <= 255)
-	        {
-	            generator.Emit(OpCodes.Ldloca_S, local);
-	        }
-	        else
-	        {
-	            generator.Emit(OpCodes.Ldloca, local);
-	        }
-	    }
-
-	    public static void StoreInLocal(this ILGenerator generator, LocalBuilder local)
-	    {
-	        switch (local.LocalIndex)
-	        {
-                case 0:
-                    generator.Emit(OpCodes.Stloc_0);
-                    break;
-                case 1:
-                    generator.Emit(OpCodes.Stloc_1);
-                    break;
-                case 2:
-                    generator.Emit(OpCodes.Stloc_2);
-                    break;
-                default:
-                    if (local.LocalIndex <= 255)
-                    {
-                        generator.Emit(OpCodes.Stloc_S, local);
-                    }
-                    else
-                    {
-                        generator.Emit(OpCodes.Stloc, local);
-                    }
-
-                    break;
-            }
-	    }
-
-<# foreach (var type in new [] { typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) }) { #>
+		
+<# foreach (var type in new [] { typeof(bool), typeof(char), typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) }) { #>
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, <#= type.Name #> value)
 		{
 			if (local.LocalType != typeof(<#= type.Name #>))

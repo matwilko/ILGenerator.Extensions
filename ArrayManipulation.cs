@@ -3,7 +3,7 @@ using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-    public static class ArrayManipulation
+    public static partial class ArrayManipulation
     {
         public static void ArrayLength(this ILGenerator generator) => generator.Emit(OpCodes.Ldlen);
 
@@ -13,11 +13,11 @@ namespace ILGeneratorExtensions
             {
                 generator.Emit(OpCodes.Ldelem_Ref);
             }
-            else if (type == typeof (sbyte) || type == typeof(bool))
+            else if (type == typeof(sbyte) || type == typeof(bool))
             {
                 generator.Emit(OpCodes.Ldelem_I1);
             }
-            else if (type == typeof (byte))
+            else if (type == typeof(byte))
             {
                 generator.Emit(OpCodes.Ldelem_U1);
             }
@@ -46,11 +46,11 @@ namespace ILGeneratorExtensions
                 // Not a mistake! ldelem.U8 is an alias for ldelem.I8
                 generator.Emit(OpCodes.Ldelem_I8);
             }
-            else if (type == typeof (float))
+            else if (type == typeof(float))
             {
                 generator.Emit(OpCodes.Ldelem_R4);
             }
-            else if (type == typeof (double))
+            else if (type == typeof(double))
             {
                 generator.Emit(OpCodes.Ldelem_R8);
             }
@@ -60,7 +60,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        public static void LoadElement<T>(this ILGenerator generator) => generator.LoadElement(typeof (T));
+        public static void LoadElement<T>(this ILGenerator generator) => generator.LoadElement(typeof(T));
 
         public static void LoadElementAtIndex(this ILGenerator generator, Type type, uint index)
         {
@@ -107,90 +107,5 @@ namespace ILGeneratorExtensions
         }
 
         public static void StoreElement<T>(this ILGenerator generator) => generator.StoreElement(typeof(T));
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Boolean value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Boolean>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Char value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Char>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, SByte value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<SByte>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Byte value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Byte>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Int16 value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Int16>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, UInt16 value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<UInt16>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Int32 value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Int32>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, UInt32 value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<UInt32>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Int64 value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Int64>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, UInt64 value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<UInt64>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Single value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Single>();
-        }
-
-		public static void StoreElementAtIndex(this ILGenerator generator, Double value, uint index)
-        {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Double>();
-        }
-
     }
 }

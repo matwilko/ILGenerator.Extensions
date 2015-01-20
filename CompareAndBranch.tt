@@ -3,7 +3,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ output extension=".cs" #>
+<#@ output extension=".autogen.cs" #>
 <#
 var ops = new [] {
 new Operation("Equal", "To", "Beq", false, "Ceq", ""),
@@ -23,7 +23,7 @@ using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-	public static class CompareAndBranch
+	public static partial class CompareAndBranch
 	{
 
 <# foreach (var op in ops) { #>
@@ -93,22 +93,6 @@ namespace ILGeneratorExtensions
 		#endregion
 
 <# } #>
-
-		#region null
-		
-		public static void BranchIfNull(this ILGenerator generator, Label label)
-		{
-			generator.LoadNull();
-			generator.BranchIfEqual(label);
-		}
-
-		public static void BranchIfNullShortForm(this ILGenerator generator, Label label)
-		{
-			generator.LoadNull();
-			generator.BranchIfEqualShortForm(label);
-		}
-
-		#endregion
 	}
 }
 <#+
