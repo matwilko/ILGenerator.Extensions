@@ -78,6 +78,7 @@
     <Compile Include="ExceptionBlock\FaultBlock.cs" />
     <Compile Include="ExceptionBlock\FinallyBlock.cs" />
     <Compile Include="ExceptionBlock\ExceptionBlock.cs" />
+    <Compile Include="FunctionPointers.cs" />
     <Compile Include="LoadConstants.cs" />
     <Compile Include="Locals.autogen.cs">
       <AutoGen>True</AutoGen>
