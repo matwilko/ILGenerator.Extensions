@@ -78,6 +78,12 @@
     <Compile Include="ExceptionBlock\FaultBlock.cs" />
     <Compile Include="ExceptionBlock\FinallyBlock.cs" />
     <Compile Include="ExceptionBlock\ExceptionBlock.cs" />
+    <Compile Include="Fields.autogen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Fields.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fields.cs" />
     <Compile Include="FunctionPointers.cs" />
     <Compile Include="LoadConstants.cs" />
     <Compile Include="Locals.autogen.cs">
@@ -120,6 +126,10 @@
     <Content Include="ArithmeticOperations.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArithmeticOperations.cs</LastGenOutput>
+    </Content>
+    <Content Include="Fields.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Fields.autogen.cs</LastGenOutput>
     </Content>
     <Content Include="Locals.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
