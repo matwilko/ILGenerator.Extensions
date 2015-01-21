@@ -3,7 +3,7 @@ using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-    public class CatchBlock : IDisposable
+    public sealed class CatchBlock : IDisposable
     {
         private readonly ILGenerator generator;
         private readonly Label endLabel;
