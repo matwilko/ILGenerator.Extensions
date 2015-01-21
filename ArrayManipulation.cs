@@ -78,12 +78,32 @@ namespace ILGeneratorExtensions
             generator.LoadElementAddress(type);
         }
 
-        public static void LoadElementAddress<T>(this ILGenerator generator) => generator.LoadElement(typeof(T));
+        public static void LoadElementAddress<T>(this ILGenerator generator) => generator.LoadElementAddress(typeof(T));
 
         public static void LoadElementAddressAtIndex<T>(this ILGenerator generator, uint index)
         {
             generator.LoadConstant(index);
             generator.LoadElementAddress(typeof(T));
+        }
+
+        public static void LoadElementAddressReadonly(this ILGenerator generator, Type type)
+        {
+            generator.Emit(OpCodes.Readonly);
+            generator.Emit(OpCodes.Ldelema, type);
+        } 
+
+        public static void LoadElementAddressAtIndexReadonly(this ILGenerator generator, Type type, uint index)
+        {
+            generator.LoadConstant(index);
+            generator.LoadElementAddressReadonly(type);
+        }
+
+        public static void LoadElementAddressReadonly<T>(this ILGenerator generator) => generator.LoadElementAddressReadonly(typeof(T));
+
+        public static void LoadElementAddressAtIndexReadonly<T>(this ILGenerator generator, uint index)
+        {
+            generator.LoadConstant(index);
+            generator.LoadElementAddressReadonly(typeof(T));
         }
 
         public static void StoreElement(this ILGenerator generator, Type type)
