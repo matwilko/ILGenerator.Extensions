@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Locals.cs" />
     <Compile Include="MethodFlow.cs" />
+    <Compile Include="NativeInteger.cs" />
     <Compile Include="ObjectCreation.cs" />
     <Compile Include="ObjectManipulation.cs" />
     <Compile Include="Prefixes.cs" />
