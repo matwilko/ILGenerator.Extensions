@@ -46,5 +46,13 @@ namespace ILGeneratorExtensions
         }
 
         public static void NewArray<T>(this ILGenerator generator, uint length) => generator.NewArray(typeof(T), length);
+
+        public static void AllocateFromLocalMemoryPool(this ILGenerator generator) => generator.Emit(OpCodes.Localloc);
+
+        public static void AllocateFromLocalMemoryPool(this ILGenerator generator, uint size)
+        {
+            generator.LoadConstant(size);
+            generator.AllocateFromLocalMemoryPool();
+        }
     }
 }
