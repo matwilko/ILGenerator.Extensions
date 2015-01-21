@@ -3,70 +3,21 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#@ output extension=".cs" #>
+<#@ output extension=".codegen.cs" #>
 using System;
 using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-	public static class Arguments
+	public static partial class Arguments
 	{
-		public static void LoadArgument(this ILGenerator generator, ushort argNum)
-        {
-            switch (argNum)
-            {
-                case 0:
-                    generator.Emit(OpCodes.Ldarg_0);
-                    break;
-                case 1:
-                    generator.Emit(OpCodes.Ldarg_1);
-                    break;
-                case 2:
-                    generator.Emit(OpCodes.Ldarg_2);
-                    break;
-                case 3:
-                    generator.Emit(OpCodes.Ldarg_3);
-                    break;
-                default:
-                    if (argNum <= 255)
-                    {
-                        generator.Emit(OpCodes.Ldarg_S, (byte) argNum);
-                    }
-                    else
-                    {
-                        generator.Emit(OpCodes.Ldarg, argNum);
-                    }
-                    break;
-            }
-        }
-
-        public static void LoadThis(this ILGenerator generator) => generator.Emit(OpCodes.Ldarg_0);
-
-        public static void LoadArgumentAddress(this ILGenerator generator, ushort argNum)
-        {
-            if (argNum <= 255)
-            {
-                generator.Emit(OpCodes.Ldarga_S, (byte) argNum);
-            }
-            else
-            {
-                generator.Emit(OpCodes.Ldarga, argNum);
-            }
-        }
-
-        public static void StoreInArgument(this ILGenerator generator, ushort argNum)
-        {
-            if (argNum <= 255)
-            {
-                generator.Emit(OpCodes.Starg_S, (byte)argNum);
-            }
-            else
-            {
-                generator.Emit(OpCodes.Starg, argNum);
-            }
-        }
-
 <# foreach (var type in new [] { typeof(char), typeof(bool), typeof(int), typeof(uint), typeof(long), typeof(ulong) }) { #>
+		/// <summary>
+        /// Overwrite the specified argument with the given value.
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="argNum">The index of the argument to store the value in</param>
+		/// <param name="value">The value to store in the argument</param>
 		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);

@@ -1,11 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-	public static class Arguments
-	{
-		public static void LoadArgument(this ILGenerator generator, ushort argNum)
+    public static partial class Arguments
+    {
+        /// <summary>
+        /// Loads the specified argument onto the evaluation stack
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="argNum">The index of the argument to load</param>
+        public static void LoadArgument(this ILGenerator generator, ushort argNum)
         {
             switch (argNum)
             {
@@ -24,7 +31,7 @@ namespace ILGeneratorExtensions
                 default:
                     if (argNum <= 255)
                     {
-                        generator.Emit(OpCodes.Ldarg_S, (byte) argNum);
+                        generator.Emit(OpCodes.Ldarg_S, (byte)argNum);
                     }
                     else
                     {
@@ -34,13 +41,22 @@ namespace ILGeneratorExtensions
             }
         }
 
+        /// <summary>
+        /// Short-cut to load the first argument - which is the this reference in instance methods
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         public static void LoadThis(this ILGenerator generator) => generator.Emit(OpCodes.Ldarg_0);
 
+        /// <summary>
+        /// Loads the address of the specified argument onto the evaluation stack
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="argNum"></param>
         public static void LoadArgumentAddress(this ILGenerator generator, ushort argNum)
         {
             if (argNum <= 255)
             {
-                generator.Emit(OpCodes.Ldarga_S, (byte) argNum);
+                generator.Emit(OpCodes.Ldarga_S, (byte)argNum);
             }
             else
             {
@@ -48,6 +64,11 @@ namespace ILGeneratorExtensions
             }
         }
 
+        /// <summary>
+        /// Pop the value on the top of the evaluation stack and stores it in the specified argument
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="argNum">The index of the argument to store the value in</param>
         public static void StoreInArgument(this ILGenerator generator, ushort argNum)
         {
             if (argNum <= 255)
@@ -59,43 +80,5 @@ namespace ILGeneratorExtensions
                 generator.Emit(OpCodes.Starg, argNum);
             }
         }
-
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Char value)
-		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
-		}
-		
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Boolean value)
-		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
-		}
-		
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Int32 value)
-		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
-		}
-		
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, UInt32 value)
-		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
-		}
-		
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Int64 value)
-		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
-		}
-		
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, UInt64 value)
-		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
-		}
-		
-		public static void LoadArgumentList(this ILGenerator generator) => generator.Emit(OpCodes.Arglist);
-	}
+    }
 }

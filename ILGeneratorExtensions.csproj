@@ -39,11 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Arguments.cs">
+    <Compile Include="Arguments.codegen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Arguments.tt</DependentUpon>
     </Compile>
+    <Compile Include="Arguments.cs" />
     <Compile Include="ArrayManipulation.autogen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -111,7 +112,7 @@
   <ItemGroup>
     <Content Include="Arguments.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Arguments.cs</LastGenOutput>
+      <LastGenOutput>Arguments.codegen.cs</LastGenOutput>
     </Content>
     <Content Include="ArrayManipulation.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
