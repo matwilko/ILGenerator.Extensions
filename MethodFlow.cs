@@ -24,17 +24,29 @@ namespace ILGeneratorExtensions
             generator.Emit(OpCodes.Callvirt, method);
         }
 
-        public static void ConstrainedCallVirtual<T>(this ILGenerator generator, MethodInfo method)
+        public static void ConstrainedCall<T>(this ILGenerator generator, MethodInfo method)
         {
-            generator.ConstrainedCallVirtual(typeof (T), method);
+            generator.ConstrainedCall(typeof (T), method);
         }
 
-        public static void ConstrainedCallVirtual(this ILGenerator generator, Type constrainedType, MethodInfo method)
+        public static void ConstrainedCall(this ILGenerator generator, Type constrainedType, MethodInfo method)
         {
             generator.Emit(OpCodes.Constrained, constrainedType);
             generator.Emit(OpCodes.Callvirt, method);
         }
-        
+
+        public static void ConstrainedTailCall<T>(this ILGenerator generator, MethodInfo method)
+        {
+            generator.ConstrainedTailCall(typeof(T), method);
+        }
+
+        public static void ConstrainedTailCall(this ILGenerator generator, Type constrainedType, MethodInfo method)
+        {
+            generator.Emit(OpCodes.Constrained, constrainedType);
+            generator.Emit(OpCodes.Tailcall);
+            generator.Emit(OpCodes.Callvirt, method);
+        }
+
         public static void Return(this ILGenerator generator) => generator.Emit(OpCodes.Ret);
     }
 }
