@@ -19,7 +19,6 @@ var typesNoOverflow = new Dictionary<Type, Operations>
 { typeof(double), new Operations("Conv_R8", null, "Conv_R_Un", "a signed byte (8 bit integer)", "F") }
 };
 #>
-using System;
 using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions

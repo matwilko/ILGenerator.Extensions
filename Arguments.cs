@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
+﻿using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    [UsedImplicitly]
     public static partial class Arguments
     {
         /// <summary>
