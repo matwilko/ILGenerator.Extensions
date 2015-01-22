@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Fields.cs" />
     <Compile Include="FunctionPointers.cs" />
+    <Compile Include="Properties\JetBrainsAnnotations.cs" />
     <Compile Include="LoadConstants.cs" />
     <Compile Include="Locals.autogen.cs">
       <AutoGen>True</AutoGen>
