@@ -45,6 +45,12 @@
       <DependentUpon>Arguments.tt</DependentUpon>
     </Compile>
     <Compile Include="Arguments.cs" />
+    <Compile Include="ArithmeticOperations.codegen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArithmeticOperations.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArithmeticOperations.cs" />
     <Compile Include="ArrayManipulation.autogen.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -55,11 +61,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BitOperations.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ArithmeticOperations.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ArithmeticOperations.tt</DependentUpon>
     </Compile>
     <Compile Include="CompareAndBranch.autogen.cs">
       <AutoGen>True</AutoGen>
@@ -128,7 +129,7 @@
     </Content>
     <Content Include="ArithmeticOperations.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ArithmeticOperations.cs</LastGenOutput>
+      <LastGenOutput>ArithmeticOperations.codegen.cs</LastGenOutput>
     </Content>
     <Content Include="Fields.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
