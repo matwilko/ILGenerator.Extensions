@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
@@ -20,7 +21,10 @@ namespace ILGeneratorExtensions
             generator.BeginExceptionBlock();
         }
 
+        [UsedImplicitly]
         public void Leave() => generator.Leave(endLabel);
+
+        [UsedImplicitly]
         public void LeaveShortForm() => generator.LeaveShortForm(endLabel);
 
         private void EnsureTryBlockEnded()
@@ -34,31 +38,37 @@ namespace ILGeneratorExtensions
             tryBlockEnded = true;
         }
 
+        [UsedImplicitly]
         public CatchBlock CatchBlock()
         {
             return CatchBlock<object>();
         }
 
+        [UsedImplicitly]
         public CatchBlock CatchBlock<T>()
         {
             return CatchBlock(typeof (T));
         }
 
+        [UsedImplicitly]
         public CatchBlock CatchBlock(Type exceptionType)
         {
             return CatchBlock(exceptionType, null);
         }
 
+        [UsedImplicitly]
         public CatchBlock CatchBlock(Action<ILGenerator> filter)
         {
             return CatchBlock(null, filter);
         }
 
+        [UsedImplicitly]
         public CatchBlock CatchBlock<T>(Action<ILGenerator> filter)
         {
             return CatchBlock(typeof (T), filter);
         }
 
+        [UsedImplicitly]
         public CatchBlock CatchBlock(Type exceptionType, Action<ILGenerator> filter)
         {
             EnsureTryBlockEnded();
@@ -113,6 +123,7 @@ namespace ILGeneratorExtensions
             return new CatchBlock(generator, endLabel);
         }
 
+        [UsedImplicitly]
         public FaultBlock FaultBlock()
         {
             if (hasCatchBlocks)
@@ -139,6 +150,7 @@ namespace ILGeneratorExtensions
             return new FaultBlock();
         }
 
+        [UsedImplicitly]
         public FinallyBlock FinallyBlock()
         {
             if (hasFinallyBlock)

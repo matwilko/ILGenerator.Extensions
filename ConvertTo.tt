@@ -20,9 +20,11 @@ var typesNoOverflow = new Dictionary<Type, Operations>
 };
 #>
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+	[UsedImplicitly]
 	public static class ConvertTo
 	{
 <# foreach (var type in typesNoOverflow)
@@ -32,12 +34,14 @@ namespace ILGeneratorExtensions
 		/// <summary>
 		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with no overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
 		/// </summary>
+		[UsedImplicitly]
 		public static void ConvertTo<#= type.Key.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.NoOverflow #>);
 <# if (type.Value.Overflow != null) { #>
 
 		/// <summary>
 		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
 		/// </summary>
+		[UsedImplicitly]
 		public static void ConvertTo<#= type.Key.Name #>WithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.Overflow #>);
 <# } #>
 <# if (type.Value.FromUnsigned != null) { #>
@@ -45,6 +49,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
 		/// Converts the unsigned value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
 		/// </summary>
+		[UsedImplicitly]
 		public static void ConvertTo<#= type.Key.Name #>FromUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.FromUnsigned #>);
 <# } #>
 

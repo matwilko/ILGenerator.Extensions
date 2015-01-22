@@ -1,9 +1,11 @@
 ﻿using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
     public static partial class Locals
     {
+        [UsedImplicitly]
         public static void LoadLocal(this ILGenerator generator, LocalBuilder local)
         {
             switch (local.LocalIndex)
@@ -31,6 +33,7 @@ namespace ILGeneratorExtensions
             }
         }
 
+        [UsedImplicitly]
         public static void LoadLocalAddress(this ILGenerator generator, LocalBuilder local)
         {
             if (local.LocalIndex <= 255)
@@ -43,6 +46,7 @@ namespace ILGeneratorExtensions
             }
         }
 
+        [UsedImplicitly]
         public static void StoreInLocal(this ILGenerator generator, LocalBuilder local)
         {
             switch (local.LocalIndex)

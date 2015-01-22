@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    [UsedImplicitly]
     public static class ObjectManipulation
     {
+        [UsedImplicitly]
         public static void CopyObject(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -14,34 +17,41 @@ namespace ILGeneratorExtensions
 
             generator.Emit(OpCodes.Cpobj, type);
         }
-        
+
+        [UsedImplicitly]
         public static void CopyObject<T>(this ILGenerator generator) where T : struct => generator.CopyObject(typeof (T));
 
+        [UsedImplicitly]
         public static void CopyObjectWithTypeOverride(this ILGenerator generator, Type type)
         {
             generator.Emit(OpCodes.Cpobj);
         }
-        
+
+        [UsedImplicitly]
         public static void CopyBlock(this ILGenerator generator) => generator.Emit(OpCodes.Cpblk);
 
+        [UsedImplicitly]
         public static void CopyBlock(this ILGenerator generator, uint bytes)
         {
             generator.LoadConstant(bytes);
             generator.CopyBlock();
         }
 
+        [UsedImplicitly]
         public static void CopyBlockVolatile(this ILGenerator generator)
         {
             generator.Emit(OpCodes.Volatile);
             generator.CopyBlock();
         }
 
+        [UsedImplicitly]
         public static void CopyBlockVolatile(this ILGenerator generator, uint bytes)
         {
             generator.Emit(OpCodes.Volatile);
             generator.CopyBlock(bytes);
         }
 
+        [UsedImplicitly]
         public static void LoadValueTypeOntoStack(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -91,8 +101,10 @@ namespace ILGeneratorExtensions
             }
         }
 
+        [UsedImplicitly]
         public static void LoadValueTypeOntoStack<T>(this ILGenerator generator) => generator.LoadValueTypeOntoStack(typeof (T));
 
+        [UsedImplicitly]
         public static void LoadValueTypeOntoStackVolatile(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -104,8 +116,10 @@ namespace ILGeneratorExtensions
             generator.LoadValueTypeOntoStack(type);
         }
 
+        [UsedImplicitly]
         public static void LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) => generator.LoadValueTypeOntoStackVolatile(typeof(T));
 
+        [UsedImplicitly]
         public static void StoreValueTypeFromStack(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -143,9 +157,11 @@ namespace ILGeneratorExtensions
             }
         }
 
+        [UsedImplicitly]
         public static void StoreValueTypeFromStack<T>(this ILGenerator generator) where T : struct
             => generator.StoreValueTypeFromStack(typeof (T));
 
+        [UsedImplicitly]
         public static void StoreValueTypeFromStackVolatile(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -157,9 +173,11 @@ namespace ILGeneratorExtensions
             generator.Emit(OpCodes.Stobj, type);
         }
 
+        [UsedImplicitly]
         public static void StoreValueTypeFromStackVolatile<T>(this ILGenerator generator) where T : struct
             => generator.StoreValueTypeFromStack(typeof(T));
 
+        [UsedImplicitly]
         public static void LoadReferenceFromAddress(this ILGenerator generator, Type type)
         {
             if (type.IsValueType)
@@ -170,6 +188,7 @@ namespace ILGeneratorExtensions
             generator.Emit(OpCodes.Ldind_Ref, type);
         }
 
+        [UsedImplicitly]
         public static void LoadReferenceFromAddress<T>(this ILGenerator generator)
             => generator.LoadReferenceFromAddress(typeof (T));
 

@@ -1,5 +1,6 @@
 using System;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
@@ -14,8 +15,10 @@ namespace ILGeneratorExtensions
             this.endLabel = endLabel;
         }
 
+        [UsedImplicitly]
         public void Rethrow() => generator.Emit(OpCodes.Rethrow);
 
+        [UsedImplicitly]
         public void Leave() => generator.Leave(endLabel);
         
         public void Dispose()

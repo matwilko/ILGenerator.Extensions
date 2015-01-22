@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+	[UsedImplicitly]
 	public static partial class Locals
 	{
 		
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Boolean value)
 		{
 			if (local.LocalType != typeof(Boolean))
@@ -17,6 +20,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Char value)
 		{
 			if (local.LocalType != typeof(Char))
@@ -28,6 +32,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, SByte value)
 		{
 			if (local.LocalType != typeof(SByte))
@@ -39,6 +44,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Byte value)
 		{
 			if (local.LocalType != typeof(Byte))
@@ -50,6 +56,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Int16 value)
 		{
 			if (local.LocalType != typeof(Int16))
@@ -61,6 +68,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, UInt16 value)
 		{
 			if (local.LocalType != typeof(UInt16))
@@ -72,6 +80,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Int32 value)
 		{
 			if (local.LocalType != typeof(Int32))
@@ -83,6 +92,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, UInt32 value)
 		{
 			if (local.LocalType != typeof(UInt32))
@@ -94,6 +104,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Int64 value)
 		{
 			if (local.LocalType != typeof(Int64))
@@ -105,6 +116,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, UInt64 value)
 		{
 			if (local.LocalType != typeof(UInt64))
@@ -116,6 +128,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Single value)
 		{
 			if (local.LocalType != typeof(Single))
@@ -127,6 +140,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Double value)
 		{
 			if (local.LocalType != typeof(Double))

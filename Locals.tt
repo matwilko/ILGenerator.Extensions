@@ -6,13 +6,16 @@
 <#@ output extension=".autogen.cs" #>
 using System;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+	[UsedImplicitly]
 	public static partial class Locals
 	{
 		
 <# foreach (var type in new [] { typeof(bool), typeof(char), typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) }) { #>
+		[UsedImplicitly]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, <#= type.Name #> value)
 		{
 			if (local.LocalType != typeof(<#= type.Name #>))

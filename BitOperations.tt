@@ -18,6 +18,7 @@ new Operation("Xor", "Xor", false)
 #>
 using System;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
@@ -25,11 +26,13 @@ namespace ILGeneratorExtensions
 	{
 <# foreach (var op in ops) { #>
 		#region <#= op.Name #>
-
+		
+		[UsedImplicitly]
 		public static void <#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>);
 <# if (!op.Unary) { #>
 
 <# foreach (var type in new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong) }) { #>
+		[UsedImplicitly]
 		public static void <#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
