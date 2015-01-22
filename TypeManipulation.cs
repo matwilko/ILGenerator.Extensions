@@ -4,16 +4,16 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class TypeManipulation
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void IsInstanceOfType<T>(this ILGenerator generator) => generator.IsInstanceOfType(typeof(T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void IsInstanceOfType(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Isinst, type);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void CastClass(this ILGenerator generator, Type type)
         {
             if (type.IsValueType)
@@ -24,10 +24,10 @@ namespace ILGeneratorExtensions
             generator.Emit(OpCodes.Castclass, type);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void CastClass<T>(this ILGenerator generator) where T : class => generator.CastClass(typeof (T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Box(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -38,10 +38,10 @@ namespace ILGeneratorExtensions
             generator.Emit(OpCodes.Box, type);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Box<T>(this ILGenerator generator) where T : struct => generator.Box(typeof (T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Unbox(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
@@ -52,19 +52,19 @@ namespace ILGeneratorExtensions
             generator.Emit(OpCodes.Unbox, type);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Unbox<T>(this ILGenerator generator) where T : struct => generator.Unbox(typeof (T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void UnboxAny(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Unbox_Any, type);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void UnboxAny<T>(this ILGenerator generator) => generator.UnboxAny(typeof (T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void SizeOf(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Sizeof, type);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void SizeOf<T>(this ILGenerator generator) => generator.SizeOf(typeof(T));
     }
 }

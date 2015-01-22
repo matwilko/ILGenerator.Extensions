@@ -5,7 +5,7 @@ namespace ILGeneratorExtensions
 {
     public static partial class Locals
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadLocal(this ILGenerator generator, LocalBuilder local)
         {
             switch (local.LocalIndex)
@@ -33,7 +33,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadLocalAddress(this ILGenerator generator, LocalBuilder local)
         {
             if (local.LocalIndex <= 255)
@@ -46,7 +46,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void StoreInLocal(this ILGenerator generator, LocalBuilder local)
         {
             switch (local.LocalIndex)

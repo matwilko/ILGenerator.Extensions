@@ -21,10 +21,10 @@ namespace ILGeneratorExtensions
             generator.BeginExceptionBlock();
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public void Leave() => generator.Leave(endLabel);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public void LeaveShortForm() => generator.LeaveShortForm(endLabel);
 
         private void EnsureTryBlockEnded()
@@ -38,37 +38,37 @@ namespace ILGeneratorExtensions
             tryBlockEnded = true;
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public CatchBlock CatchBlock()
         {
             return CatchBlock<object>();
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public CatchBlock CatchBlock<T>()
         {
             return CatchBlock(typeof (T));
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public CatchBlock CatchBlock(Type exceptionType)
         {
             return CatchBlock(exceptionType, null);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public CatchBlock CatchBlock(Action<ILGenerator> filter)
         {
             return CatchBlock(null, filter);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public CatchBlock CatchBlock<T>(Action<ILGenerator> filter)
         {
             return CatchBlock(typeof (T), filter);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public CatchBlock CatchBlock(Type exceptionType, Action<ILGenerator> filter)
         {
             EnsureTryBlockEnded();
@@ -123,7 +123,7 @@ namespace ILGeneratorExtensions
             return new CatchBlock(generator, endLabel);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public FaultBlock FaultBlock()
         {
             if (hasCatchBlocks)
@@ -150,7 +150,7 @@ namespace ILGeneratorExtensions
             return new FaultBlock();
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public FinallyBlock FinallyBlock()
         {
             if (hasFinallyBlock)

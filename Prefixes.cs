@@ -3,10 +3,10 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class Prefixes
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Unaligned(this ILGenerator generator) => generator.Emit(OpCodes.Unaligned);
     }
 }

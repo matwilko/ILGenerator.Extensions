@@ -19,7 +19,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);

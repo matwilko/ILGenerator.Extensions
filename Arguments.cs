@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static partial class Arguments
     {
         /// <summary>
@@ -11,7 +11,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum">The index of the argument to load</param>
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadArgument(this ILGenerator generator, ushort argNum)
         {
             switch (argNum)
@@ -45,7 +45,7 @@ namespace ILGeneratorExtensions
         /// Short-cut to load the first argument - which is the this reference in instance methods
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadThis(this ILGenerator generator) => generator.Emit(OpCodes.Ldarg_0);
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="argNum"></param>
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadArgumentAddress(this ILGenerator generator, ushort argNum)
         {
             if (argNum <= 255)
@@ -71,7 +71,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum">The index of the argument to store the value in</param>
-        [UsedImplicitly]
+        [PublicAPI]
         public static void StoreInArgument(this ILGenerator generator, ushort argNum)
         {
             if (argNum <= 255)
@@ -84,7 +84,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadArgumentList(this ILGenerator generator) => generator.Emit(OpCodes.Arglist);
     }
 }

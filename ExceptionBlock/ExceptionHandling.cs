@@ -3,10 +3,10 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class ExceptionHandling
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static ExceptionBlock ExceptionBlock(this ILGenerator generator) => new ExceptionBlock(generator);
     }
 }

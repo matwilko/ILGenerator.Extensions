@@ -13,7 +13,7 @@ namespace ILGeneratorExtensions
     public static partial class ArrayManipulation
     {
 <# foreach (var type in new [] { typeof(bool), typeof(char), typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) }) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, <#= type.Name #> value, uint index)
         {
             generator.LoadConstant(index);

@@ -3,19 +3,19 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class DebugOperations
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NoOp(this ILGenerator generator) => generator.Emit(OpCodes.Nop);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NoOperation(this ILGenerator generator) => generator.NoOp();
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Break(this ILGenerator generator) => generator.Emit(OpCodes.Break);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void BreakInDebugger(this ILGenerator generator) => generator.Break();
     }
 }

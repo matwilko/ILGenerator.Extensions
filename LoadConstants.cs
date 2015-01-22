@@ -6,7 +6,7 @@ namespace ILGeneratorExtensions
 {
     public static class LoadConstants
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, Int32 value)
         {
             switch (value)
@@ -54,7 +54,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, UInt32 value)
         {
             switch (value)
@@ -99,7 +99,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, long value)
         {
             if (value <= int.MaxValue && value >= int.MinValue)
@@ -113,7 +113,7 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, ulong value)
         {
             if (value <= uint.MaxValue)
@@ -127,22 +127,22 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, float value) => generator.Emit(OpCodes.Ldc_R4, value);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, double value) => generator.Emit(OpCodes.Ldc_R8, value);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, bool value) => generator.LoadConstant(value ? 1 : 0);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, char value) => generator.LoadConstant((int) value);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadNull(this ILGenerator generator) => generator.Emit(OpCodes.Ldnull);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadString(this ILGenerator generator, string str) => generator.Emit(OpCodes.Ldstr, str);
     }
 }

@@ -6,11 +6,11 @@ namespace ILGeneratorExtensions
 {
     public static class FunctionPointers
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadFunctionPointer(this ILGenerator generator, MethodInfo method)
             => generator.Emit(OpCodes.Ldftn, method);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadVirtualFunctionPointer(this ILGenerator generator, MethodInfo method)
             => generator.Emit(OpCodes.Ldvirtftn, method);
     }

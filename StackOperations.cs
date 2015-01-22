@@ -3,13 +3,13 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class StackOperations
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Pop(this ILGenerator generator) => generator.Emit(OpCodes.Pop);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Pop(this ILGenerator generator, uint repeat)
         {
             for (int i = 0; i < repeat; i++)
@@ -18,10 +18,10 @@ namespace ILGeneratorExtensions
             }
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Duplicate(this ILGenerator generator) => generator.Emit(OpCodes.Dup);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Duplicate(this ILGenerator generator, uint repeat)
         {
             for (int i = 0; i < repeat; i++)

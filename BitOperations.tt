@@ -27,12 +27,12 @@ namespace ILGeneratorExtensions
 <# foreach (var op in ops) { #>
 		#region <#= op.Name #>
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>);
 <# if (!op.Unary) { #>
 
 <# foreach (var type in new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong) }) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);

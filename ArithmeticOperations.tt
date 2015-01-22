@@ -23,7 +23,7 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-	[UsedImplicitly]
+	[PublicAPI]
 	public static partial class ArithmeticOperations
 	{
 <# foreach (var op in ops) { #>
@@ -33,7 +33,7 @@ namespace ILGeneratorExtensions
         /// Pops two values from the top of the evaluation stack and <#= op.Description #>
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>);
 
 <# if (op.Overflow) { #>
@@ -41,7 +41,7 @@ namespace ILGeneratorExtensions
         /// Pops two values from the top of the evaluation stack and <#= op.Description #> with a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #>WithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>_Ovf);
 
 <# } #>
@@ -50,7 +50,7 @@ namespace ILGeneratorExtensions
         /// Pops two values from the top of the evaluation stack and <#= op.Description #> without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #>Unsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>_Un);
 
 <# } #>
@@ -59,7 +59,7 @@ namespace ILGeneratorExtensions
         /// Pops two values from the top of the evaluation stack and <#= op.Description #> without regard for sign, and a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #>UnsignedWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Op #>_Ovf_Un);
 
 <# } #>
@@ -69,7 +69,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to <#= op.ValueDescription #></param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -82,7 +82,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to <#= op.ValueDescription #></param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #><#= op.Suffix #>WithOverflowCheck(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -96,7 +96,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to <#= op.ValueDescription #></param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -110,7 +110,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to <#= op.ValueDescription #></param>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void <#= op.Name #><#= op.Suffix #>UnsignedWithOverflowCheck(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);

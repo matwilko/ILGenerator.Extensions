@@ -5,24 +5,24 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class ObjectCreation
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NewObject(this ILGenerator generator, ConstructorInfo constructor) => generator.Emit(OpCodes.Newobj, constructor);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NewObject<T>(this ILGenerator generator) where T : new()
             => generator.Emit(OpCodes.Newobj, typeof (T).GetConstructor(Type.EmptyTypes));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void InitializeValueType<T>(this ILGenerator generator) where T : struct
             => generator.Emit(OpCodes.Initobj, typeof (T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void InitialiseBlock(this ILGenerator generator) => generator.Emit(OpCodes.Initblk);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void InitialiseBlock(this ILGenerator generator, byte value, uint bytes)
         {
             generator.LoadConstant(value);
@@ -30,40 +30,40 @@ namespace ILGeneratorExtensions
             generator.InitialiseBlock();
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void InitialiseBlockVolatile(this ILGenerator generator)
         {
             generator.Emit(OpCodes.Volatile);
             generator.InitialiseBlock();
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void InitialiseBlockVolatile(this ILGenerator generator, byte value, uint bytes)
         {
             generator.Emit(OpCodes.Volatile);
             generator.InitialiseBlock(value, bytes);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NewArray(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Newarr);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NewArray<T>(this ILGenerator generator) => generator.NewArray(typeof (T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NewArray(this ILGenerator generator, Type type, uint length)
         {
             generator.LoadConstant(length);
             generator.NewArray(type);
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void NewArray<T>(this ILGenerator generator, uint length) => generator.NewArray(typeof(T), length);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void AllocateFromLocalMemoryPool(this ILGenerator generator) => generator.Emit(OpCodes.Localloc);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void AllocateFromLocalMemoryPool(this ILGenerator generator, uint size)
         {
             generator.LoadConstant(size);

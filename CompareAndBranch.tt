@@ -24,7 +24,7 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-	[UsedImplicitly]
+	[PublicAPI]
 	public static partial class CompareAndBranch
 	{
 
@@ -32,21 +32,21 @@ namespace ILGeneratorExtensions
 		#region <#= op.Name #>
 <# if (!op.OnlyUnsigned) { #>
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #>(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #>ShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_S, label);
 		
 <# foreach (var type in numericTypes) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIf<#= op.Name #>(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #><#= op.Suffix #>ShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
 			generator.LoadConstant(value);
@@ -55,21 +55,21 @@ namespace ILGeneratorExtensions
 <# } #>
 <# } #>
 <# if (op.Signed) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #>Unsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #>UnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un_S, label);
 
 <# foreach (var type in numericTypes) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIf<#= op.Name #>Unsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIf<#= op.Name #><#= op.Suffix #>UnsignedShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
 			generator.LoadConstant(value);
@@ -79,11 +79,11 @@ namespace ILGeneratorExtensions
 
 <# } #>
 <# if (op.Compare != null) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Compare<#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>);
 
 <# foreach (var type in numericTypes) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Compare<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -93,11 +93,11 @@ namespace ILGeneratorExtensions
 
 <# }#>
 <# if (op.Compare != null && op.Signed) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Compare<#= op.Name #>Unsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>_Un);
 
 <# foreach (var type in numericTypes) { #>
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Compare<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);

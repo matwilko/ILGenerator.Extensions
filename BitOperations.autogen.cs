@@ -8,31 +8,31 @@ namespace ILGeneratorExtensions
 	{
 		#region And
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void And(this ILGenerator generator) => generator.Emit(OpCodes.And);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void AndWith(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.And();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void AndWith(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.And();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void AndWith(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.And();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void AndWith(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
@@ -43,43 +43,43 @@ namespace ILGeneratorExtensions
 		#endregion
 		#region Complement
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Complement(this ILGenerator generator) => generator.Emit(OpCodes.Not);
 
 		#endregion
 		#region Not
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Not(this ILGenerator generator) => generator.Emit(OpCodes.Not);
 
 		#endregion
 		#region Or
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Or(this ILGenerator generator) => generator.Emit(OpCodes.Or);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OrWith(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.Or();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OrWith(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.Or();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OrWith(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.Or();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OrWith(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
@@ -90,31 +90,31 @@ namespace ILGeneratorExtensions
 		#endregion
 		#region ShiftLeft
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftLeft(this ILGenerator generator) => generator.Emit(OpCodes.Shl);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftLeftBy(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftLeft();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftLeftBy(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftLeft();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftLeftBy(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftLeft();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftLeftBy(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
@@ -125,31 +125,31 @@ namespace ILGeneratorExtensions
 		#endregion
 		#region ShiftRight
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRight(this ILGenerator generator) => generator.Emit(OpCodes.Shr);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightBy(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftRight();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightBy(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftRight();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightBy(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftRight();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightBy(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
@@ -160,31 +160,31 @@ namespace ILGeneratorExtensions
 		#endregion
 		#region ShiftRightUnsigned
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Shr_Un);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightUnsignedBy(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftRightUnsigned();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightUnsignedBy(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftRightUnsigned();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightUnsignedBy(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.ShiftRightUnsigned();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void ShiftRightUnsignedBy(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
@@ -195,31 +195,31 @@ namespace ILGeneratorExtensions
 		#endregion
 		#region Xor
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void Xor(this ILGenerator generator) => generator.Emit(OpCodes.Xor);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void XorWith(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.Xor();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void XorWith(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.Xor();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void XorWith(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.Xor();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void XorWith(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);

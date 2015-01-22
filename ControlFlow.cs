@@ -7,31 +7,31 @@ namespace ILGeneratorExtensions
 {
     public static class ControlFlow
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void BranchTo(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Br, label);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void BranchToShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Br_S, label);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Switch(this ILGenerator generator, params Label[] labels) => generator.Emit(OpCodes.Switch, labels);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Leave(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Leave, label);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LeaveShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Leave_S, label);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Throw(this ILGenerator generator) => generator.Emit(OpCodes.Throw);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Throw<T>(this ILGenerator generator) where T : Exception, new() => generator.ThrowException(typeof(T));
 
-        [UsedImplicitly]
+        [PublicAPI]
         private static readonly Type[] StringTypeArray = { typeof (string) };
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void Throw<T>(this ILGenerator generator, string message) where T : Exception
         {
             var constructor = typeof (T).GetConstructor(BindingFlags.Public | BindingFlags.Instance, null, StringTypeArray, null);

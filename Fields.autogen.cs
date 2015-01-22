@@ -5,10 +5,10 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-	[UsedImplicitly]
+	[PublicAPI]
     public static partial class Fields
     {
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Boolean value)
 		{
 			if (field.FieldType != typeof(Boolean))
@@ -20,7 +20,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Boolean value)
 		{
 			if (field.FieldType != typeof(Boolean))
@@ -32,7 +32,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Char value)
 		{
 			if (field.FieldType != typeof(Char))
@@ -44,7 +44,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Char value)
 		{
 			if (field.FieldType != typeof(Char))
@@ -56,7 +56,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, SByte value)
 		{
 			if (field.FieldType != typeof(SByte))
@@ -68,7 +68,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, SByte value)
 		{
 			if (field.FieldType != typeof(SByte))
@@ -80,7 +80,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Byte value)
 		{
 			if (field.FieldType != typeof(Byte))
@@ -92,7 +92,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Byte value)
 		{
 			if (field.FieldType != typeof(Byte))
@@ -104,7 +104,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int16 value)
 		{
 			if (field.FieldType != typeof(Int16))
@@ -116,7 +116,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int16 value)
 		{
 			if (field.FieldType != typeof(Int16))
@@ -128,7 +128,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt16 value)
 		{
 			if (field.FieldType != typeof(UInt16))
@@ -140,7 +140,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt16 value)
 		{
 			if (field.FieldType != typeof(UInt16))
@@ -152,7 +152,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int32 value)
 		{
 			if (field.FieldType != typeof(Int32))
@@ -164,7 +164,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int32 value)
 		{
 			if (field.FieldType != typeof(Int32))
@@ -176,7 +176,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt32 value)
 		{
 			if (field.FieldType != typeof(UInt32))
@@ -188,7 +188,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt32 value)
 		{
 			if (field.FieldType != typeof(UInt32))
@@ -200,7 +200,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int64 value)
 		{
 			if (field.FieldType != typeof(Int64))
@@ -212,7 +212,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int64 value)
 		{
 			if (field.FieldType != typeof(Int64))
@@ -224,7 +224,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt64 value)
 		{
 			if (field.FieldType != typeof(UInt64))
@@ -236,7 +236,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt64 value)
 		{
 			if (field.FieldType != typeof(UInt64))
@@ -248,7 +248,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Single value)
 		{
 			if (field.FieldType != typeof(Single))
@@ -260,7 +260,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Single value)
 		{
 			if (field.FieldType != typeof(Single))
@@ -272,7 +272,7 @@ namespace ILGeneratorExtensions
 			generator.Emit(OpCodes.Volatile);
 			generator.StoreInField(field);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Double value)
 		{
 			if (field.FieldType != typeof(Double))
@@ -284,7 +284,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Double value)
 		{
 			if (field.FieldType != typeof(Double))

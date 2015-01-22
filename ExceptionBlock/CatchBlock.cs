@@ -15,10 +15,10 @@ namespace ILGeneratorExtensions
             this.endLabel = endLabel;
         }
 
-        [UsedImplicitly]
+        [PublicAPI]
         public void Rethrow() => generator.Emit(OpCodes.Rethrow);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public void Leave() => generator.Leave(endLabel);
         
         public void Dispose()

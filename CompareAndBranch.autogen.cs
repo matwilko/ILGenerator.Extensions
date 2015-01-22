@@ -4,149 +4,149 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-	[UsedImplicitly]
+	[PublicAPI]
 	public static partial class CompareAndBranch
 	{
 
 		#region Equal
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqual(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Beq, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Beq_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualTo(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfEqualToShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqual(this ILGenerator generator) => generator.Emit(OpCodes.Ceq);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Char value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Single value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareEqual();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Double value)
 		{
 			generator.LoadConstant(value);
@@ -156,98 +156,98 @@ namespace ILGeneratorExtensions
 		#endregion
 
 		#region NotEqual
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bne_Un, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bne_Un_S, label);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsigned(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfNotEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
@@ -258,195 +258,195 @@ namespace ILGeneratorExtensions
 
 		#region GreaterThanOrEqual
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqual(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bge, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bge_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bge_Un, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bge_Un_S, label);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
@@ -457,287 +457,287 @@ namespace ILGeneratorExtensions
 
 		#region Greater
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreater(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bgt, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bgt_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThan(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreater(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bgt_Un, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Bgt_Un_S, label);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsigned(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfGreaterUnsignedShortForm(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreater(this ILGenerator generator) => generator.Emit(OpCodes.Cgt);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Char value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Single value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Double value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreater();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Cgt_Un);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Char value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreaterUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreaterUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreaterUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreaterUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreaterUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Single value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareGreaterUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Double value)
 		{
 			generator.LoadConstant(value);
@@ -748,195 +748,195 @@ namespace ILGeneratorExtensions
 
 		#region LessThanOrEqual
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqual(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Ble, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Ble_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualTo(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqual(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Ble_Un, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Ble_Un_S, label);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessThanOrEqualUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
@@ -947,287 +947,287 @@ namespace ILGeneratorExtensions
 
 		#region Less
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLess(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Blt, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Blt_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThan(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLess(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessUnsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Blt_Un, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessUnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Blt_Un_S, label);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsigned(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsigned(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfLessUnsignedShortForm(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLess(this ILGenerator generator) => generator.Emit(OpCodes.Clt);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Char value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Single value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Double value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLess();
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Clt_Un);
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Char value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLessUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Int32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLessUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, UInt32 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLessUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Int64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLessUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, UInt64 value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLessUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Single value)
 		{
 			generator.LoadConstant(value);
 			generator.CompareLessUnsigned();
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Double value)
 		{
 			generator.LoadConstant(value);
@@ -1238,98 +1238,98 @@ namespace ILGeneratorExtensions
 
 		#region True
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brtrue, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brtrue_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrueShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrue(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfTrue(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfTrueShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
@@ -1339,98 +1339,98 @@ namespace ILGeneratorExtensions
 
 		#region False
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brfalse, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brfalse_S, label);
 		
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, Char value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, Int32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, UInt32 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, Int64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, UInt64 value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, Single value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalseShortForm(label);
 		}
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalse(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);
 			generator.BranchIfFalse(label);
 		}
 
-		[UsedImplicitly]
+		[PublicAPI]
 		public static void BranchIfFalseShortForm(this ILGenerator generator, Double value, Label label)
 		{
 			generator.LoadConstant(value);

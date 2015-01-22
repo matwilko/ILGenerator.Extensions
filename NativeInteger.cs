@@ -3,31 +3,31 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
-    [UsedImplicitly]
+    [PublicAPI]
     public static class NativeInteger
     {
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadNativeIntegerFromAddress(this ILGenerator generator) => generator.Emit(OpCodes.Ldind_I);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void StoreNativeIntegerFromStack(this ILGenerator generator) => generator.Emit(OpCodes.Stind_I);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void StoreNativeIntegerElement(this ILGenerator generator) => generator.Emit(OpCodes.Stelem_I);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void LoadNativeIntegerElement(this ILGenerator generator) => generator.Emit(OpCodes.Ldelem_I);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void ConvertToNativeInteger(this ILGenerator generator) => generator.Emit(OpCodes.Conv_I);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void ConvertToUnsignedNativeInteger(this ILGenerator generator) => generator.Emit(OpCodes.Conv_U);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void ConvertToNativeIntegerWithOverflow(this ILGenerator generator) => generator.Emit(OpCodes.Conv_Ovf_I);
 
-        [UsedImplicitly]
+        [PublicAPI]
         public static void ConvertToUnsignedNativeIntegerWithOverflow(this ILGenerator generator) => generator.Emit(OpCodes.Conv_Ovf_U);
     }
 }
