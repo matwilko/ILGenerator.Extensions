@@ -7,11 +7,11 @@
 <#
 var ops = new []
 {
-new Operation("Add", "Add", "To", true, true, "adds them together"),
-new Operation("Divide", "Div", "By", false, true, "divides the first by the second"),
-new Operation("Multiply", "Mul", "By", true, true, "multiples them together"),
-new Operation("Remainder", "Rem", "From", false, true, "finds the remainder when the first is divided by the second"),
-new Operation("Subtract", "Sub", "", true, true, "subtracts the second from the first")
+new Operation("Add", "Add", "To", true, true, "adds them together", "add the stack value to"),
+new Operation("Divide", "Div", "By", false, true, "divides the first by the second", "divide the stack value by"),
+new Operation("Multiply", "Mul", "By", true, true, "multiples them together", "multiply with the stack value"),
+new Operation("Remainder", "Rem", "From", false, true, "finds the remainder when the first is divided by the second", "divide the stack value by"),
+new Operation("Subtract", "Sub", "", true, true, "subtracts the second from the first", "subtract from the stack value")
 };
 
 var numericTypes = new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) };
@@ -62,6 +62,7 @@ namespace ILGeneratorExtensions
         /// Pops a value from the top of the evaluation stack, and with the given value <#= op.Description #>
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to <#= op.ValueDescription #></param>
 		public static void <#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -73,6 +74,7 @@ namespace ILGeneratorExtensions
         /// Pops a value from the top of the evaluation stack, and with the given value <#= op.Description #> with a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to <#= op.ValueDescription #></param>
 		public static void <#= op.Name #><#= op.Suffix #>WithOverflowCheck(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -85,6 +87,7 @@ namespace ILGeneratorExtensions
         /// Pops a value from the top of the evaluation stack, and with the given value <#= op.Description #> without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to <#= op.ValueDescription #></param>
 		public static void <#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -97,6 +100,7 @@ namespace ILGeneratorExtensions
         /// Pop a value from the top of the evaluation stack, and with the given value <#= op.Description #> without regard for sign, and a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to <#= op.ValueDescription #></param>
 		public static void <#= op.Name #><#= op.Suffix #>UnsignedWithOverflowCheck(this ILGenerator generator, <#= type.Name #> value)
 		{
 			generator.LoadConstant(value);
@@ -120,8 +124,9 @@ public class Operation
 	public bool Overflow;
 	public bool Signed;
 	public string Description;
+	public string ValueDescription;
 
-	public Operation(string name, string op, string suffix, bool overflow, bool signed, string description)
+	public Operation(string name, string op, string suffix, bool overflow, bool signed, string description, string valueDescription)
 	{
 		Name = name;
 		Op = op;
@@ -129,6 +134,7 @@ public class Operation
 		Overflow = overflow;
 		Signed = signed;
 		Description = description;
+		ValueDescription = valueDescription;
 	}
 }
 #>
