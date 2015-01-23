@@ -13,6 +13,10 @@ namespace ILGeneratorExtensions
     public static partial class ArrayManipulation
     {
 <# foreach (var type in new [] { typeof(bool), typeof(char), typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) }) { #>
+		/// <summary>
+        /// Pops an array reference (containing elements of <see cref="<#= type.FullName #>" />), and stores the given <see cref="<#= type.FullName #>" /> value at the given index
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, <#= type.Name #> value, uint index)
         {
