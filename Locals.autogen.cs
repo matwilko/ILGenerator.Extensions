@@ -8,6 +8,13 @@ namespace ILGeneratorExtensions
 	public static partial class Locals
 	{
 		
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Boolean" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Boolean value)
 		{
@@ -20,6 +27,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Char" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Char value)
 		{
@@ -32,6 +46,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="SByte" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, SByte value)
 		{
@@ -44,6 +65,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Byte" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Byte value)
 		{
@@ -56,6 +84,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int16" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Int16 value)
 		{
@@ -68,6 +103,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt16" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, UInt16 value)
 		{
@@ -80,6 +122,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int32" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Int32 value)
 		{
@@ -92,6 +141,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt32" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, UInt32 value)
 		{
@@ -104,6 +160,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int64" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Int64 value)
 		{
@@ -116,6 +179,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt64" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, UInt64 value)
 		{
@@ -128,6 +198,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Single" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Single value)
 		{
@@ -140,6 +217,13 @@ namespace ILGeneratorExtensions
 			generator.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Double" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, Double value)
 		{

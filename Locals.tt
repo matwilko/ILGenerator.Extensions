@@ -15,6 +15,13 @@ namespace ILGeneratorExtensions
 	{
 		
 <# foreach (var type in new [] { typeof(bool), typeof(char), typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) }) { #>
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="local">The local to store value in</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="<#= type.Name #>" /></exception>
 		[PublicAPI]
 		public static void OverwriteLocalWith(this ILGenerator generator, LocalBuilder local, <#= type.Name #> value)
 		{
