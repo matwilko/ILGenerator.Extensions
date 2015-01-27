@@ -21,7 +21,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <#= type.Name #></exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, <#= type.Name #> value)
 		{
@@ -40,7 +40,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <#= type.Name #></exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, <#= type.Name #> value)
 		{

@@ -14,7 +14,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Boolean</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Boolean value)
 		{
@@ -33,7 +33,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Boolean</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Boolean value)
 		{
@@ -52,7 +52,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Char</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Char value)
 		{
@@ -71,7 +71,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Char</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Char value)
 		{
@@ -90,7 +90,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type SByte</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, SByte value)
 		{
@@ -109,7 +109,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type SByte</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, SByte value)
 		{
@@ -128,7 +128,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Byte</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Byte value)
 		{
@@ -147,7 +147,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Byte</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Byte value)
 		{
@@ -166,7 +166,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Int16</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int16 value)
 		{
@@ -185,7 +185,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Int16</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int16 value)
 		{
@@ -204,7 +204,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type UInt16</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt16 value)
 		{
@@ -223,7 +223,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type UInt16</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt16 value)
 		{
@@ -242,7 +242,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Int32</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int32 value)
 		{
@@ -261,7 +261,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Int32</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int32 value)
 		{
@@ -280,7 +280,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type UInt32</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt32 value)
 		{
@@ -299,7 +299,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type UInt32</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt32 value)
 		{
@@ -318,7 +318,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Int64</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int64 value)
 		{
@@ -337,7 +337,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Int64</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int64 value)
 		{
@@ -356,7 +356,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type UInt64</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt64 value)
 		{
@@ -375,7 +375,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type UInt64</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt64 value)
 		{
@@ -394,7 +394,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Single</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Single value)
 		{
@@ -413,7 +413,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Single</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Single value)
 		{
@@ -432,7 +432,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Double</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Double value)
 		{
@@ -451,7 +451,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
-		/// <exception cref="InvalidOperationException">Thrown if the field is not of type Double</exception>
+		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
 		[PublicAPI]
 		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Double value)
 		{
