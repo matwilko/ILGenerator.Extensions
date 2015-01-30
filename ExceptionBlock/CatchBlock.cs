@@ -15,9 +15,15 @@ namespace ILGeneratorExtensions
             this.endLabel = endLabel;
         }
 
+        /// <summary>
+        /// Rethrows the exception caught by this catch block
+        /// </summary>
         [PublicAPI]
         public void Rethrow() => generator.Emit(OpCodes.Rethrow);
 
+        /// <summary>
+        /// Jumps to the instruction immediately after this protected region (after any finally block executes)
+        /// </summary>
         [PublicAPI]
         public void Leave() => generator.Leave(endLabel);
         
