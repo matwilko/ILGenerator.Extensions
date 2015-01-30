@@ -142,10 +142,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Locals.autogen.cs</LastGenOutput>
     </None>
-    <Content Include="Properties\AssemblyVersionInfo.tt">
+    <None Include="Properties\AssemblyVersionInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyVersionInfo.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="ConvertTo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ConvertTo.autogen.cs</LastGenOutput>
