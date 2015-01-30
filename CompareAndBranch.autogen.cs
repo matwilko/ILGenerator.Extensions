@@ -205,7 +205,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is equal to the second
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqual(this ILGenerator generator) => generator.Emit(OpCodes.Ceq);
 
@@ -214,7 +213,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Char value)
 		{
@@ -226,7 +224,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Int32 value)
 		{
@@ -238,7 +235,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, UInt32 value)
 		{
@@ -250,7 +246,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Int64 value)
 		{
@@ -262,7 +257,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, UInt64 value)
 		{
@@ -274,7 +268,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Single value)
 		{
@@ -286,7 +279,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareEqualTo(this ILGenerator generator, Double value)
 		{
@@ -1267,7 +1259,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is greater than the second
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreater(this ILGenerator generator) => generator.Emit(OpCodes.Cgt);
 
@@ -1276,7 +1267,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Char value)
 		{
@@ -1288,7 +1278,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Int32 value)
 		{
@@ -1300,7 +1289,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, UInt32 value)
 		{
@@ -1312,7 +1300,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Int64 value)
 		{
@@ -1324,7 +1311,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, UInt64 value)
 		{
@@ -1336,7 +1322,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Single value)
 		{
@@ -1348,7 +1333,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThan(this ILGenerator generator, Double value)
 		{
@@ -1360,7 +1344,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is greater than the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Cgt_Un);
 
@@ -1369,7 +1352,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Char value)
 		{
@@ -1381,7 +1363,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Int32 value)
 		{
@@ -1393,7 +1374,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, UInt32 value)
 		{
@@ -1405,7 +1385,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Int64 value)
 		{
@@ -1417,7 +1396,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, UInt64 value)
 		{
@@ -1429,7 +1407,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Single value)
 		{
@@ -1441,7 +1418,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareGreaterThanUnsigned(this ILGenerator generator, Double value)
 		{
@@ -2227,7 +2203,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is less than the second
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLess(this ILGenerator generator) => generator.Emit(OpCodes.Clt);
 
@@ -2236,7 +2211,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Char value)
 		{
@@ -2248,7 +2222,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Int32 value)
 		{
@@ -2260,7 +2233,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, UInt32 value)
 		{
@@ -2272,7 +2244,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Int64 value)
 		{
@@ -2284,7 +2255,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, UInt64 value)
 		{
@@ -2296,7 +2266,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Single value)
 		{
@@ -2308,7 +2277,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThan(this ILGenerator generator, Double value)
 		{
@@ -2320,7 +2288,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is less than the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Clt_Un);
 
@@ -2329,7 +2296,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Char value)
 		{
@@ -2341,7 +2307,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Int32 value)
 		{
@@ -2353,7 +2318,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, UInt32 value)
 		{
@@ -2365,7 +2329,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Int64 value)
 		{
@@ -2377,7 +2340,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, UInt64 value)
 		{
@@ -2389,7 +2351,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Single value)
 		{
@@ -2401,7 +2362,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void CompareLessThanUnsigned(this ILGenerator generator, Double value)
 		{

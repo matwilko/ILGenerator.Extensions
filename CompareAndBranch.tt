@@ -125,7 +125,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is <#= op.Description #> the second
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void Compare<#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>);
 
@@ -135,7 +134,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void Compare<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
@@ -150,7 +148,6 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is <#= op.Description #> the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void Compare<#= op.Name #>Unsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>_Un);
 
@@ -160,7 +157,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
-        /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static void Compare<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
 		{
