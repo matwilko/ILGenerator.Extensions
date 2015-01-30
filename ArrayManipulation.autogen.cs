@@ -9,7 +9,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Boolean" />), and stores the given <see cref="System.Boolean" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Boolean" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Boolean value, uint index)
         {
@@ -21,7 +23,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Char" />), and stores the given <see cref="System.Char" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Char" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Char value, uint index)
         {
@@ -33,7 +37,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.SByte" />), and stores the given <see cref="System.SByte" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="SByte" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, SByte value, uint index)
         {
@@ -45,7 +51,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Byte" />), and stores the given <see cref="System.Byte" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Byte" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Byte value, uint index)
         {
@@ -57,7 +65,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Int16" />), and stores the given <see cref="System.Int16" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Int16" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Int16 value, uint index)
         {
@@ -69,7 +79,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.UInt16" />), and stores the given <see cref="System.UInt16" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="UInt16" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, UInt16 value, uint index)
         {
@@ -81,7 +93,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Int32" />), and stores the given <see cref="System.Int32" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Int32" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Int32 value, uint index)
         {
@@ -93,7 +107,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.UInt32" />), and stores the given <see cref="System.UInt32" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="UInt32" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, UInt32 value, uint index)
         {
@@ -105,7 +121,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Int64" />), and stores the given <see cref="System.Int64" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Int64" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Int64 value, uint index)
         {
@@ -117,7 +135,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.UInt64" />), and stores the given <see cref="System.UInt64" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="UInt64" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, UInt64 value, uint index)
         {
@@ -129,7 +149,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Single" />), and stores the given <see cref="System.Single" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Single" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Single value, uint index)
         {
@@ -141,7 +163,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="System.Double" />), and stores the given <see cref="System.Double" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="Double" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, Double value, uint index)
         {

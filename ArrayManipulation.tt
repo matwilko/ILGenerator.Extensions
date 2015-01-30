@@ -16,7 +16,9 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops an array reference (containing elements of <see cref="<#= type.FullName #>" />), and stores the given <see cref="<#= type.FullName #>" /> value at the given index
         /// </summary>
-        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>		
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The <see cref="<#= type.Name #>" /> value to store in the array</param>
+		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
 		public static void StoreElementAtIndex(this ILGenerator generator, <#= type.Name #> value, uint index)
         {
