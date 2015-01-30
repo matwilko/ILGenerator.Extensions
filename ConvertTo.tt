@@ -32,14 +32,14 @@ namespace ILGeneratorExtensions
 		#region <#= type.Key.Name #>
 
 		/// <summary>
-		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with no overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
+		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with no overflow check. Pushes an <#= type.Value.evaluation stackType #> value onto the evaluation stack.
 		/// </summary>
 		[PublicAPI]
 		public static void ConvertTo<#= type.Key.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.NoOverflow #>);
 <# if (type.Value.Overflow != null) { #>
 
 		/// <summary>
-		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
+		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.evaluation stackType #> value onto the evaluation stack.
 		/// </summary>
 		[PublicAPI]
 		public static void ConvertTo<#= type.Key.Name #>WithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.Overflow #>);
@@ -47,7 +47,7 @@ namespace ILGeneratorExtensions
 <# if (type.Value.FromUnsigned != null) { #>
 
 		/// <summary>
-		/// Converts the unsigned value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the stack.
+		/// Converts the unsigned value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.evaluation stackType #> value onto the evaluation stack.
 		/// </summary>
 		[PublicAPI]
 		public static void ConvertTo<#= type.Key.Name #>FromUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.FromUnsigned #>);
@@ -64,24 +64,24 @@ namespace ILGeneratorExtensions
 		public string Overflow;
 		public string FromUnsigned;
 		public string Description;
-		public string StackType;
+		public string evaluation stackType;
 
-		public Operations(string noOverflow, string overflow, string description, string stackType)
+		public Operations(string noOverflow, string overflow, string description, string evaluation stackType)
 		{
 			NoOverflow = noOverflow;
 			Overflow = overflow;
 			FromUnsigned = overflow == null ? null : overflow + "_Un";
 			Description = description;
-			StackType = stackType;
+			evaluation stackType = evaluation stackType;
 		}
 
-		public Operations(string noOverflow, string overflow, string unsigned, string description, string stackType)
+		public Operations(string noOverflow, string overflow, string unsigned, string description, string evaluation stackType)
 		{
 			NoOverflow = noOverflow;
 			Overflow = overflow;
 			FromUnsigned = unsigned;
 			Description = description;
-			StackType = stackType;
+			evaluation stackType = evaluation stackType;
 		}
 	}
 #>

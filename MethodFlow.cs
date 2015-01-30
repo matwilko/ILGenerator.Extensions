@@ -17,7 +17,7 @@ namespace ILGeneratorExtensions
         public static void JumpTo(this ILGenerator generator, MethodInfo method) => generator.Emit(OpCodes.Jmp, method);
 
         /// <summary>
-        /// Calls the given method, popping the requisite number of arguments from the execution stack (including the this reference if it is an instance method)
+        /// Calls the given method, popping the requisite number of arguments from the evaluation stack (including the this reference if it is an instance method)
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="method">The method to call</param>
@@ -25,7 +25,7 @@ namespace ILGeneratorExtensions
         public static void Call(this ILGenerator generator, MethodInfo method) => generator.Emit(OpCodes.Call, method);
 
         /// <summary>
-        /// Calls the given method with virtual semantics, popping a reference (and performing a null check) and the requisite number of arguments from the execution stack
+        /// Calls the given method with virtual semantics, popping a reference (and performing a null check) and the requisite number of arguments from the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="method">The method to call</param>
@@ -33,7 +33,7 @@ namespace ILGeneratorExtensions
         public static void CallVirtual(this ILGenerator generator, MethodInfo method) => generator.Emit(OpCodes.Callvirt, method);
 
         /// <summary>
-        /// Performs a tail call to the given method, popping the requisite number of arguments from the execution stack (including the this reference if it is an instance method)
+        /// Performs a tail call to the given method, popping the requisite number of arguments from the evaluation stack (including the this reference if it is an instance method)
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="method">The method to call</param>
@@ -45,7 +45,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Performs a tail call to the given method with virtual semantics, popping a reference (and performing a null check) and the requisite number of arguments from the execution stack
+        /// Performs a tail call to the given method with virtual semantics, popping a reference (and performing a null check) and the requisite number of arguments from the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="method">The method to call</param>
@@ -57,7 +57,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Performs a constrained virtual call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the execution stack
+        /// Performs a constrained virtual call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the evaluation stack
         /// </summary>
         /// <typeparam name="T">The type to constrain the call to</typeparam>
         /// <param name="generator"></param>
@@ -69,7 +69,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Performs a constrained virtual call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the execution stack
+        /// Performs a constrained virtual call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="constrainedType">The type to constrain the call to</param>
@@ -82,7 +82,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Performs a constrained virtual tail call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the execution stack
+        /// Performs a constrained virtual tail call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the evaluation stack
         /// </summary>
         /// <typeparam name="T">The type to constrain the call to</typeparam>
         /// <param name="generator"></param>
@@ -94,7 +94,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Performs a constrained virtual tail call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the execution stack
+        /// Performs a constrained virtual tail call to the given method, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="constrainedType">The type to constrain the call to</param>
@@ -108,7 +108,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops a value from the execution stack and returns it to the calling method
+        /// Pops a value from the evaluation stack and returns it to the calling method
         /// </summary>
         /// <param name="generator"></param>
         [PublicAPI]

@@ -6,7 +6,7 @@ namespace ILGeneratorExtensions
     public static partial class Locals
     {
         /// <summary>
-        /// Pushes the value of the given local onto the execution stack
+        /// Pushes the value of the given local onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="local">The local to get the value of</param>
@@ -39,7 +39,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pushes the address of the given local onto the execution stack
+        /// Pushes the address of the given local onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="local">The local to get the address of</param>
@@ -57,10 +57,10 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops a value from the execution stack and stores it in the given local
+        /// Pops a value from the evaluation stack and stores it in the given local
         /// </summary>
         /// <param name="generator"></param>
-        /// <param name="local">The local to store the stack value in</param>
+        /// <param name="local">The local to store the evaluation stack value in</param>
         [PublicAPI]
         public static void StoreInLocal(this ILGenerator generator, LocalBuilder local)
         {

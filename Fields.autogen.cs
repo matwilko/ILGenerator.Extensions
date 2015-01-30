@@ -9,7 +9,7 @@ namespace ILGeneratorExtensions
     public static partial class Fields
     {
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -28,7 +28,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -47,7 +47,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -66,7 +66,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -85,7 +85,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -104,7 +104,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -123,7 +123,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -142,7 +142,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -161,7 +161,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -180,7 +180,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -199,7 +199,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -218,7 +218,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -237,7 +237,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -256,7 +256,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -275,7 +275,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -294,7 +294,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -313,7 +313,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -332,7 +332,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -351,7 +351,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -370,7 +370,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -389,7 +389,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -408,7 +408,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -427,7 +427,7 @@ namespace ILGeneratorExtensions
 			generator.StoreInField(field);
 		}
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -446,7 +446,7 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
-        /// Pops a reference from the execution stack and stores the given value in the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>

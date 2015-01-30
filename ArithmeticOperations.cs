@@ -6,7 +6,7 @@ namespace ILGeneratorExtensions
     public static partial class ArithmeticOperations
     {
         /// <summary>
-        /// Negates the integer value on the top of the stack, with no overflow check
+        /// Negates the integer value on the top of the evaluation stack, with no overflow check
         /// </summary>
         /// <remarks>
         /// If you need to check for overflow (as in the case of int.MinValue), you need to subtract the value from 0 instead.

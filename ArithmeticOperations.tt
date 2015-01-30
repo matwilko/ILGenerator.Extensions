@@ -7,11 +7,11 @@
 <#
 var ops = new []
 {
-new Operation("Add", "Add", "To", true, true, "adds them together", "add the stack value to"),
-new Operation("Divide", "Div", "By", false, true, "divides the first by the second", "divide the stack value by"),
-new Operation("Multiply", "Mul", "By", true, true, "multiples them together", "multiply with the stack value"),
-new Operation("Remainder", "Rem", "From", false, true, "finds the remainder when the first is divided by the second", "divide the stack value by"),
-new Operation("Subtract", "Sub", "", true, true, "subtracts the second from the first", "subtract from the stack value")
+new Operation("Add", "Add", "To", true, true, "adds them together", "add the evaluation stack value to"),
+new Operation("Divide", "Div", "By", false, true, "divides the first by the second", "divide the evaluation stack value by"),
+new Operation("Multiply", "Mul", "By", true, true, "multiples them together", "multiply with the evaluation stack value"),
+new Operation("Remainder", "Rem", "From", false, true, "finds the remainder when the first is divided by the second", "divide the evaluation stack value by"),
+new Operation("Subtract", "Sub", "", true, true, "subtracts the second from the first", "subtract from the evaluation stack value")
 };
 
 var numericTypes = new [] { typeof(int), typeof(uint), typeof(long), typeof(ulong), typeof(float), typeof(double) };

@@ -6,7 +6,7 @@ namespace ILGeneratorExtensions
     public static partial class CompareAndBranch
     {
         /// <summary>
-        /// Pops a reference from the stack and branches to the given label if it is the null reference
+        /// Pops a reference from the evaluation stack and branches to the given label if it is the null reference
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
@@ -18,7 +18,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops a reference from the stack and branches to the given label if it is the null reference
+        /// Pops a reference from the evaluation stack and branches to the given label if it is the null reference
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
@@ -30,7 +30,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an integer value from the stack and branches to the given label if it interprets as true
+        /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as true
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
@@ -38,7 +38,7 @@ namespace ILGeneratorExtensions
         public static void BranchIfTrue(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brtrue, label);
 
         /// <summary>
-        /// Pops an integer value from the stack and branches to the given label if it interprets as true
+        /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as true
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
@@ -46,7 +46,7 @@ namespace ILGeneratorExtensions
         public static void BranchIfTrueShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brtrue_S, label);
 
         /// <summary>
-        /// Pops an integer value from the stack and branches to the given label if it interprets as false
+        /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as false
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
@@ -54,7 +54,7 @@ namespace ILGeneratorExtensions
         public static void BranchIfFalse(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brfalse, label);
 
         /// <summary>
-        /// Pops an integer value from the stack and branches to the given label if it interprets as false
+        /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as false
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>

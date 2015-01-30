@@ -8,14 +8,14 @@ namespace ILGeneratorExtensions
     public static partial class ArrayManipulation
     {
         /// <summary>
-        /// Pops an array reference off the execution stack and pushes the length of the array
+        /// Pops an array reference off the evaluation stack and pushes the length of the array
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
         public static void ArrayLength(this ILGenerator generator) => generator.Emit(OpCodes.Ldlen);
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the element at that array index
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the element at that array index
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of elements in the array</param>
@@ -74,7 +74,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the element at that array index
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the element at that array index
         /// </summary>
         /// <typeparam name="T">The type of elements in the array</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -82,7 +82,7 @@ namespace ILGeneratorExtensions
         public static void LoadElement<T>(this ILGenerator generator) => generator.LoadElement(typeof(T));
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) off the execution stack and pushes the element at the given array index
+        /// Pops an array reference (containing elements of the given type) off the evaluation stack and pushes the element at the given array index
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of elements in the array</param>
@@ -95,7 +95,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) off the execution stack and pushes the element at the given array index
+        /// Pops an array reference (containing elements of the given type) off the evaluation stack and pushes the element at the given array index
         /// </summary>
         /// <typeparam name="T">The type of elements in the array</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -104,7 +104,7 @@ namespace ILGeneratorExtensions
         public static void LoadElementAtIndex<T>(this ILGenerator generator, uint index) => generator.LoadElementAtIndex(typeof(T), index);
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the address of the element
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the address of the element
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of elements in the array</param>
@@ -125,7 +125,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the address of the element at that array index
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the address of the element at that array index
         /// </summary>
         /// <typeparam name="T">The type of elements in the array</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -133,7 +133,7 @@ namespace ILGeneratorExtensions
         public static void LoadElementAddress<T>(this ILGenerator generator) => generator.LoadElementAddress(typeof(T));
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) off the execution stack and pushes the address of the element at the given index
+        /// Pops an array reference (containing elements of the given type) off the evaluation stack and pushes the address of the element at the given index
         /// </summary>
         /// <typeparam name="T">The type of elements in the array</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -146,7 +146,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the address of the element at that array index, with restrictions on its use by other code
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the address of the element at that array index, with restrictions on its use by other code
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of elements in the array</param>
@@ -158,7 +158,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the address of the element at the given index, with restrictions on its use by other code
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the address of the element at the given index, with restrictions on its use by other code
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of elements in the array</param>
@@ -171,7 +171,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the address of the element at that array index, with restrictions on its use by other code
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the address of the element at that array index, with restrictions on its use by other code
         /// </summary>
         /// <typeparam name="T">The type of elements in the array</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -179,7 +179,7 @@ namespace ILGeneratorExtensions
         public static void LoadElementAddressReadonly<T>(this ILGenerator generator) => generator.LoadElementAddressReadonly(typeof(T));
 
         /// <summary>
-        /// Pops an array reference (containing elements of the given type) and an index off the execution stack and pushes the address of the element at the given index, with restrictions on its use by other code
+        /// Pops an array reference (containing elements of the given type) and an index off the evaluation stack and pushes the address of the element at the given index, with restrictions on its use by other code
         /// </summary>
         /// <typeparam name="T">The type of elements in the array</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>

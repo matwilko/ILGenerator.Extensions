@@ -7,7 +7,7 @@ namespace ILGeneratorExtensions
     public static partial class Fields
     {
         /// <summary>
-        /// Pops a reference from the execution stack and pushes the value of the given field for that object
+        /// Pops a reference from the evaluation stack and pushes the value of the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to load</param>
@@ -16,7 +16,7 @@ namespace ILGeneratorExtensions
             => generator.Emit(field.IsStatic ? OpCodes.Ldsfld : OpCodes.Ldfld, field);
 
         /// <summary>
-        /// Pops a reference from the execution stack and pushes the value of the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and pushes the value of the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to load</param>
@@ -28,7 +28,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops a reference from the execution stack and pushes the address of the given field for that object
+        /// Pops a reference from the evaluation stack and pushes the address of the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to load</param>
@@ -39,7 +39,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops a reference from the execution stack and pushes the address of the given field for that object, with volatile semantics
+        /// Pops a reference from the evaluation stack and pushes the address of the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to load</param>
@@ -51,7 +51,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops a reference and a value from the stack and stores the value in the given field for that object
+        /// Pops a reference and a value from the evaluation stack and stores the value in the given field for that object
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>
@@ -60,7 +60,7 @@ namespace ILGeneratorExtensions
             => generator.Emit(field.IsStatic ? OpCodes.Stsfld : OpCodes.Stfld, field);
 
         /// <summary>
-        /// Pops a reference and a value from the stack and stores the value in the given field for that object, with volatile semantics
+        /// Pops a reference and a value from the evaluation stack and stores the value in the given field for that object, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="field">The field to store the value in</param>

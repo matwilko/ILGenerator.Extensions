@@ -9,7 +9,7 @@ namespace ILGeneratorExtensions
     public static class ObjectCreation
     {
         /// <summary>
-        /// Creates a new object or instance of a value type, calling the given constructor (and popping the requisite arguments from the execution stack) and pushing the reference or value (respectively) onto the execution stack
+        /// Creates a new object or instance of a value type, calling the given constructor (and popping the requisite arguments from the evaluation stack) and pushing the reference or value (respectively) onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="constructor">The constructor to call</param>
@@ -17,7 +17,7 @@ namespace ILGeneratorExtensions
         public static void NewObject(this ILGenerator generator, ConstructorInfo constructor) => generator.Emit(OpCodes.Newobj, constructor);
 
         /// <summary>
-        /// Creates a new object or instance of a value type, calling the default constructor and pushing the reference or value (respectively) onto the execution stack
+        /// Creates a new object or instance of a value type, calling the default constructor and pushing the reference or value (respectively) onto the evaluation stack
         /// </summary>
         /// <typeparam name="T">The type of object/value type to create</typeparam>
         /// <param name="generator"></param>
@@ -35,14 +35,14 @@ namespace ILGeneratorExtensions
             => generator.Emit(OpCodes.Initobj, typeof (T));
 
         /// <summary>
-        /// Pops an address, initialization value and number of bytes off the execution stack, and initializes the block of memory at the address with the value to that size
+        /// Pops an address, initialization value and number of bytes off the evaluation stack, and initializes the block of memory at the address with the value to that size
         /// </summary>
         /// <param name="generator"></param>
         [PublicAPI]
         public static void InitialiseBlock(this ILGenerator generator) => generator.Emit(OpCodes.Initblk);
 
         /// <summary>
-        /// Pops an address off the execution stack and initializes the block of memory at the address with the given value to the given size
+        /// Pops an address off the evaluation stack and initializes the block of memory at the address with the given value to the given size
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="value">The initialization value</param>
@@ -56,7 +56,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an address, initialization value and number of bytes off the execution stack, and initializes the block of memory at the address with the value to that size, with volatile semantics
+        /// Pops an address, initialization value and number of bytes off the evaluation stack, and initializes the block of memory at the address with the value to that size, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         [PublicAPI]
@@ -67,7 +67,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an address off the execution stack and initializes the block of memory at the address with the given value to the given size, with volatile semantics
+        /// Pops an address off the evaluation stack and initializes the block of memory at the address with the given value to the given size, with volatile semantics
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="value">The initialization value</param>
@@ -80,7 +80,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Pops an integer off the execution stack and creates an array of the given type with that length, pushing the reference onto the execution stack
+        /// Pops an integer off the evaluation stack and creates an array of the given type with that length, pushing the reference onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="type">The type of the array</param>
@@ -88,7 +88,7 @@ namespace ILGeneratorExtensions
         public static void NewArray(this ILGenerator generator, Type type) => generator.Emit(OpCodes.Newarr);
 
         /// <summary>
-        /// Pops an integer off the execution stack and creates an array of the given type with that length, pushing the reference onto the execution stack
+        /// Pops an integer off the evaluation stack and creates an array of the given type with that length, pushing the reference onto the evaluation stack
         /// </summary>
         /// <typeparam name="T">The type of the array</typeparam>
         /// <param name="generator"></param>
@@ -96,7 +96,7 @@ namespace ILGeneratorExtensions
         public static void NewArray<T>(this ILGenerator generator) => generator.NewArray(typeof (T));
 
         /// <summary>
-        /// Creates an array of the given type with the given length, pushing the reference onto the execution stack
+        /// Creates an array of the given type with the given length, pushing the reference onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="type">The type of the array</param>
@@ -109,7 +109,7 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
-        /// Creates an array of the given type with the given length, pushing the reference onto the execution stack
+        /// Creates an array of the given type with the given length, pushing the reference onto the evaluation stack
         /// </summary>
         /// <typeparam name="T">The type of the array</typeparam>
         /// <param name="generator"></param>
@@ -118,14 +118,14 @@ namespace ILGeneratorExtensions
         public static void NewArray<T>(this ILGenerator generator, uint length) => generator.NewArray(typeof(T), length);
 
         /// <summary>
-        /// Pops an unsigned native integer from the execution stack, and allocates that number of bytes from the local dynamic memory pool, pushing the address onto the execution stack
+        /// Pops an unsigned native integer from the evaluation stack, and allocates that number of bytes from the local dynamic memory pool, pushing the address onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         [PublicAPI]
         public static void AllocateFromLocalMemoryPool(this ILGenerator generator) => generator.Emit(OpCodes.Localloc);
 
         /// <summary>
-        /// Allocates the given number of bytes from the local dynamic memory pool, pushing the address onto the execution stack
+        /// Allocates the given number of bytes from the local dynamic memory pool, pushing the address onto the evaluation stack
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="size"></param>
