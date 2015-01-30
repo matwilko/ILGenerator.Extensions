@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace ILGeneratorExtensions
 {
     [PublicAPI]
-    public static class evaluation stackOperations
+    public static class StackOperations
     {
         /// <summary>
         /// Pops the top value off the evaluation stack and discards it

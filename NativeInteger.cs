@@ -18,7 +18,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void StoreNativeIntegerFromevaluation stack(this ILGenerator generator) => generator.Emit(OpCodes.Stind_I);
+        public static void StoreNativeIntegerFromStack(this ILGenerator generator) => generator.Emit(OpCodes.Stind_I);
 
         /// <summary>
         /// Pops an array reference, an array index and a native integer off the evaluation stack, storing it in the array at the index

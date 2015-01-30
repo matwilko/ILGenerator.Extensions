@@ -79,7 +79,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoevaluation stack(this ILGenerator generator, Type type)
+        public static void LoadValueTypeOntoStack(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
@@ -134,8 +134,8 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoevaluation stack<T>(this ILGenerator generator) where T : struct
-            => generator.LoadValueTypeOntoevaluation stack(typeof (T));
+        public static void LoadValueTypeOntoStack<T>(this ILGenerator generator) where T : struct
+            => generator.LoadValueTypeOntoStack(typeof (T));
 
         /// <summary>
         /// Pops an address from the evaluation stack and pushes the value type object (of the given type) at that location onto the evaluation stack, with volatile semantics
@@ -143,7 +143,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoevaluation stackVolatile(this ILGenerator generator, Type type)
+        public static void LoadValueTypeOntoStackVolatile(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
@@ -151,7 +151,7 @@ namespace ILGeneratorExtensions
             }
 
             generator.Emit(OpCodes.Volatile);
-            generator.LoadValueTypeOntoevaluation stack(type);
+            generator.LoadValueTypeOntoStack(type);
         }
 
         /// <summary>
@@ -160,8 +160,8 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoevaluation stackVolatile<T>(this ILGenerator generator) where T : struct
-            => generator.LoadValueTypeOntoevaluation stackVolatile(typeof(T));
+        public static void LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) where T : struct
+            => generator.LoadValueTypeOntoStackVolatile(typeof(T));
 
         /// <summary>
         /// Pops an address and a value type object (of the given type) from the evaluation stack, and copies the object into the address
@@ -169,7 +169,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void StoreValueTypeFromevaluation stack(this ILGenerator generator, Type type)
+        public static void StoreValueTypeFromStack(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
@@ -212,8 +212,8 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void StoreValueTypeFromevaluation stack<T>(this ILGenerator generator) where T : struct
-            => generator.StoreValueTypeFromevaluation stack(typeof (T));
+        public static void StoreValueTypeFromStack<T>(this ILGenerator generator) where T : struct
+            => generator.StoreValueTypeFromStack(typeof (T));
 
         /// <summary>
         /// Pops an address and a value type object (of the given type) from the evaluation stack, and copies the object into the address, with volatile semantics
@@ -221,7 +221,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void StoreValueTypeFromevaluation stackVolatile(this ILGenerator generator, Type type)
+        public static void StoreValueTypeFromStackVolatile(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
@@ -238,8 +238,8 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void StoreValueTypeFromevaluation stackVolatile<T>(this ILGenerator generator) where T : struct
-            => generator.StoreValueTypeFromevaluation stack(typeof(T));
+        public static void StoreValueTypeFromStackVolatile<T>(this ILGenerator generator) where T : struct
+            => generator.StoreValueTypeFromStack(typeof(T));
 
         /// <summary>
         /// Pops an address from the evaluation stack, and pushes the object reference located at that address
