@@ -174,20 +174,6 @@ namespace ILGeneratorExtensions
             => generator.StoreValueTypeFromStack(typeof(T));
 
         [PublicAPI]
-        public static void LoadReferenceFromAddress(this ILGenerator generator, Type type)
-        {
-            if (type.IsValueType)
-            {
-                throw new InvalidOperationException("Cannot load reference for value type");
-            }
-
-            generator.Emit(OpCodes.Ldind_Ref, type);
-        }
-
-        [PublicAPI]
-        public static void LoadReferenceFromAddress<T>(this ILGenerator generator)
-            => generator.LoadReferenceFromAddress(typeof (T));
-
-
+        public static void LoadReferenceFromAddress(this ILGenerator generator) => generator.Emit(OpCodes.Ldind_Ref);
     }
 }
