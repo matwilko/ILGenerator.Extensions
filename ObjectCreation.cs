@@ -39,7 +39,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void InitialiseBlock(this ILGenerator generator) => generator.Emit(OpCodes.Initblk);
+        public static void InitializeBlock(this ILGenerator generator) => generator.Emit(OpCodes.Initblk);
 
         /// <summary>
         /// Pops an address off the evaluation stack and initializes the block of memory at the address with the given value to the given size
@@ -48,11 +48,11 @@ namespace ILGeneratorExtensions
         /// <param name="value">The initialization value</param>
         /// <param name="bytes">The number of bytes to initialize</param>
         [PublicAPI]
-        public static void InitialiseBlock(this ILGenerator generator, byte value, uint bytes)
+        public static void InitializeBlock(this ILGenerator generator, byte value, uint bytes)
         {
             generator.LoadConstant(value);
             generator.LoadConstant(bytes);
-            generator.InitialiseBlock();
+            generator.InitializeBlock();
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void InitialiseBlockVolatile(this ILGenerator generator)
+        public static void InitializeBlockVolatile(this ILGenerator generator)
         {
             generator.Emit(OpCodes.Volatile);
-            generator.InitialiseBlock();
+            generator.InitializeBlock();
         }
 
         /// <summary>
@@ -73,10 +73,10 @@ namespace ILGeneratorExtensions
         /// <param name="value">The initialization value</param>
         /// <param name="bytes">The number of bytes to initialize</param>
         [PublicAPI]
-        public static void InitialiseBlockVolatile(this ILGenerator generator, byte value, uint bytes)
+        public static void InitializeBlockVolatile(this ILGenerator generator, byte value, uint bytes)
         {
             generator.Emit(OpCodes.Volatile);
-            generator.InitialiseBlock(value, bytes);
+            generator.InitializeBlock(value, bytes);
         }
 
         /// <summary>
