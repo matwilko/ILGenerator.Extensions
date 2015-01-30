@@ -12,7 +12,7 @@ namespace ILGeneratorExtensions
         {
             if (!type.IsValueType)
             {
-                throw new InvalidOperationException("Copying a non-value-type results in unspecified runtime behaviour! If you absolutely must copy this type, use CopyObjectWithTypeOverride");
+                throw new InvalidOperationException("Copying a non-value-type results in unspecified runtime behaviour");
             }
 
             generator.Emit(OpCodes.Cpobj, type);
@@ -20,12 +20,6 @@ namespace ILGeneratorExtensions
 
         [PublicAPI]
         public static void CopyObject<T>(this ILGenerator generator) where T : struct => generator.CopyObject(typeof (T));
-
-        [PublicAPI]
-        public static void CopyObjectWithTypeOverride(this ILGenerator generator, Type type)
-        {
-            generator.Emit(OpCodes.Cpobj);
-        }
 
         [PublicAPI]
         public static void CopyBlock(this ILGenerator generator) => generator.Emit(OpCodes.Cpblk);
