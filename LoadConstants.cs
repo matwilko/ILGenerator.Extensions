@@ -9,7 +9,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, Int32 value)
@@ -62,7 +62,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, UInt32 value)
@@ -112,7 +112,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, long value)
@@ -131,7 +131,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, ulong value)
@@ -150,7 +150,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, float value) => generator.Emit(OpCodes.Ldc_R4, value);
@@ -158,7 +158,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, double value) => generator.Emit(OpCodes.Ldc_R8, value);
@@ -166,7 +166,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, bool value) => generator.LoadConstant(value ? 1 : 0);
@@ -174,7 +174,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the given value onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadConstant(this ILGenerator generator, char value) => generator.LoadConstant((int) value);
@@ -182,14 +182,14 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pushes the null reference onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
         public static void LoadNull(this ILGenerator generator) => generator.Emit(OpCodes.Ldnull);
 
         /// <summary>
         /// Pushes the given string onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="str">The string to push onto the evaluation stack</param>
         [PublicAPI]
         public static void LoadString(this ILGenerator generator, string str) => generator.Emit(OpCodes.Ldstr, str);

@@ -18,7 +18,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="<#= type.Name #>" /></exception>

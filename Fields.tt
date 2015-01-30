@@ -18,7 +18,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
@@ -37,7 +37,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object, with volatile semantics
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to store the value in</param>
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>

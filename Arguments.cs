@@ -51,7 +51,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Loads the address of the specified argument onto the evaluation stack
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum"></param>
         [PublicAPI]
         public static void LoadArgumentAddress(this ILGenerator generator, ushort argNum)

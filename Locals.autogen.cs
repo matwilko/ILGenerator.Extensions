@@ -11,7 +11,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Boolean" /></exception>
@@ -30,7 +30,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Char" /></exception>
@@ -49,7 +49,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="SByte" /></exception>
@@ -68,7 +68,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Byte" /></exception>
@@ -87,7 +87,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int16" /></exception>
@@ -106,7 +106,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt16" /></exception>
@@ -125,7 +125,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int32" /></exception>
@@ -144,7 +144,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt32" /></exception>
@@ -163,7 +163,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int64" /></exception>
@@ -182,7 +182,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt64" /></exception>
@@ -201,7 +201,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Single" /></exception>
@@ -220,7 +220,7 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Double" /></exception>

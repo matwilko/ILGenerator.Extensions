@@ -9,7 +9,7 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Starts a protected region
         /// </summary>
-        /// <param name="generator"></param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <returns>An <see cref="ExceptionBlock" /> instance from which the various exception handling blocks can be accessed</returns>
         [PublicAPI]
         public static ExceptionBlock ExceptionBlock(this ILGenerator generator) => new ExceptionBlock(generator);
