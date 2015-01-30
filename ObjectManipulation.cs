@@ -96,7 +96,8 @@ namespace ILGeneratorExtensions
         }
 
         [PublicAPI]
-        public static void LoadValueTypeOntoStack<T>(this ILGenerator generator) => generator.LoadValueTypeOntoStack(typeof (T));
+        public static void LoadValueTypeOntoStack<T>(this ILGenerator generator) where T : struct
+            => generator.LoadValueTypeOntoStack(typeof (T));
 
         [PublicAPI]
         public static void LoadValueTypeOntoStackVolatile(this ILGenerator generator, Type type)
@@ -111,7 +112,8 @@ namespace ILGeneratorExtensions
         }
 
         [PublicAPI]
-        public static void LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) => generator.LoadValueTypeOntoStackVolatile(typeof(T));
+        public static void LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) where T : struct
+            => generator.LoadValueTypeOntoStackVolatile(typeof(T));
 
         [PublicAPI]
         public static void StoreValueTypeFromStack(this ILGenerator generator, Type type)
