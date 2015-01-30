@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.githubusercontent.com/matwilko/ILGenerator.Extensions/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/matwilko/ILGenerator.Extensions</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>First release</releaseNotes>
+    <copyright>Copyright Matthew Wilkinson 2014</copyright>
+    <tags>IL CIL MSIL ILGenerator lwcg codegen</tags>
+  </metadata>
+</package>
