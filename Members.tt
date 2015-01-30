@@ -1,0 +1,78 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".autogen.cs" #>
+using System;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Reflection.Emit;
+using JetBrains.Annotations;
+
+namespace ILGeneratorExtensions
+{
+    public static partial class Members
+    {
+<# foreach (var type in new [] { typeof(bool), typeof(char), typeof(sbyte), typeof(byte), typeof(short), typeof(ushort), typeof(int), typeof(uint), typeof(long), typeof(ulong)}) { #>
+		/// <summary>
+        /// Pops a reference off the evaluation stack and calls the setter of the given property on the object with the given value
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="property">The property to set</param>
+		/// <param name="value">The value to set the property to</param>
+		[PublicAPI]
+        public static void SetProperty(this ILGenerator generator, PropertyInfo property, <#= type.Name #> value)
+        {
+            if (property.PropertyType != typeof(<#= type.Name #>))
+            {
+                throw new InvalidOperationException("Property is not of type <#= type.Name #>");
+            }			
+
+            generator.LoadConstant(value);
+			generator.SetProperty(property);
+        }
+
+        /// <summary>
+        /// Pops a reference off the evaluation stack and calls the setter of the given property (looked up by name on the given type) on the object with the given value
+        /// </summary>
+        /// <param name="generator"></param>
+        /// <param name="type">The type the property belongs to</param>
+        /// <param name="propertyName">The name of the property on the given <paramref name="type" /></param>
+		/// <param name="value">The value to set the property to</param>
+		[PublicAPI]
+        public static void SetProperty(this ILGenerator generator, Type type, string propertyName, <#= type.Name #> value)
+        {
+            generator.SetProperty(GetPropertyInfo(type, propertyName), value);
+        }
+
+        /// <summary>
+        /// Pops a reference off the evaluation stack and calls the setter of the given property (looked up by name on the given type) on the object with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property belongs to</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="propertyName">The name of the property on <typeparamref name="T" /></param>
+		/// <param name="value">The value to set the property to</param>
+		[PublicAPI]
+        public static void SetProperty<T>(this ILGenerator generator, string propertyName, <#= type.Name #> value)
+        {
+            generator.SetProperty(typeof (T), propertyName, value);
+        }
+
+		/// <summary>
+        /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty<T, TProp>(this ILGenerator generator, Expression<Func<T, TProp>> expression, <#= type.Name #> value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
+        }
+
+<# } #>
+	}
+}

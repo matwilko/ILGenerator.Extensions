@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 using JetBrains.Annotations;
@@ -6,7 +7,7 @@ using JetBrains.Annotations;
 namespace ILGeneratorExtensions
 {
     [PublicAPI]
-    public static class MethodFlow
+    public static partial class MethodFlow
     {
         /// <summary>
         /// Exits the current method and jumps immediately to the given method, using the same arguments

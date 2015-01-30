@@ -1,0 +1,98 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".autogen.cs" #>
+<#
+var standardDelegates = typeof(Action).Assembly.GetTypes()
+							.Where(type => type.BaseType == typeof(MulticastDelegate))
+							.Where(type => type.Name == "Action"
+										|| type.Name.StartsWith("Action`")
+										|| type.Name.StartsWith("Func`"));
+Func<Type, string> getGenericParams = type => !type.GetGenericArguments().Any() ? "" : "<" + string.Join(", ", type.GetGenericArguments().Select(param => param.Name)) + ">";
+#>
+using System;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Reflection.Emit;
+using JetBrains.Annotations;
+
+namespace ILGeneratorExtensions
+{
+    public static partial class MethodFlow
+    {
+<# foreach (var delegateType in standardDelegates) { #>
+<# var genericParams = getGenericParams(delegateType); #>
+<# var typeName = delegateType.IsGenericType ? delegateType.Name.Substring(0, delegateType.Name.IndexOf('`')) : delegateType.Name; #>
+		/// <summary>
+        /// Calls the method represented by the given expression, popping the requisite number of arguments from the evaluation stack (including the this reference if it is an instance method)
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="methodExpression">The expression representing the method to call</param>
+		[PublicAPI]
+		public static void Call<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+			=> generator.Call(GetMethodInfo(methodExpression));
+
+		/// <summary>
+        /// Calls the method represented by the given expression with virtual semantics, popping a reference (and performing a null check) and the requisite number of arguments from the evaluation stack
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="methodExpression">The expression representing the method to call</param>
+        [PublicAPI]
+        public static void CallVirtual<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+			=> generator.CallVirtual(GetMethodInfo(methodExpression));
+
+
+        /// <summary>
+        /// Performs a tail call to the method represented by the given expression, popping the requisite number of arguments from the evaluation stack (including the this reference if it is an instance method)
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="methodExpression">The expression representing the method to call</param>
+        [PublicAPI]
+        public static void TailCall<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+			=> generator.TailCall(GetMethodInfo(methodExpression));
+
+        /// <summary>
+        /// Performs a tail call to the method represented by the given expression with virtual semantics, popping a reference (and performing a null check) and the requisite number of arguments from the evaluation stack
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="methodExpression">The expression representing the method to call</param>
+        [PublicAPI]
+        public static void TailCallVirtual<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+			=> generator.TailCallVirtual(GetMethodInfo(methodExpression));
+
+        /// <summary>
+        /// Performs a constrained virtual call to the method represented by the given expression, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the evaluation stack
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="constrainedType">The type to constrain the call to</param>
+        /// <param name="methodExpression">The expression representing the method to call</param>
+        [PublicAPI]
+        public static void ConstrainedCall<#= genericParams #>(this ILGenerator generator, Type constrainedType, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+			=> generator.ConstrainedCall(constrainedType, GetMethodInfo(methodExpression));
+
+        /// <summary>
+        /// Performs a constrained virtual tail call to the method represented by the given expression, popping an address to storage location of the value or reference (and performing a null check if necessary) and the requisite number of arguments from the evaluation stack
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="constrainedType">The type to constrain the call to</param>
+        /// <param name="methodExpression">The expression representing the method to call</param>
+        [PublicAPI]
+        public static void ConstrainedTailCall<#= genericParams #>(this ILGenerator generator, Type constrainedType, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+			=> generator.ConstrainedTailCall(constrainedType, GetMethodInfo(methodExpression));
+
+		private static MethodInfo GetMethodInfo<#= genericParams #>(Expression<<#= typeName #><#= genericParams #>> methodExpression)
+		{
+			var method = (methodExpression?.Body as MethodCallExpression)?.Method;
+
+			if (method == null)
+			{
+				throw new InvalidOperationException("Expression does not represent a method call");
+			}
+
+			return method;
+		}
+<# } #>
+	}
+}	

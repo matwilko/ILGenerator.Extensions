@@ -89,6 +89,17 @@
     </Compile>
     <Compile Include="Fields.cs" />
     <Compile Include="FunctionPointers.cs" />
+    <Compile Include="Members.autogen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Members.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Members.cs" />
+    <Compile Include="MethodFlow.autogen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MethodFlow.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\JetBrainsAnnotations.cs" />
     <Compile Include="LoadConstants.cs" />
     <Compile Include="Locals.autogen.cs">
@@ -157,6 +168,16 @@
   <ItemGroup>
     <None Include="ILGenerator.Extensions.snk" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Members.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Members.autogen.cs</LastGenOutput>
+    </Content>
+    <Content Include="MethodFlow.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MethodFlow.autogen.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
