@@ -170,14 +170,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Members.tt">
+    <None Include="Members.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Members.autogen.cs</LastGenOutput>
-    </Content>
-    <Content Include="MethodFlow.tt">
+    </None>
+    <None Include="MethodFlow.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MethodFlow.autogen.cs</LastGenOutput>
-    </Content>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
