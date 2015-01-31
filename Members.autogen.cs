@@ -55,8 +55,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -127,8 +125,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -199,8 +195,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -271,8 +265,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -343,8 +335,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -415,8 +405,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -487,8 +475,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -559,8 +545,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -631,8 +615,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>
@@ -703,8 +685,6 @@ namespace ILGeneratorExtensions
 		/// <summary>
         /// Calls the setter of the static property represented by the given expression with the given value
         /// </summary>
-        /// <typeparam name="T">The type the property is on</typeparam>
-        /// <typeparam name="TProp">The type of the property</typeparam>
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
 		/// <param name="value">The value to set the property to</param>

@@ -5,6 +5,7 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".autogen.cs" #>
 using System;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 using JetBrains.Annotations;
@@ -40,6 +41,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
+		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
         [PublicAPI]
         public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, <#= type.Name #> value)
@@ -51,6 +53,7 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type the field is on</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
+		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
         [PublicAPI]
         public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, <#= type.Name #> value)
@@ -59,9 +62,9 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Stores the given value in the static field represented by the given expression
         /// </summary>
-        /// <typeparam name="TField">The type of the field</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
+		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
         public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<<#= type.Name #>>> fieldExpression, <#= type.Name #> value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
@@ -70,9 +73,9 @@ namespace ILGeneratorExtensions
         /// Pops a reference from the evaluation stack and stores the given value in the field represented by the given expression for that object
         /// </summary>
         /// <typeparam name="T">The type the field is on</typeparam>
-        /// <typeparam name="TField">The type of the field</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
+		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
         public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, <#= type.Name #>>> fieldExpression, <#= type.Name #> value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
@@ -103,6 +106,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
+		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
         [PublicAPI]
         public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, <#= type.Name #> value)
@@ -114,6 +118,7 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type the field is on</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
+		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="<#= type.Name #>" /></exception>
         [PublicAPI]
         public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, <#= type.Name #> value)
@@ -122,9 +127,9 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Stores the given value in the static field represented by the given expression, with volatile semantics
         /// </summary>
-        /// <typeparam name="TField">The type of the field</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
+		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
         public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<<#= type.Name #>>> fieldExpression, <#= type.Name #> value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
@@ -133,9 +138,9 @@ namespace ILGeneratorExtensions
         /// Pops a reference from the evaluation stack and stores the given value in the field represented by the given expression for that object, with volatile semantics
         /// </summary>
         /// <typeparam name="T">The type the field is on</typeparam>
-        /// <typeparam name="TField">The type of the field</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
+		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
         public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, <#= type.Name #>>> fieldExpression, <#= type.Name #> value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
