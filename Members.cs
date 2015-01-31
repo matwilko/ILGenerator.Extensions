@@ -32,6 +32,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="type">The type the property belongs to</param>
         /// <param name="propertyName">The name of the property on the given <paramref name="type" /></param>
+        [PublicAPI]
         public static void GetProperty(this ILGenerator generator, Type type, string propertyName)
         {
             generator.GetProperty(GetPropertyInfo(type, propertyName));
