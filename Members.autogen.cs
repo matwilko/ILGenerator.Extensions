@@ -53,6 +53,20 @@ namespace ILGeneratorExtensions
         }
 
 		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<Boolean>> expression, Boolean value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
+        }
+
+		/// <summary>
         /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
         /// </summary>
         /// <typeparam name="T">The type the property is on</typeparam>
@@ -108,6 +122,20 @@ namespace ILGeneratorExtensions
         public static void SetProperty<T>(this ILGenerator generator, string propertyName, Char value)
         {
             generator.SetProperty(typeof (T), propertyName, value);
+        }
+
+		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<Char>> expression, Char value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
         }
 
 		/// <summary>
@@ -169,6 +197,20 @@ namespace ILGeneratorExtensions
         }
 
 		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<SByte>> expression, SByte value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
+        }
+
+		/// <summary>
         /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
         /// </summary>
         /// <typeparam name="T">The type the property is on</typeparam>
@@ -224,6 +266,20 @@ namespace ILGeneratorExtensions
         public static void SetProperty<T>(this ILGenerator generator, string propertyName, Byte value)
         {
             generator.SetProperty(typeof (T), propertyName, value);
+        }
+
+		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<Byte>> expression, Byte value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
         }
 
 		/// <summary>
@@ -285,6 +341,20 @@ namespace ILGeneratorExtensions
         }
 
 		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<Int16>> expression, Int16 value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
+        }
+
+		/// <summary>
         /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
         /// </summary>
         /// <typeparam name="T">The type the property is on</typeparam>
@@ -340,6 +410,20 @@ namespace ILGeneratorExtensions
         public static void SetProperty<T>(this ILGenerator generator, string propertyName, UInt16 value)
         {
             generator.SetProperty(typeof (T), propertyName, value);
+        }
+
+		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<UInt16>> expression, UInt16 value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
         }
 
 		/// <summary>
@@ -401,6 +485,20 @@ namespace ILGeneratorExtensions
         }
 
 		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<Int32>> expression, Int32 value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
+        }
+
+		/// <summary>
         /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
         /// </summary>
         /// <typeparam name="T">The type the property is on</typeparam>
@@ -456,6 +554,20 @@ namespace ILGeneratorExtensions
         public static void SetProperty<T>(this ILGenerator generator, string propertyName, UInt32 value)
         {
             generator.SetProperty(typeof (T), propertyName, value);
+        }
+
+		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<UInt32>> expression, UInt32 value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
         }
 
 		/// <summary>
@@ -517,6 +629,20 @@ namespace ILGeneratorExtensions
         }
 
 		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<Int64>> expression, Int64 value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
+        }
+
+		/// <summary>
         /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
         /// </summary>
         /// <typeparam name="T">The type the property is on</typeparam>
@@ -572,6 +698,20 @@ namespace ILGeneratorExtensions
         public static void SetProperty<T>(this ILGenerator generator, string propertyName, UInt64 value)
         {
             generator.SetProperty(typeof (T), propertyName, value);
+        }
+
+		/// <summary>
+        /// Calls the setter of the static property represented by the given expression with the given value
+        /// </summary>
+        /// <typeparam name="T">The type the property is on</typeparam>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+		/// <param name="value">The value to set the property to</param>
+        [PublicAPI]
+        public static void GetProperty(this ILGenerator generator, Expression<Func<UInt64>> expression, UInt64 value)
+        {
+            generator.SetProperty(GetPropertyInfo(expression), value);
         }
 
 		/// <summary>

@@ -52,6 +52,18 @@ namespace ILGeneratorExtensions
         }
 
         /// <summary>
+        /// Calls the getter of the static property represented by the given expression and pushes the value onto the evaluatino stack
+        /// </summary>
+        /// <typeparam name="TProp">The type of the property</typeparam>
+        /// <param name="generator"></param>
+        /// <param name="expression">An expression that accesses the relevant property</param>
+        [PublicAPI]
+        public static void GetProperty<TProp>(this ILGenerator generator, Expression<Func<TProp>> expression)
+        {
+            generator.GetProperty(GetPropertyInfo(expression));
+        }
+
+        /// <summary>
         /// Pops a reference off the evaluation stack and calls the getter of the given property on the object
         /// </summary>
         /// <typeparam name="T">The type the property is on</typeparam>
@@ -127,6 +139,18 @@ namespace ILGeneratorExtensions
                 throw new InvalidOperationException("There is no property called `" + propertyName + "` on the type " + type.Name);
             }
             
+            return property;
+        }
+
+        private static PropertyInfo GetPropertyInfo<TProp>(Expression<Func<TProp>> expression)
+        {
+            var property = (expression.Body as MemberExpression)?.Member as PropertyInfo;
+
+            if (property == null)
+            {
+                throw new InvalidOperationException("Expression does not represent a property");
+            }
+
             return property;
         }
 
