@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Represents a protected region
+    /// </summary>
     public sealed class ExceptionBlock : IDisposable
     {
         private readonly ILGenerator generator;

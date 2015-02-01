@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Represents a catch block in a protected region
+    /// </summary>
     public sealed class CatchBlock : IDisposable
     {
         private readonly ILGenerator generator;
@@ -27,6 +30,9 @@ namespace ILGeneratorExtensions
         [PublicAPI]
         public ILGenerator Leave() => generator.Leave(endLabel);
         
+        /// <summary>
+        /// End the catch block
+        /// </summary>
         public void Dispose()
         {
         }

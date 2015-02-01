@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for creating protected regions
+    /// </summary>
     [PublicAPI]
     public static class ExceptionHandling
     {
