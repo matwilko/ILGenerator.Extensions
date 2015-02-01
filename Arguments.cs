@@ -67,6 +67,10 @@ namespace ILGeneratorExtensions
                 : generator.FluentEmit(OpCodes.Starg, argNum);
         }
 
+        /// <summary>
+        /// Pushes an unmanaged pointer to the argument list of the current method
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
         public static ILGenerator LoadArgumentList(this ILGenerator generator) => generator.FluentEmit(OpCodes.Arglist);
     }
