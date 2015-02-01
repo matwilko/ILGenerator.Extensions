@@ -13,10 +13,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Char value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, Char value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 		/// <summary>
@@ -26,10 +26,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Boolean value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, Boolean value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 		/// <summary>
@@ -39,10 +39,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Int32 value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 		/// <summary>
@@ -52,10 +52,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, UInt32 value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 		/// <summary>
@@ -65,10 +65,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, Int64 value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 		/// <summary>
@@ -78,10 +78,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, UInt64 value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 	}

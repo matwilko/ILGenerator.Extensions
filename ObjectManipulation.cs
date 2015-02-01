@@ -13,14 +13,14 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void CopyObject(this ILGenerator generator, Type type)
+        public static ILGenerator CopyObject(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
                 throw new InvalidOperationException("Copying a non-value-type results in unspecified runtime behaviour");
             }
 
-            generator.Emit(OpCodes.Cpobj, type);
+            return generator.FluentEmit(OpCodes.Cpobj, type);
         }
 
         /// <summary>
@@ -29,14 +29,14 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void CopyObject<T>(this ILGenerator generator) where T : struct => generator.CopyObject(typeof (T));
+        public static ILGenerator CopyObject<T>(this ILGenerator generator) where T : struct => generator.CopyObject(typeof (T));
         
         /// <summary>
         /// Pops two addresses and an integer from the evaluation stack, and copies that number of bytes from the first address to the second
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void CopyBlock(this ILGenerator generator) => generator.Emit(OpCodes.Cpblk);
+        public static ILGenerator CopyBlock(this ILGenerator generator) => generator.FluentEmit(OpCodes.Cpblk);
 
         /// <summary>
         /// Pops two address from the evaluation stack and copies the given number of bytes from the first to the second
@@ -44,10 +44,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="bytes">The number of bytes to copy</param>
         [PublicAPI]
-        public static void CopyBlock(this ILGenerator generator, uint bytes)
+        public static ILGenerator CopyBlock(this ILGenerator generator, uint bytes)
         {
-            generator.LoadConstant(bytes);
-            generator.CopyBlock();
+            return generator.LoadConstant(bytes)
+                            .CopyBlock();
         }
 
         /// <summary>
@@ -55,10 +55,10 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void CopyBlockVolatile(this ILGenerator generator)
+        public static ILGenerator CopyBlockVolatile(this ILGenerator generator)
         {
-            generator.Emit(OpCodes.Volatile);
-            generator.CopyBlock();
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .CopyBlock();
         }
 
         /// <summary>
@@ -67,10 +67,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="bytes">The number of bytes to copy</param>
         [PublicAPI]
-        public static void CopyBlockVolatile(this ILGenerator generator, uint bytes)
+        public static ILGenerator CopyBlockVolatile(this ILGenerator generator, uint bytes)
         {
-            generator.Emit(OpCodes.Volatile);
-            generator.CopyBlock(bytes);
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .CopyBlock(bytes);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoStack(this ILGenerator generator, Type type)
+        public static ILGenerator LoadValueTypeOntoStack(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
@@ -88,43 +88,43 @@ namespace ILGeneratorExtensions
 
             if (type == typeof (sbyte))
             {
-                generator.Emit(OpCodes.Ldind_I1);
+                return generator.FluentEmit(OpCodes.Ldind_I1);
             }
             else if (type == typeof (byte))
             {
-                generator.Emit(OpCodes.Ldind_U1);
+                return generator.FluentEmit(OpCodes.Ldind_U1);
             }
             else if (type == typeof (short))
             {
-                generator.Emit(OpCodes.Ldind_I2);
+                return generator.FluentEmit(OpCodes.Ldind_I2);
             }
             else if (type == typeof (ushort))
             {
-                generator.Emit(OpCodes.Ldind_U2);
+                return generator.FluentEmit(OpCodes.Ldind_U2);
             }
             else if (type == typeof (int))
             {
-                generator.Emit(OpCodes.Ldind_I4);
+                return generator.FluentEmit(OpCodes.Ldind_I4);
             }
             else if (type == typeof (uint))
             {
-                generator.Emit(OpCodes.Ldind_U4);
+                return generator.FluentEmit(OpCodes.Ldind_U4);
             }
             else if (type == typeof(long) || type == typeof(ulong))
             {
-                generator.Emit(OpCodes.Ldind_I8);
+                return generator.FluentEmit(OpCodes.Ldind_I8);
             }
             else if (type == typeof (float))
             {
-                generator.Emit(OpCodes.Ldind_R4);
+                return generator.FluentEmit(OpCodes.Ldind_R4);
             }
             else if (type == typeof (double))
             {
-                generator.Emit(OpCodes.Ldind_R8);
+                return generator.FluentEmit(OpCodes.Ldind_R8);
             }
             else
             {
-                generator.Emit(OpCodes.Ldobj, type);
+                return generator.FluentEmit(OpCodes.Ldobj, type);
             }
         }
 
@@ -134,7 +134,7 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoStack<T>(this ILGenerator generator) where T : struct
+        public static ILGenerator LoadValueTypeOntoStack<T>(this ILGenerator generator) where T : struct
             => generator.LoadValueTypeOntoStack(typeof (T));
 
         /// <summary>
@@ -143,15 +143,15 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoStackVolatile(this ILGenerator generator, Type type)
+        public static ILGenerator LoadValueTypeOntoStackVolatile(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
                 throw new InvalidOperationException("This operation is not valid on reference types");
             }
 
-            generator.Emit(OpCodes.Volatile);
-            generator.LoadValueTypeOntoStack(type);
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .LoadValueTypeOntoStack(type);
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) where T : struct
+        public static ILGenerator LoadValueTypeOntoStackVolatile<T>(this ILGenerator generator) where T : struct
             => generator.LoadValueTypeOntoStackVolatile(typeof(T));
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void StoreValueTypeFromStack(this ILGenerator generator, Type type)
+        public static ILGenerator StoreValueTypeFromStack(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
@@ -178,31 +178,31 @@ namespace ILGeneratorExtensions
 
             if (type == typeof(sbyte) || type == typeof(byte))
             {
-                generator.Emit(OpCodes.Ldind_I1);
+                return generator.FluentEmit(OpCodes.Ldind_I1);
             }
             else if (type == typeof(short) || type == typeof(ushort))
             {
-                generator.Emit(OpCodes.Ldind_I2);
+                return generator.FluentEmit(OpCodes.Ldind_I2);
             }
             else if (type == typeof(int) || type == typeof(uint))
             {
-                generator.Emit(OpCodes.Ldind_I4);
+                return generator.FluentEmit(OpCodes.Ldind_I4);
             }
             else if (type == typeof(long) || type == typeof(ulong))
             {
-                generator.Emit(OpCodes.Ldind_I8);
+                return generator.FluentEmit(OpCodes.Ldind_I8);
             }
             else if (type == typeof(float))
             {
-                generator.Emit(OpCodes.Ldind_R4);
+                return generator.FluentEmit(OpCodes.Ldind_R4);
             }
             else if (type == typeof(double))
             {
-                generator.Emit(OpCodes.Ldind_R8);
+                return generator.FluentEmit(OpCodes.Ldind_R8);
             }
             else
             {
-                generator.Emit(OpCodes.Ldobj, type);
+                return generator.FluentEmit(OpCodes.Ldobj, type);
             }
         }
 
@@ -212,7 +212,7 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void StoreValueTypeFromStack<T>(this ILGenerator generator) where T : struct
+        public static ILGenerator StoreValueTypeFromStack<T>(this ILGenerator generator) where T : struct
             => generator.StoreValueTypeFromStack(typeof (T));
 
         /// <summary>
@@ -221,15 +221,15 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="type">The type of the value type object</param>
         [PublicAPI]
-        public static void StoreValueTypeFromStackVolatile(this ILGenerator generator, Type type)
+        public static ILGenerator StoreValueTypeFromStackVolatile(this ILGenerator generator, Type type)
         {
             if (!type.IsValueType)
             {
                 throw new InvalidOperationException("This operation is not valid on a reference type");
             }
 
-            generator.Emit(OpCodes.Volatile);
-            generator.Emit(OpCodes.Stobj, type);
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .FluentEmit(OpCodes.Stobj, type);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace ILGeneratorExtensions
         /// <typeparam name="T">The type of the value type object</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void StoreValueTypeFromStackVolatile<T>(this ILGenerator generator) where T : struct
+        public static ILGenerator StoreValueTypeFromStackVolatile<T>(this ILGenerator generator) where T : struct
             => generator.StoreValueTypeFromStack(typeof(T));
 
         /// <summary>
@@ -246,6 +246,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void LoadReferenceFromAddress(this ILGenerator generator) => generator.Emit(OpCodes.Ldind_Ref);
+        public static ILGenerator LoadReferenceFromAddress(this ILGenerator generator) => generator.FluentEmit(OpCodes.Ldind_Ref);
     }
 }

@@ -14,7 +14,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="property">The property to get the value of</param>
         [PublicAPI]
-        public static void GetProperty(this ILGenerator generator, PropertyInfo property)
+        public static ILGenerator GetProperty(this ILGenerator generator, PropertyInfo property)
         {
             if (!property.CanRead)
             {
@@ -22,7 +22,7 @@ namespace ILGeneratorExtensions
             }
 
             var getMethod = property.GetGetMethod();
-            generator.Call(getMethod);
+            return generator.Call(getMethod);
         }
 
         /// <summary>
@@ -33,10 +33,8 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the property belongs to</param>
         /// <param name="propertyName">The name of the property on the given <paramref name="type" /></param>
         [PublicAPI]
-        public static void GetProperty(this ILGenerator generator, Type type, string propertyName)
-        {
-            generator.GetProperty(GetPropertyInfo(type, propertyName));
-        }
+        public static ILGenerator GetProperty(this ILGenerator generator, Type type, string propertyName)
+            => generator.GetProperty(GetPropertyInfo(type, propertyName));
 
         /// <summary>
         /// Pops a reference off the evaluation stack and calls the getter of the given property (looked up by name on the given type) on the object
@@ -46,10 +44,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="propertyName">The name of the property on <typeparamref name="T" /></param>
         [PublicAPI]
-        public static void GetProperty<T>(this ILGenerator generator, string propertyName)
-        {
-            generator.GetProperty(typeof (T), propertyName);
-        }
+        public static ILGenerator GetProperty<T>(this ILGenerator generator, string propertyName)
+            => generator.GetProperty(typeof (T), propertyName);
 
         /// <summary>
         /// Calls the getter of the static property represented by the given expression and pushes the value onto the evaluatino stack
@@ -58,10 +54,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
         [PublicAPI]
-        public static void GetProperty<TProp>(this ILGenerator generator, Expression<Func<TProp>> expression)
-        {
-            generator.GetProperty(GetPropertyInfo(expression));
-        }
+        public static ILGenerator GetProperty<TProp>(this ILGenerator generator, Expression<Func<TProp>> expression)
+            => generator.GetProperty(GetPropertyInfo(expression));
 
         /// <summary>
         /// Pops a reference off the evaluation stack and calls the getter of the given property on the object
@@ -71,10 +65,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
         [PublicAPI]
-        public static void GetProperty<T, TProp>(this ILGenerator generator, Expression<Func<T, TProp>> expression)
-        {
-            generator.GetProperty(GetPropertyInfo(expression));
-        }
+        public static ILGenerator GetProperty<T, TProp>(this ILGenerator generator, Expression<Func<T, TProp>> expression)
+            => generator.GetProperty(GetPropertyInfo(expression));
 
         /// <summary>
         /// Pops a reference and a value off the evaluation stack and calls the setter of the given property on the object with the value
@@ -82,7 +74,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="property">The property to set</param>
         [PublicAPI]
-        public static void SetProperty(this ILGenerator generator, PropertyInfo property)
+        public static ILGenerator SetProperty(this ILGenerator generator, PropertyInfo property)
         {
             if (!property.CanWrite)
             {
@@ -90,7 +82,7 @@ namespace ILGeneratorExtensions
             }
 
             var setMethod = property.GetSetMethod();
-            generator.Call(setMethod);
+            return generator.Call(setMethod);
         }
 
         /// <summary>
@@ -100,10 +92,8 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the property belongs to</param>
         /// <param name="propertyName">The name of the property on the given <paramref name="type" /></param>
         [PublicAPI]
-        public static void SetProperty(this ILGenerator generator, Type type, string propertyName)
-        {
-            generator.SetProperty(GetPropertyInfo(type, propertyName));
-        }
+        public static ILGenerator SetProperty(this ILGenerator generator, Type type, string propertyName)
+            => generator.SetProperty(GetPropertyInfo(type, propertyName));
 
         /// <summary>
         /// Pops a reference and a value off the evaluation stack and calls the setter of the given property (looked up by name on the given type) on the object with the value
@@ -112,10 +102,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="propertyName">The name of the property on <typeparamref name="T" /></param>
         [PublicAPI]
-        public static void SetProperty<T>(this ILGenerator generator, string propertyName)
-        {
-            generator.SetProperty(typeof (T), propertyName);
-        }
+        public static ILGenerator SetProperty<T>(this ILGenerator generator, string propertyName)
+            => generator.SetProperty(typeof (T), propertyName);
 
         /// <summary>
         /// Pops a reference off the evaluation stack and calls the setter of the given property on the object
@@ -125,10 +113,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="expression">An expression that accesses the relevant property</param>
         [PublicAPI]
-        public static void SetProperty<T, TProp>(this ILGenerator generator, Expression<Func<T, TProp>> expression)
-        {
-            generator.SetProperty(GetPropertyInfo(expression));
-        }
+        public static ILGenerator SetProperty<T, TProp>(this ILGenerator generator, Expression<Func<T, TProp>> expression)
+            => generator.SetProperty(GetPropertyInfo(expression));
 
         private static PropertyInfo GetPropertyInfo(Type type, string propertyName)
         {
@@ -172,7 +158,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="event">The event to add the delegate instance to</param>
         [PublicAPI]
-        public static void AddToEvent(this ILGenerator generator, EventInfo @event) => generator.Call(@event.AddMethod);
+        public static ILGenerator AddToEvent(this ILGenerator generator, EventInfo @event) => generator.Call(@event.AddMethod);
 
         /// <summary>
         /// Pops a reference to a delegate instance off the evaluation stack and call the adder of the event with the given name on the given type
@@ -182,10 +168,8 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the event is on</param>
         /// <param name="eventName">The name of the event</param>
         [PublicAPI]
-        public static void AddToEvent(this ILGenerator generator, Type type, string eventName)
-        {
-            generator.AddToEvent(GetEventInfo(type, eventName));
-        }
+        public static ILGenerator AddToEvent(this ILGenerator generator, Type type, string eventName)
+            => generator.AddToEvent(GetEventInfo(type, eventName));
 
         /// <summary>
         /// Pops a reference to a delegate instance off the evaluation stack and call the adder of the event with the given name on the given type
@@ -195,10 +179,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="eventName">The name of the event</param>
         [PublicAPI]
-        public static void AddToEvent<T>(this ILGenerator generator, string eventName)
-        {
-            generator.AddToEvent(typeof (T), eventName);
-        }
+        public static ILGenerator AddToEvent<T>(this ILGenerator generator, string eventName)
+            => generator.AddToEvent(typeof (T), eventName);
 
         /// <summary>
         /// Pops a reference to a delegate instance off the evaluation stack and calls the remover of the given event with it
@@ -206,7 +188,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="event">The event to remove the delegate instance from</param>
         [PublicAPI]
-        public static void RemoveFromEvent(this ILGenerator generator, EventInfo @event) => generator.Call(@event.RemoveMethod);
+        public static ILGenerator RemoveFromEvent(this ILGenerator generator, EventInfo @event) => generator.Call(@event.RemoveMethod);
 
         /// <summary>
         /// Pops a reference to a delegate instance off the evaluation stack and calls the remover of the event with the given name on the given type
@@ -215,10 +197,8 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the event is on</param>
         /// <param name="eventName">The name of the event</param>
         [PublicAPI]
-        public static void RemoveFromEvent(this ILGenerator generator, Type type, string eventName)
-        {
-            generator.RemoveFromEvent(GetEventInfo(type, eventName));
-        }
+        public static ILGenerator RemoveFromEvent(this ILGenerator generator, Type type, string eventName)
+            => generator.RemoveFromEvent(GetEventInfo(type, eventName));
 
         /// <summary>
         /// Pops a reference to a delegate instance off the evaluation stack and calls the remover of the event with the given name on the given type
@@ -227,10 +207,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="eventName">The name of the event</param>
         [PublicAPI]
-        public static void RemoveFromEvent<T>(this ILGenerator generator, string eventName)
-        {
-            generator.RemoveFromEvent(typeof (T), eventName);
-        }
+        public static ILGenerator RemoveFromEvent<T>(this ILGenerator generator, string eventName)
+            => generator.RemoveFromEvent(typeof (T), eventName);
 
         private static EventInfo GetEventInfo(Type type, string eventName)
         {

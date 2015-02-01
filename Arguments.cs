@@ -12,32 +12,22 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum">The index of the argument to load</param>
         [PublicAPI]
-        public static void LoadArgument(this ILGenerator generator, ushort argNum)
+        public static ILGenerator LoadArgument(this ILGenerator generator, ushort argNum)
         {
             switch (argNum)
             {
                 case 0:
-                    generator.Emit(OpCodes.Ldarg_0);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldarg_0);
                 case 1:
-                    generator.Emit(OpCodes.Ldarg_1);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldarg_1);
                 case 2:
-                    generator.Emit(OpCodes.Ldarg_2);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldarg_2);
                 case 3:
-                    generator.Emit(OpCodes.Ldarg_3);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldarg_3);
                 default:
-                    if (argNum <= 255)
-                    {
-                        generator.Emit(OpCodes.Ldarg_S, (byte)argNum);
-                    }
-                    else
-                    {
-                        generator.Emit(OpCodes.Ldarg, argNum);
-                    }
-                    break;
+                    return argNum <= 255
+                        ? generator.FluentEmit(OpCodes.Ldarg_S, (byte)argNum)
+                        : generator.FluentEmit(OpCodes.Ldarg, argNum);
             }
         }
 
@@ -46,7 +36,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void LoadThis(this ILGenerator generator) => generator.Emit(OpCodes.Ldarg_0);
+        public static ILGenerator LoadThis(this ILGenerator generator) => generator.FluentEmit(OpCodes.Ldarg_0);
 
         /// <summary>
         /// Loads the address of the specified argument onto the evaluation stack
@@ -54,16 +44,11 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum"></param>
         [PublicAPI]
-        public static void LoadArgumentAddress(this ILGenerator generator, ushort argNum)
+        public static ILGenerator LoadArgumentAddress(this ILGenerator generator, ushort argNum)
         {
-            if (argNum <= 255)
-            {
-                generator.Emit(OpCodes.Ldarga_S, (byte)argNum);
-            }
-            else
-            {
-                generator.Emit(OpCodes.Ldarga, argNum);
-            }
+            return argNum <= 255
+                ? generator.FluentEmit(OpCodes.Ldarga_S, (byte)argNum)
+                : generator.FluentEmit(OpCodes.Ldarga, argNum);
         }
 
         /// <summary>
@@ -72,19 +57,14 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="argNum">The index of the argument to store the value in</param>
         [PublicAPI]
-        public static void StoreInArgument(this ILGenerator generator, ushort argNum)
+        public static ILGenerator StoreInArgument(this ILGenerator generator, ushort argNum)
         {
-            if (argNum <= 255)
-            {
-                generator.Emit(OpCodes.Starg_S, (byte)argNum);
-            }
-            else
-            {
-                generator.Emit(OpCodes.Starg, argNum);
-            }
+            return argNum <= 255
+                ? generator.FluentEmit(OpCodes.Starg_S, (byte)argNum)
+                : generator.FluentEmit(OpCodes.Starg, argNum);
         }
 
         [PublicAPI]
-        public static void LoadArgumentList(this ILGenerator generator) => generator.Emit(OpCodes.Arglist);
+        public static ILGenerator LoadArgumentList(this ILGenerator generator) => generator.FluentEmit(OpCodes.Arglist);
     }
 }

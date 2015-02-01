@@ -36,7 +36,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #>(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>, label);
+		public static ILGenerator BranchIf<#= op.Name #>(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.<#= op.Branch #>, label);
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is <#= op.Description #> the second
@@ -44,7 +44,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #>ShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_S, label);
+		public static ILGenerator BranchIf<#= op.Name #>ShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.<#= op.Branch #>_S, label);
 		
 <# foreach (var type in numericTypes) { #>
 		/// <summary>
@@ -54,10 +54,10 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value, Label label)
+		public static ILGenerator BranchIf<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
-			generator.LoadConstant(value);
-			generator.BranchIf<#= op.Name #>(label);
+			return generator.LoadConstant(value)
+							.BranchIf<#= op.Name #>(label);
 		}
 
 		/// <summary>
@@ -67,10 +67,10 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #><#= op.Suffix #>ShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
+		public static ILGenerator BranchIf<#= op.Name #><#= op.Suffix #>ShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
-			generator.LoadConstant(value);
-			generator.BranchIf<#= op.Name #>ShortForm(label);
+			return generator.LoadConstant(value)
+							.BranchIf<#= op.Name #>ShortForm(label);
 		}
 <# } #>
 <# } #>
@@ -81,7 +81,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #>Unsigned(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un, label);
+		public static ILGenerator BranchIf<#= op.Name #>Unsigned(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.<#= op.Branch #>_Un, label);
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is <#= op.Description #> the second, without regard for sign
@@ -89,7 +89,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #>UnsignedShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.<#= op.Branch #>_Un_S, label);
+		public static ILGenerator BranchIf<#= op.Name #>UnsignedShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.<#= op.Branch #>_Un_S, label);
 
 <# foreach (var type in numericTypes) { #>
 		/// <summary>
@@ -99,10 +99,10 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value, Label label)
+		public static ILGenerator BranchIf<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
-			generator.LoadConstant(value);
-			generator.BranchIf<#= op.Name #>Unsigned(label);
+			return generator.LoadConstant(value)
+							.BranchIf<#= op.Name #>Unsigned(label);
 		}
 
 		/// <summary>
@@ -112,10 +112,10 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
-		public static void BranchIf<#= op.Name #><#= op.Suffix #>UnsignedShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
+		public static ILGenerator BranchIf<#= op.Name #><#= op.Suffix #>UnsignedShortForm(this ILGenerator generator, <#= type.Name #> value, Label label)
 		{
-			generator.LoadConstant(value);
-			generator.BranchIf<#= op.Name #>UnsignedShortForm(label);
+			return generator.LoadConstant(value)
+							.BranchIf<#= op.Name #>UnsignedShortForm(label);
 		}
 <# } #>
 
@@ -126,7 +126,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Compare<#= op.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>);
+		public static ILGenerator Compare<#= op.Name #>(this ILGenerator generator) => generator.FluentEmit(OpCodes.<#= op.Compare #>);
 
 <# foreach (var type in numericTypes) { #>
 		/// <summary>
@@ -135,10 +135,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
 		[PublicAPI]
-		public static void Compare<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
+		public static ILGenerator Compare<#= op.Name #><#= op.Suffix #>(this ILGenerator generator, <#= type.Name #> value)
 		{
-			generator.LoadConstant(value);
-			generator.Compare<#= op.Name #>();
+			return generator.LoadConstant(value)
+							.Compare<#= op.Name #>();
 		}
 <# } #>
 
@@ -149,7 +149,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Compare<#= op.Name #>Unsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= op.Compare #>_Un);
+		public static ILGenerator Compare<#= op.Name #>Unsigned(this ILGenerator generator) => generator.FluentEmit(OpCodes.<#= op.Compare #>_Un);
 
 <# foreach (var type in numericTypes) { #>
 		/// <summary>
@@ -158,10 +158,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
 		[PublicAPI]
-		public static void Compare<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
+		public static ILGenerator Compare<#= op.Name #><#= op.Suffix #>Unsigned(this ILGenerator generator, <#= type.Name #> value)
 		{
-			generator.LoadConstant(value);
-			generator.Compare<#= op.Name #>Unsigned();
+			return generator.LoadConstant(value)
+							.Compare<#= op.Name #>Unsigned();
 		}
 <# } #>
 

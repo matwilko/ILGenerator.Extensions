@@ -11,10 +11,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
-        public static void BranchIfNull(this ILGenerator generator, Label label)
+        public static ILGenerator BranchIfNull(this ILGenerator generator, Label label)
         {
-            generator.LoadNull();
-            generator.BranchIfEqual(label);
+            return generator.LoadNull()
+                            .BranchIfEqual(label);
         }
 
         /// <summary>
@@ -23,10 +23,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
-        public static void BranchIfNullShortForm(this ILGenerator generator, Label label)
+        public static ILGenerator BranchIfNullShortForm(this ILGenerator generator, Label label)
         {
-            generator.LoadNull();
-            generator.BranchIfEqualShortForm(label);
+            return generator.LoadNull()
+                            .BranchIfEqualShortForm(label);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
-        public static void BranchIfTrue(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brtrue, label);
+        public static ILGenerator BranchIfTrue(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Brtrue, label);
 
         /// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as true
@@ -43,7 +43,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
-        public static void BranchIfTrueShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brtrue_S, label);
+        public static ILGenerator BranchIfTrueShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Brtrue_S, label);
 
         /// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as false
@@ -51,7 +51,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
-        public static void BranchIfFalse(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brfalse, label);
+        public static ILGenerator BranchIfFalse(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Brfalse, label);
 
         /// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it interprets as false
@@ -59,6 +59,6 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
-        public static void BranchIfFalseShortForm(this ILGenerator generator, Label label) => generator.Emit(OpCodes.Brfalse_S, label);
+        public static ILGenerator BranchIfFalseShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Brfalse_S, label);
     }
 }

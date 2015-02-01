@@ -11,6 +11,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void Unaligned(this ILGenerator generator) => generator.Emit(OpCodes.Unaligned);
+        public static ILGenerator Unaligned(this ILGenerator generator) => generator.FluentEmit(OpCodes.Unaligned);
     }
 }

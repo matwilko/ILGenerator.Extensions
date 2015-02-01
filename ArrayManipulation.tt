@@ -20,11 +20,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="<#= type.Name #>" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, <#= type.Name #> value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, <#= type.Name #> value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<<#= type.Name #>>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<<#= type.Name #>>();
         }
 
 <# } #>

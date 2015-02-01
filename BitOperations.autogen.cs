@@ -13,7 +13,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void And(this ILGenerator generator) => generator.Emit(OpCodes.And);
+		public static ILGenerator And(this ILGenerator generator) => generator.FluentEmit(OpCodes.And);
 
 		/// <summary>
         /// Pop an integer value from the evaluation stack and perform a bitwise and operation with the given value
@@ -21,10 +21,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise and the evaluation stack value with</param>
 		[PublicAPI]
-		public static void AndWith(this ILGenerator generator, Int32 value)
+		public static ILGenerator AndWith(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.And();
+			return generator.LoadConstant(value)
+							.And();
 		}
 
 		/// <summary>
@@ -33,10 +33,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise and the evaluation stack value with</param>
 		[PublicAPI]
-		public static void AndWith(this ILGenerator generator, UInt32 value)
+		public static ILGenerator AndWith(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.And();
+			return generator.LoadConstant(value)
+							.And();
 		}
 
 		/// <summary>
@@ -45,10 +45,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise and the evaluation stack value with</param>
 		[PublicAPI]
-		public static void AndWith(this ILGenerator generator, Int64 value)
+		public static ILGenerator AndWith(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.And();
+			return generator.LoadConstant(value)
+							.And();
 		}
 
 		/// <summary>
@@ -57,10 +57,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise and the evaluation stack value with</param>
 		[PublicAPI]
-		public static void AndWith(this ILGenerator generator, UInt64 value)
+		public static ILGenerator AndWith(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.And();
+			return generator.LoadConstant(value)
+							.And();
 		}
 
 		#endregion
@@ -71,7 +71,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Complement(this ILGenerator generator) => generator.Emit(OpCodes.Not);
+		public static ILGenerator Complement(this ILGenerator generator) => generator.FluentEmit(OpCodes.Not);
 
 		#endregion
 		#region Not
@@ -81,7 +81,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Not(this ILGenerator generator) => generator.Emit(OpCodes.Not);
+		public static ILGenerator Not(this ILGenerator generator) => generator.FluentEmit(OpCodes.Not);
 
 		#endregion
 		#region Or
@@ -91,7 +91,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Or(this ILGenerator generator) => generator.Emit(OpCodes.Or);
+		public static ILGenerator Or(this ILGenerator generator) => generator.FluentEmit(OpCodes.Or);
 
 		/// <summary>
         /// Pop an integer value from the evaluation stack and perform a bitwise or operation with the given value
@@ -99,10 +99,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise or the evaluation stack value with</param>
 		[PublicAPI]
-		public static void OrWith(this ILGenerator generator, Int32 value)
+		public static ILGenerator OrWith(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Or();
+			return generator.LoadConstant(value)
+							.Or();
 		}
 
 		/// <summary>
@@ -111,10 +111,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise or the evaluation stack value with</param>
 		[PublicAPI]
-		public static void OrWith(this ILGenerator generator, UInt32 value)
+		public static ILGenerator OrWith(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Or();
+			return generator.LoadConstant(value)
+							.Or();
 		}
 
 		/// <summary>
@@ -123,10 +123,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise or the evaluation stack value with</param>
 		[PublicAPI]
-		public static void OrWith(this ILGenerator generator, Int64 value)
+		public static ILGenerator OrWith(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Or();
+			return generator.LoadConstant(value)
+							.Or();
 		}
 
 		/// <summary>
@@ -135,10 +135,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise or the evaluation stack value with</param>
 		[PublicAPI]
-		public static void OrWith(this ILGenerator generator, UInt64 value)
+		public static ILGenerator OrWith(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Or();
+			return generator.LoadConstant(value)
+							.Or();
 		}
 
 		#endregion
@@ -149,7 +149,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void ShiftLeft(this ILGenerator generator) => generator.Emit(OpCodes.Shl);
+		public static ILGenerator ShiftLeft(this ILGenerator generator) => generator.FluentEmit(OpCodes.Shl);
 
 		/// <summary>
         /// Pop an integer value from the evaluation stack and perform a bitwise shiftleft operation by the given value
@@ -157,10 +157,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftleft the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftLeftBy(this ILGenerator generator, Int32 value)
+		public static ILGenerator ShiftLeftBy(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftLeft();
+			return generator.LoadConstant(value)
+							.ShiftLeft();
 		}
 
 		/// <summary>
@@ -169,10 +169,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftleft the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftLeftBy(this ILGenerator generator, UInt32 value)
+		public static ILGenerator ShiftLeftBy(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftLeft();
+			return generator.LoadConstant(value)
+							.ShiftLeft();
 		}
 
 		/// <summary>
@@ -181,10 +181,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftleft the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftLeftBy(this ILGenerator generator, Int64 value)
+		public static ILGenerator ShiftLeftBy(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftLeft();
+			return generator.LoadConstant(value)
+							.ShiftLeft();
 		}
 
 		/// <summary>
@@ -193,10 +193,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftleft the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftLeftBy(this ILGenerator generator, UInt64 value)
+		public static ILGenerator ShiftLeftBy(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftLeft();
+			return generator.LoadConstant(value)
+							.ShiftLeft();
 		}
 
 		#endregion
@@ -207,7 +207,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void ShiftRight(this ILGenerator generator) => generator.Emit(OpCodes.Shr);
+		public static ILGenerator ShiftRight(this ILGenerator generator) => generator.FluentEmit(OpCodes.Shr);
 
 		/// <summary>
         /// Pop an integer value from the evaluation stack and perform a bitwise shiftright operation by the given value
@@ -215,10 +215,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftright the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightBy(this ILGenerator generator, Int32 value)
+		public static ILGenerator ShiftRightBy(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRight();
+			return generator.LoadConstant(value)
+							.ShiftRight();
 		}
 
 		/// <summary>
@@ -227,10 +227,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftright the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightBy(this ILGenerator generator, UInt32 value)
+		public static ILGenerator ShiftRightBy(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRight();
+			return generator.LoadConstant(value)
+							.ShiftRight();
 		}
 
 		/// <summary>
@@ -239,10 +239,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftright the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightBy(this ILGenerator generator, Int64 value)
+		public static ILGenerator ShiftRightBy(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRight();
+			return generator.LoadConstant(value)
+							.ShiftRight();
 		}
 
 		/// <summary>
@@ -251,10 +251,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftright the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightBy(this ILGenerator generator, UInt64 value)
+		public static ILGenerator ShiftRightBy(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRight();
+			return generator.LoadConstant(value)
+							.ShiftRight();
 		}
 
 		#endregion
@@ -265,7 +265,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void ShiftRightUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Shr_Un);
+		public static ILGenerator ShiftRightUnsigned(this ILGenerator generator) => generator.FluentEmit(OpCodes.Shr_Un);
 
 		/// <summary>
         /// Pop an integer value from the evaluation stack and perform a bitwise shiftrightunsigned operation by the given value
@@ -273,10 +273,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftrightunsigned the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightUnsignedBy(this ILGenerator generator, Int32 value)
+		public static ILGenerator ShiftRightUnsignedBy(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRightUnsigned();
+			return generator.LoadConstant(value)
+							.ShiftRightUnsigned();
 		}
 
 		/// <summary>
@@ -285,10 +285,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftrightunsigned the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightUnsignedBy(this ILGenerator generator, UInt32 value)
+		public static ILGenerator ShiftRightUnsignedBy(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRightUnsigned();
+			return generator.LoadConstant(value)
+							.ShiftRightUnsigned();
 		}
 
 		/// <summary>
@@ -297,10 +297,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftrightunsigned the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightUnsignedBy(this ILGenerator generator, Int64 value)
+		public static ILGenerator ShiftRightUnsignedBy(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRightUnsigned();
+			return generator.LoadConstant(value)
+							.ShiftRightUnsigned();
 		}
 
 		/// <summary>
@@ -309,10 +309,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise shiftrightunsigned the evaluation stack value by</param>
 		[PublicAPI]
-		public static void ShiftRightUnsignedBy(this ILGenerator generator, UInt64 value)
+		public static ILGenerator ShiftRightUnsignedBy(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.ShiftRightUnsigned();
+			return generator.LoadConstant(value)
+							.ShiftRightUnsigned();
 		}
 
 		#endregion
@@ -323,7 +323,7 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Xor(this ILGenerator generator) => generator.Emit(OpCodes.Xor);
+		public static ILGenerator Xor(this ILGenerator generator) => generator.FluentEmit(OpCodes.Xor);
 
 		/// <summary>
         /// Pop an integer value from the evaluation stack and perform a bitwise xor operation with the given value
@@ -331,10 +331,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise xor the evaluation stack value with</param>
 		[PublicAPI]
-		public static void XorWith(this ILGenerator generator, Int32 value)
+		public static ILGenerator XorWith(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Xor();
+			return generator.LoadConstant(value)
+							.Xor();
 		}
 
 		/// <summary>
@@ -343,10 +343,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise xor the evaluation stack value with</param>
 		[PublicAPI]
-		public static void XorWith(this ILGenerator generator, UInt32 value)
+		public static ILGenerator XorWith(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Xor();
+			return generator.LoadConstant(value)
+							.Xor();
 		}
 
 		/// <summary>
@@ -355,10 +355,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise xor the evaluation stack value with</param>
 		[PublicAPI]
-		public static void XorWith(this ILGenerator generator, Int64 value)
+		public static ILGenerator XorWith(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Xor();
+			return generator.LoadConstant(value)
+							.Xor();
 		}
 
 		/// <summary>
@@ -367,10 +367,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="value">The value to bitwise xor the evaluation stack value with</param>
 		[PublicAPI]
-		public static void XorWith(this ILGenerator generator, UInt64 value)
+		public static ILGenerator XorWith(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Xor();
+			return generator.LoadConstant(value)
+							.Xor();
 		}
 
 		#endregion

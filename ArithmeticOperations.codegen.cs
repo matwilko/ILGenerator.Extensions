@@ -14,21 +14,21 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Add(this ILGenerator generator) => generator.Emit(OpCodes.Add);
+		public static ILGenerator Add(this ILGenerator generator) => generator.FluentEmit(OpCodes.Add);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and adds them together with a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void AddWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.Add_Ovf);
+		public static ILGenerator AddWithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.Add_Ovf);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and adds them together without regard for sign, and a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void AddUnsignedWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.Add_Ovf_Un);
+		public static ILGenerator AddUnsignedWithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.Add_Ovf_Un);
 
 		/// <summary>
         /// Pops a value from the top of the evaluation stack, and with the given value adds them together
@@ -36,10 +36,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddTo(this ILGenerator generator, Int32 value)
+		public static ILGenerator AddTo(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Add();
+			return generator.LoadConstant(value)
+							.Add();
 		}
 
 		/// <summary>
@@ -48,10 +48,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToWithOverflowCheck(this ILGenerator generator, Int32 value)
+		public static ILGenerator AddToWithOverflowCheck(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -60,10 +60,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToUnsignedWithOverflowCheck(this ILGenerator generator, Int32 value)
+		public static ILGenerator AddToUnsignedWithOverflowCheck(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -72,10 +72,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddTo(this ILGenerator generator, UInt32 value)
+		public static ILGenerator AddTo(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Add();
+			return generator.LoadConstant(value)
+							.Add();
 		}
 
 		/// <summary>
@@ -84,10 +84,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToWithOverflowCheck(this ILGenerator generator, UInt32 value)
+		public static ILGenerator AddToWithOverflowCheck(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -96,10 +96,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToUnsignedWithOverflowCheck(this ILGenerator generator, UInt32 value)
+		public static ILGenerator AddToUnsignedWithOverflowCheck(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -108,10 +108,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddTo(this ILGenerator generator, Int64 value)
+		public static ILGenerator AddTo(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Add();
+			return generator.LoadConstant(value)
+							.Add();
 		}
 
 		/// <summary>
@@ -120,10 +120,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToWithOverflowCheck(this ILGenerator generator, Int64 value)
+		public static ILGenerator AddToWithOverflowCheck(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -132,10 +132,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToUnsignedWithOverflowCheck(this ILGenerator generator, Int64 value)
+		public static ILGenerator AddToUnsignedWithOverflowCheck(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -144,10 +144,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddTo(this ILGenerator generator, UInt64 value)
+		public static ILGenerator AddTo(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Add();
+			return generator.LoadConstant(value)
+							.Add();
 		}
 
 		/// <summary>
@@ -156,10 +156,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToWithOverflowCheck(this ILGenerator generator, UInt64 value)
+		public static ILGenerator AddToWithOverflowCheck(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -168,10 +168,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToUnsignedWithOverflowCheck(this ILGenerator generator, UInt64 value)
+		public static ILGenerator AddToUnsignedWithOverflowCheck(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.AddUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -180,10 +180,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddTo(this ILGenerator generator, Single value)
+		public static ILGenerator AddTo(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.Add();
+			return generator.LoadConstant(value)
+							.Add();
 		}
 
 		/// <summary>
@@ -192,10 +192,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToWithOverflowCheck(this ILGenerator generator, Single value)
+		public static ILGenerator AddToWithOverflowCheck(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.AddWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -204,10 +204,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToUnsignedWithOverflowCheck(this ILGenerator generator, Single value)
+		public static ILGenerator AddToUnsignedWithOverflowCheck(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.AddUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -216,10 +216,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddTo(this ILGenerator generator, Double value)
+		public static ILGenerator AddTo(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.Add();
+			return generator.LoadConstant(value)
+							.Add();
 		}
 
 		/// <summary>
@@ -228,10 +228,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToWithOverflowCheck(this ILGenerator generator, Double value)
+		public static ILGenerator AddToWithOverflowCheck(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.AddWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -240,10 +240,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to add the evaluation stack value to</param>
 		[PublicAPI]
-		public static void AddToUnsignedWithOverflowCheck(this ILGenerator generator, Double value)
+		public static ILGenerator AddToUnsignedWithOverflowCheck(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.AddUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.AddUnsignedWithOverflowCheck();
 		}
 
 
@@ -256,14 +256,14 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Divide(this ILGenerator generator) => generator.Emit(OpCodes.Div);
+		public static ILGenerator Divide(this ILGenerator generator) => generator.FluentEmit(OpCodes.Div);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and divides the first by the second without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void DivideUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Div_Un);
+		public static ILGenerator DivideUnsigned(this ILGenerator generator) => generator.FluentEmit(OpCodes.Div_Un);
 
 		/// <summary>
         /// Pops a value from the top of the evaluation stack, and with the given value divides the first by the second
@@ -271,10 +271,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideBy(this ILGenerator generator, Int32 value)
+		public static ILGenerator DivideBy(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Divide();
+			return generator.LoadConstant(value)
+							.Divide();
 		}
 
 		/// <summary>
@@ -283,10 +283,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideByUnsigned(this ILGenerator generator, Int32 value)
+		public static ILGenerator DivideByUnsigned(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.DivideUnsigned();
+			return generator.LoadConstant(value)
+							.DivideUnsigned();
 		}
 
 		/// <summary>
@@ -295,10 +295,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideBy(this ILGenerator generator, UInt32 value)
+		public static ILGenerator DivideBy(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Divide();
+			return generator.LoadConstant(value)
+							.Divide();
 		}
 
 		/// <summary>
@@ -307,10 +307,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideByUnsigned(this ILGenerator generator, UInt32 value)
+		public static ILGenerator DivideByUnsigned(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.DivideUnsigned();
+			return generator.LoadConstant(value)
+							.DivideUnsigned();
 		}
 
 		/// <summary>
@@ -319,10 +319,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideBy(this ILGenerator generator, Int64 value)
+		public static ILGenerator DivideBy(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Divide();
+			return generator.LoadConstant(value)
+							.Divide();
 		}
 
 		/// <summary>
@@ -331,10 +331,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideByUnsigned(this ILGenerator generator, Int64 value)
+		public static ILGenerator DivideByUnsigned(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.DivideUnsigned();
+			return generator.LoadConstant(value)
+							.DivideUnsigned();
 		}
 
 		/// <summary>
@@ -343,10 +343,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideBy(this ILGenerator generator, UInt64 value)
+		public static ILGenerator DivideBy(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Divide();
+			return generator.LoadConstant(value)
+							.Divide();
 		}
 
 		/// <summary>
@@ -355,10 +355,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideByUnsigned(this ILGenerator generator, UInt64 value)
+		public static ILGenerator DivideByUnsigned(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.DivideUnsigned();
+			return generator.LoadConstant(value)
+							.DivideUnsigned();
 		}
 
 		/// <summary>
@@ -367,10 +367,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideBy(this ILGenerator generator, Single value)
+		public static ILGenerator DivideBy(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.Divide();
+			return generator.LoadConstant(value)
+							.Divide();
 		}
 
 		/// <summary>
@@ -379,10 +379,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideByUnsigned(this ILGenerator generator, Single value)
+		public static ILGenerator DivideByUnsigned(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.DivideUnsigned();
+			return generator.LoadConstant(value)
+							.DivideUnsigned();
 		}
 
 		/// <summary>
@@ -391,10 +391,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideBy(this ILGenerator generator, Double value)
+		public static ILGenerator DivideBy(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.Divide();
+			return generator.LoadConstant(value)
+							.Divide();
 		}
 
 		/// <summary>
@@ -403,10 +403,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void DivideByUnsigned(this ILGenerator generator, Double value)
+		public static ILGenerator DivideByUnsigned(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.DivideUnsigned();
+			return generator.LoadConstant(value)
+							.DivideUnsigned();
 		}
 
 
@@ -419,21 +419,21 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Multiply(this ILGenerator generator) => generator.Emit(OpCodes.Mul);
+		public static ILGenerator Multiply(this ILGenerator generator) => generator.FluentEmit(OpCodes.Mul);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and multiples them together with a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void MultiplyWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.Mul_Ovf);
+		public static ILGenerator MultiplyWithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.Mul_Ovf);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and multiples them together without regard for sign, and a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void MultiplyUnsignedWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.Mul_Ovf_Un);
+		public static ILGenerator MultiplyUnsignedWithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.Mul_Ovf_Un);
 
 		/// <summary>
         /// Pops a value from the top of the evaluation stack, and with the given value multiples them together
@@ -441,10 +441,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyBy(this ILGenerator generator, Int32 value)
+		public static ILGenerator MultiplyBy(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Multiply();
+			return generator.LoadConstant(value)
+							.Multiply();
 		}
 
 		/// <summary>
@@ -453,10 +453,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByWithOverflowCheck(this ILGenerator generator, Int32 value)
+		public static ILGenerator MultiplyByWithOverflowCheck(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -465,10 +465,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Int32 value)
+		public static ILGenerator MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -477,10 +477,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyBy(this ILGenerator generator, UInt32 value)
+		public static ILGenerator MultiplyBy(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Multiply();
+			return generator.LoadConstant(value)
+							.Multiply();
 		}
 
 		/// <summary>
@@ -489,10 +489,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByWithOverflowCheck(this ILGenerator generator, UInt32 value)
+		public static ILGenerator MultiplyByWithOverflowCheck(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -501,10 +501,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, UInt32 value)
+		public static ILGenerator MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -513,10 +513,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyBy(this ILGenerator generator, Int64 value)
+		public static ILGenerator MultiplyBy(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Multiply();
+			return generator.LoadConstant(value)
+							.Multiply();
 		}
 
 		/// <summary>
@@ -525,10 +525,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByWithOverflowCheck(this ILGenerator generator, Int64 value)
+		public static ILGenerator MultiplyByWithOverflowCheck(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -537,10 +537,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Int64 value)
+		public static ILGenerator MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -549,10 +549,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyBy(this ILGenerator generator, UInt64 value)
+		public static ILGenerator MultiplyBy(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Multiply();
+			return generator.LoadConstant(value)
+							.Multiply();
 		}
 
 		/// <summary>
@@ -561,10 +561,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByWithOverflowCheck(this ILGenerator generator, UInt64 value)
+		public static ILGenerator MultiplyByWithOverflowCheck(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -573,10 +573,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, UInt64 value)
+		public static ILGenerator MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -585,10 +585,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyBy(this ILGenerator generator, Single value)
+		public static ILGenerator MultiplyBy(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.Multiply();
+			return generator.LoadConstant(value)
+							.Multiply();
 		}
 
 		/// <summary>
@@ -597,10 +597,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByWithOverflowCheck(this ILGenerator generator, Single value)
+		public static ILGenerator MultiplyByWithOverflowCheck(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -609,10 +609,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Single value)
+		public static ILGenerator MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -621,10 +621,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyBy(this ILGenerator generator, Double value)
+		public static ILGenerator MultiplyBy(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.Multiply();
+			return generator.LoadConstant(value)
+							.Multiply();
 		}
 
 		/// <summary>
@@ -633,10 +633,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByWithOverflowCheck(this ILGenerator generator, Double value)
+		public static ILGenerator MultiplyByWithOverflowCheck(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -645,10 +645,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to multiply with the evaluation stack value</param>
 		[PublicAPI]
-		public static void MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Double value)
+		public static ILGenerator MultiplyByUnsignedWithOverflowCheck(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.MultiplyUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.MultiplyUnsignedWithOverflowCheck();
 		}
 
 
@@ -661,14 +661,14 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Remainder(this ILGenerator generator) => generator.Emit(OpCodes.Rem);
+		public static ILGenerator Remainder(this ILGenerator generator) => generator.FluentEmit(OpCodes.Rem);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and finds the remainder when the first is divided by the second without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void RemainderUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.Rem_Un);
+		public static ILGenerator RemainderUnsigned(this ILGenerator generator) => generator.FluentEmit(OpCodes.Rem_Un);
 
 		/// <summary>
         /// Pops a value from the top of the evaluation stack, and with the given value finds the remainder when the first is divided by the second
@@ -676,10 +676,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFrom(this ILGenerator generator, Int32 value)
+		public static ILGenerator RemainderFrom(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Remainder();
+			return generator.LoadConstant(value)
+							.Remainder();
 		}
 
 		/// <summary>
@@ -688,10 +688,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFromUnsigned(this ILGenerator generator, Int32 value)
+		public static ILGenerator RemainderFromUnsigned(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.RemainderUnsigned();
+			return generator.LoadConstant(value)
+							.RemainderUnsigned();
 		}
 
 		/// <summary>
@@ -700,10 +700,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFrom(this ILGenerator generator, UInt32 value)
+		public static ILGenerator RemainderFrom(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Remainder();
+			return generator.LoadConstant(value)
+							.Remainder();
 		}
 
 		/// <summary>
@@ -712,10 +712,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFromUnsigned(this ILGenerator generator, UInt32 value)
+		public static ILGenerator RemainderFromUnsigned(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.RemainderUnsigned();
+			return generator.LoadConstant(value)
+							.RemainderUnsigned();
 		}
 
 		/// <summary>
@@ -724,10 +724,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFrom(this ILGenerator generator, Int64 value)
+		public static ILGenerator RemainderFrom(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Remainder();
+			return generator.LoadConstant(value)
+							.Remainder();
 		}
 
 		/// <summary>
@@ -736,10 +736,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFromUnsigned(this ILGenerator generator, Int64 value)
+		public static ILGenerator RemainderFromUnsigned(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.RemainderUnsigned();
+			return generator.LoadConstant(value)
+							.RemainderUnsigned();
 		}
 
 		/// <summary>
@@ -748,10 +748,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFrom(this ILGenerator generator, UInt64 value)
+		public static ILGenerator RemainderFrom(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Remainder();
+			return generator.LoadConstant(value)
+							.Remainder();
 		}
 
 		/// <summary>
@@ -760,10 +760,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFromUnsigned(this ILGenerator generator, UInt64 value)
+		public static ILGenerator RemainderFromUnsigned(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.RemainderUnsigned();
+			return generator.LoadConstant(value)
+							.RemainderUnsigned();
 		}
 
 		/// <summary>
@@ -772,10 +772,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFrom(this ILGenerator generator, Single value)
+		public static ILGenerator RemainderFrom(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.Remainder();
+			return generator.LoadConstant(value)
+							.Remainder();
 		}
 
 		/// <summary>
@@ -784,10 +784,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFromUnsigned(this ILGenerator generator, Single value)
+		public static ILGenerator RemainderFromUnsigned(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.RemainderUnsigned();
+			return generator.LoadConstant(value)
+							.RemainderUnsigned();
 		}
 
 		/// <summary>
@@ -796,10 +796,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFrom(this ILGenerator generator, Double value)
+		public static ILGenerator RemainderFrom(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.Remainder();
+			return generator.LoadConstant(value)
+							.Remainder();
 		}
 
 		/// <summary>
@@ -808,10 +808,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to divide the evaluation stack value by</param>
 		[PublicAPI]
-		public static void RemainderFromUnsigned(this ILGenerator generator, Double value)
+		public static ILGenerator RemainderFromUnsigned(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.RemainderUnsigned();
+			return generator.LoadConstant(value)
+							.RemainderUnsigned();
 		}
 
 
@@ -824,21 +824,21 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator) => generator.Emit(OpCodes.Sub);
+		public static ILGenerator Subtract(this ILGenerator generator) => generator.FluentEmit(OpCodes.Sub);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and subtracts the second from the first with a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.Sub_Ovf);
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.Sub_Ovf);
 
 		/// <summary>
         /// Pops two values from the top of the evaluation stack and subtracts the second from the first without regard for sign, and a check for overflow
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.Sub_Ovf_Un);
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.Sub_Ovf_Un);
 
 		/// <summary>
         /// Pops a value from the top of the evaluation stack, and with the given value subtracts the second from the first
@@ -846,10 +846,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator, Int32 value)
+		public static ILGenerator Subtract(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Subtract();
+			return generator.LoadConstant(value)
+							.Subtract();
 		}
 
 		/// <summary>
@@ -858,10 +858,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator, Int32 value)
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -870,10 +870,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Int32 value)
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Int32 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -882,10 +882,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator, UInt32 value)
+		public static ILGenerator Subtract(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.Subtract();
+			return generator.LoadConstant(value)
+							.Subtract();
 		}
 
 		/// <summary>
@@ -894,10 +894,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator, UInt32 value)
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -906,10 +906,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator, UInt32 value)
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator, UInt32 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -918,10 +918,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator, Int64 value)
+		public static ILGenerator Subtract(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Subtract();
+			return generator.LoadConstant(value)
+							.Subtract();
 		}
 
 		/// <summary>
@@ -930,10 +930,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator, Int64 value)
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -942,10 +942,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Int64 value)
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Int64 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -954,10 +954,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator, UInt64 value)
+		public static ILGenerator Subtract(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.Subtract();
+			return generator.LoadConstant(value)
+							.Subtract();
 		}
 
 		/// <summary>
@@ -966,10 +966,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator, UInt64 value)
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -978,10 +978,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator, UInt64 value)
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator, UInt64 value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -990,10 +990,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator, Single value)
+		public static ILGenerator Subtract(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.Subtract();
+			return generator.LoadConstant(value)
+							.Subtract();
 		}
 
 		/// <summary>
@@ -1002,10 +1002,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator, Single value)
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -1014,10 +1014,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Single value)
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Single value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractUnsignedWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -1026,10 +1026,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void Subtract(this ILGenerator generator, Double value)
+		public static ILGenerator Subtract(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.Subtract();
+			return generator.LoadConstant(value)
+							.Subtract();
 		}
 
 		/// <summary>
@@ -1038,10 +1038,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractWithOverflowCheck(this ILGenerator generator, Double value)
+		public static ILGenerator SubtractWithOverflowCheck(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractWithOverflowCheck();
 		}
 
 		/// <summary>
@@ -1050,10 +1050,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to subtract from the evaluation stack value</param>
 		[PublicAPI]
-		public static void SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Double value)
+		public static ILGenerator SubtractUnsignedWithOverflowCheck(this ILGenerator generator, Double value)
 		{
-			generator.LoadConstant(value);
-			generator.SubtractUnsignedWithOverflowCheck();
+			return generator.LoadConstant(value)
+							.SubtractUnsignedWithOverflowCheck();
 		}
 
 

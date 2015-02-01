@@ -20,10 +20,10 @@ namespace ILGeneratorExtensions
         /// <param name="argNum">The index of the argument to store the value in</param>
 		/// <param name="value">The value to store in the argument</param>
 		[PublicAPI]
-		public static void OverwriteArgument(this ILGenerator generator, ushort argNum, <#= type.Name #> value)
+		public static ILGenerator OverwriteArgument(this ILGenerator generator, ushort argNum, <#= type.Name #> value)
 		{
-			generator.LoadConstant(value);
-			generator.StoreInArgument(argNum);
+			return generator.LoadConstant(value)
+							.StoreInArgument(argNum);
 		}
 		
 <# } #>

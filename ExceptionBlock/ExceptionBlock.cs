@@ -25,13 +25,13 @@ namespace ILGeneratorExtensions
         /// Jumps to the instruction immediately after this protected region (after any finally block executes)
         /// </summary>
         [PublicAPI]
-        public void Leave() => generator.Leave(endLabel);
+        public ILGenerator Leave() => generator.Leave(endLabel);
 
         /// <summary>
         /// Jumps to the instruction immediately after this protected region (after any finally block executes)
         /// </summary>
         [PublicAPI]
-        public void LeaveShortForm() => generator.LeaveShortForm(endLabel);
+        public ILGenerator LeaveShortForm() => generator.LeaveShortForm(endLabel);
 
         private void EnsureTryBlockEnded()
         {
@@ -125,13 +125,15 @@ namespace ILGeneratorExtensions
                 {
                     var filterBlockEnd = generator.DefineLabel();
                     var customFilter = generator.DefineLabel();
-                    generator.Duplicate();
-                    generator.IsInstanceOfType(exceptionType);
-                    generator.BranchIfTrue(customFilter);
 
-                    generator.Pop();
-                    generator.LoadConstant(false);
-                    generator.BranchTo(filterBlockEnd);
+                    generator
+                        .Duplicate()
+                        .IsInstanceOfType(exceptionType)
+                        .BranchIfTrue(customFilter)
+
+                        .Pop()
+                        .LoadConstant(false)
+                        .BranchTo(filterBlockEnd);
 
                     generator.MarkLabel(customFilter);
                     filter(generator);

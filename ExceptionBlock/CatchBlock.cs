@@ -19,13 +19,13 @@ namespace ILGeneratorExtensions
         /// Rethrows the exception caught by this catch block
         /// </summary>
         [PublicAPI]
-        public void Rethrow() => generator.Emit(OpCodes.Rethrow);
+        public ILGenerator Rethrow() => generator.FluentEmit(OpCodes.Rethrow);
 
         /// <summary>
         /// Jumps to the instruction immediately after this protected region (after any finally block executes)
         /// </summary>
         [PublicAPI]
-        public void Leave() => generator.Leave(endLabel);
+        public ILGenerator Leave() => generator.Leave(endLabel);
         
         public void Dispose()
         {

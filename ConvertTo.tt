@@ -35,14 +35,14 @@ namespace ILGeneratorExtensions
 		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with no overflow check. Pushes an <#= type.Value.StackType #> value onto the evaluation stack.
 		/// </summary>
 		[PublicAPI]
-		public static void ConvertTo<#= type.Key.Name #>(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.NoOverflow #>);
+		public static ILGenerator ConvertTo<#= type.Key.Name #>(this ILGenerator generator) => generator.FluentEmit(OpCodes.<#= type.Value.NoOverflow #>);
 <# if (type.Value.Overflow != null) { #>
 
 		/// <summary>
 		/// Converts the signed value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the evaluation stack.
 		/// </summary>
 		[PublicAPI]
-		public static void ConvertTo<#= type.Key.Name #>WithOverflowCheck(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.Overflow #>);
+		public static ILGenerator ConvertTo<#= type.Key.Name #>WithOverflowCheck(this ILGenerator generator) => generator.FluentEmit(OpCodes.<#= type.Value.Overflow #>);
 <# } #>
 <# if (type.Value.FromUnsigned != null) { #>
 
@@ -50,7 +50,7 @@ namespace ILGeneratorExtensions
 		/// Converts the unsigned value on the top of the evaluation stack to <#= type.Value.Description #> with an overflow check. Pushes an <#= type.Value.StackType #> value onto the evaluation stack.
 		/// </summary>
 		[PublicAPI]
-		public static void ConvertTo<#= type.Key.Name #>FromUnsigned(this ILGenerator generator) => generator.Emit(OpCodes.<#= type.Value.FromUnsigned #>);
+		public static ILGenerator ConvertTo<#= type.Key.Name #>FromUnsigned(this ILGenerator generator) => generator.FluentEmit(OpCodes.<#= type.Value.FromUnsigned #>);
 <# } #>
 
 		#endregion

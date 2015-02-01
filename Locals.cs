@@ -11,30 +11,20 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to get the value of</param>
         [PublicAPI]
-        public static void LoadLocal(this ILGenerator generator, LocalBuilder local)
+        public static ILGenerator LoadLocal(this ILGenerator generator, LocalBuilder local)
         {
             switch (local.LocalIndex)
             {
                 case 0:
-                    generator.Emit(OpCodes.Ldloc_0);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldloc_0);
                 case 1:
-                    generator.Emit(OpCodes.Ldloc_1);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldloc_1);
                 case 2:
-                    generator.Emit(OpCodes.Ldloc_2);
-                    break;
+                    return generator.FluentEmit(OpCodes.Ldloc_2);
                 default:
-                    if (local.LocalIndex <= 255)
-                    {
-                        generator.Emit(OpCodes.Ldloc_S, local);
-                    }
-                    else
-                    {
-                        generator.Emit(OpCodes.Ldloc, local);
-                    }
-
-                    break;
+                    return local.LocalIndex <= 255
+                        ? generator.FluentEmit(OpCodes.Ldloc_S, local)
+                        : generator.FluentEmit(OpCodes.Ldloc, local);
             }
         }
 
@@ -44,16 +34,11 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to get the address of</param>
         [PublicAPI]
-        public static void LoadLocalAddress(this ILGenerator generator, LocalBuilder local)
+        public static ILGenerator LoadLocalAddress(this ILGenerator generator, LocalBuilder local)
         {
-            if (local.LocalIndex <= 255)
-            {
-                generator.Emit(OpCodes.Ldloca_S, local);
-            }
-            else
-            {
-                generator.Emit(OpCodes.Ldloca, local);
-            }
+            return local.LocalIndex <= 255
+                ? generator.FluentEmit(OpCodes.Ldloca_S, local)
+                : generator.FluentEmit(OpCodes.Ldloca, local);
         }
 
         /// <summary>
@@ -62,30 +47,20 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store the evaluation stack value in</param>
         [PublicAPI]
-        public static void StoreInLocal(this ILGenerator generator, LocalBuilder local)
+        public static ILGenerator StoreInLocal(this ILGenerator generator, LocalBuilder local)
         {
             switch (local.LocalIndex)
             {
                 case 0:
-                    generator.Emit(OpCodes.Stloc_0);
-                    break;
+                    return generator.FluentEmit(OpCodes.Stloc_0);
                 case 1:
-                    generator.Emit(OpCodes.Stloc_1);
-                    break;
+                    return generator.FluentEmit(OpCodes.Stloc_1);
                 case 2:
-                    generator.Emit(OpCodes.Stloc_2);
-                    break;
+                    return generator.FluentEmit(OpCodes.Stloc_2);
                 default:
-                    if (local.LocalIndex <= 255)
-                    {
-                        generator.Emit(OpCodes.Stloc_S, local);
-                    }
-                    else
-                    {
-                        generator.Emit(OpCodes.Stloc, local);
-                    }
-
-                    break;
+                    return (local.LocalIndex <= 255)
+                        ? generator.FluentEmit(OpCodes.Stloc_S, local)
+                        : generator.FluentEmit(OpCodes.Stloc, local);
             }
         }
     }

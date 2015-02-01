@@ -31,7 +31,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="methodExpression">The expression representing the method to call</param>
 		[PublicAPI]
-		public static void Call<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+		public static ILGenerator Call<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
 			=> generator.Call(GetMethodInfo(methodExpression));
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="methodExpression">The expression representing the method to call</param>
         [PublicAPI]
-        public static void CallVirtual<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+        public static ILGenerator CallVirtual<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
 			=> generator.CallVirtual(GetMethodInfo(methodExpression));
 
 
@@ -50,7 +50,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="methodExpression">The expression representing the method to call</param>
         [PublicAPI]
-        public static void TailCall<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+        public static ILGenerator TailCall<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
 			=> generator.TailCall(GetMethodInfo(methodExpression));
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="methodExpression">The expression representing the method to call</param>
         [PublicAPI]
-        public static void TailCallVirtual<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+        public static ILGenerator TailCallVirtual<#= genericParams #>(this ILGenerator generator, Expression<<#= typeName #><#= genericParams #>> methodExpression)
 			=> generator.TailCallVirtual(GetMethodInfo(methodExpression));
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace ILGeneratorExtensions
         /// <param name="constrainedType">The type to constrain the call to</param>
         /// <param name="methodExpression">The expression representing the method to call</param>
         [PublicAPI]
-        public static void ConstrainedCall<#= genericParams #>(this ILGenerator generator, Type constrainedType, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+        public static ILGenerator ConstrainedCall<#= genericParams #>(this ILGenerator generator, Type constrainedType, Expression<<#= typeName #><#= genericParams #>> methodExpression)
 			=> generator.ConstrainedCall(constrainedType, GetMethodInfo(methodExpression));
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace ILGeneratorExtensions
         /// <param name="constrainedType">The type to constrain the call to</param>
         /// <param name="methodExpression">The expression representing the method to call</param>
         [PublicAPI]
-        public static void ConstrainedTailCall<#= genericParams #>(this ILGenerator generator, Type constrainedType, Expression<<#= typeName #><#= genericParams #>> methodExpression)
+        public static ILGenerator ConstrainedTailCall<#= genericParams #>(this ILGenerator generator, Type constrainedType, Expression<<#= typeName #><#= genericParams #>> methodExpression)
 			=> generator.ConstrainedTailCall(constrainedType, GetMethodInfo(methodExpression));
 
 		private static MethodInfo GetMethodInfo<#= genericParams #>(Expression<<#= typeName #><#= genericParams #>> methodExpression)

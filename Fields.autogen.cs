@@ -17,15 +17,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Boolean value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Boolean value)
 		{
 			if (field.FieldType != typeof(Boolean))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Boolean value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Boolean value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Boolean value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Boolean value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Boolean>> fieldExpression, Boolean value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Boolean>> fieldExpression, Boolean value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Boolean>> fieldExpression, Boolean value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Boolean>> fieldExpression, Boolean value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -81,16 +81,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Boolean value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Boolean value)
 		{
 			if (field.FieldType != typeof(Boolean))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -102,7 +102,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Boolean value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Boolean value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Boolean" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Boolean value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Boolean value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Boolean>> fieldExpression, Boolean value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Boolean>> fieldExpression, Boolean value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Boolean>> fieldExpression, Boolean value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Boolean>> fieldExpression, Boolean value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -145,15 +145,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Char value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Char value)
 		{
 			if (field.FieldType != typeof(Char))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -165,7 +165,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Char value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Char value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Char value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Char value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Char>> fieldExpression, Char value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Char>> fieldExpression, Char value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Char>> fieldExpression, Char value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Char>> fieldExpression, Char value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -209,16 +209,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Char value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Char value)
 		{
 			if (field.FieldType != typeof(Char))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -230,7 +230,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Char value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Char value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Char" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Char value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Char value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Char>> fieldExpression, Char value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Char>> fieldExpression, Char value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Char>> fieldExpression, Char value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Char>> fieldExpression, Char value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -273,15 +273,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, SByte value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, SByte value)
 		{
 			if (field.FieldType != typeof(SByte))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -293,7 +293,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, SByte value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, SByte value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, SByte value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, SByte value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -315,7 +315,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<SByte>> fieldExpression, SByte value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<SByte>> fieldExpression, SByte value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, SByte>> fieldExpression, SByte value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, SByte>> fieldExpression, SByte value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -337,16 +337,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, SByte value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, SByte value)
 		{
 			if (field.FieldType != typeof(SByte))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -358,7 +358,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, SByte value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, SByte value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="SByte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, SByte value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, SByte value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<SByte>> fieldExpression, SByte value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<SByte>> fieldExpression, SByte value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -391,7 +391,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, SByte>> fieldExpression, SByte value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, SByte>> fieldExpression, SByte value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -401,15 +401,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Byte value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Byte value)
 		{
 			if (field.FieldType != typeof(Byte))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -421,7 +421,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Byte value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Byte value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -433,7 +433,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Byte value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Byte value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -443,7 +443,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Byte>> fieldExpression, Byte value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Byte>> fieldExpression, Byte value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -454,7 +454,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Byte>> fieldExpression, Byte value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Byte>> fieldExpression, Byte value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -465,16 +465,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Byte value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Byte value)
 		{
 			if (field.FieldType != typeof(Byte))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -486,7 +486,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Byte value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Byte value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -498,7 +498,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Byte" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Byte value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Byte value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -508,7 +508,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Byte>> fieldExpression, Byte value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Byte>> fieldExpression, Byte value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Byte>> fieldExpression, Byte value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Byte>> fieldExpression, Byte value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -529,15 +529,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int16 value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int16 value)
 		{
 			if (field.FieldType != typeof(Int16))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -549,7 +549,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Int16 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Int16 value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -561,7 +561,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Int16 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Int16 value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -571,7 +571,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Int16>> fieldExpression, Int16 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Int16>> fieldExpression, Int16 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Int16>> fieldExpression, Int16 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Int16>> fieldExpression, Int16 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -593,16 +593,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int16 value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int16 value)
 		{
 			if (field.FieldType != typeof(Int16))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -614,7 +614,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Int16 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Int16 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -626,7 +626,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Int16 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Int16 value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -636,7 +636,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Int16>> fieldExpression, Int16 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Int16>> fieldExpression, Int16 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -647,7 +647,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Int16>> fieldExpression, Int16 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Int16>> fieldExpression, Int16 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -657,15 +657,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt16 value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt16 value)
 		{
 			if (field.FieldType != typeof(UInt16))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -677,7 +677,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, UInt16 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, UInt16 value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -689,7 +689,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, UInt16 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, UInt16 value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -699,7 +699,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<UInt16>> fieldExpression, UInt16 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<UInt16>> fieldExpression, UInt16 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, UInt16>> fieldExpression, UInt16 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, UInt16>> fieldExpression, UInt16 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -721,16 +721,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt16 value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt16 value)
 		{
 			if (field.FieldType != typeof(UInt16))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -742,7 +742,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, UInt16 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, UInt16 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -754,7 +754,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt16" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, UInt16 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, UInt16 value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -764,7 +764,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<UInt16>> fieldExpression, UInt16 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<UInt16>> fieldExpression, UInt16 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -775,7 +775,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, UInt16>> fieldExpression, UInt16 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, UInt16>> fieldExpression, UInt16 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -785,15 +785,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int32 value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int32 value)
 		{
 			if (field.FieldType != typeof(Int32))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -805,7 +805,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Int32 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Int32 value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -817,7 +817,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Int32 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Int32 value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -827,7 +827,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Int32>> fieldExpression, Int32 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Int32>> fieldExpression, Int32 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Int32>> fieldExpression, Int32 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Int32>> fieldExpression, Int32 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -849,16 +849,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int32 value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int32 value)
 		{
 			if (field.FieldType != typeof(Int32))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -870,7 +870,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Int32 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Int32 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -882,7 +882,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Int32 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Int32 value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -892,7 +892,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Int32>> fieldExpression, Int32 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Int32>> fieldExpression, Int32 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -903,7 +903,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Int32>> fieldExpression, Int32 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Int32>> fieldExpression, Int32 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -913,15 +913,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt32 value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt32 value)
 		{
 			if (field.FieldType != typeof(UInt32))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -933,7 +933,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, UInt32 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, UInt32 value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -945,7 +945,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, UInt32 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, UInt32 value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -955,7 +955,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<UInt32>> fieldExpression, UInt32 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<UInt32>> fieldExpression, UInt32 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -966,7 +966,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, UInt32>> fieldExpression, UInt32 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, UInt32>> fieldExpression, UInt32 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -977,16 +977,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt32 value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt32 value)
 		{
 			if (field.FieldType != typeof(UInt32))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -998,7 +998,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, UInt32 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, UInt32 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1010,7 +1010,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt32" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, UInt32 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, UInt32 value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1020,7 +1020,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<UInt32>> fieldExpression, UInt32 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<UInt32>> fieldExpression, UInt32 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1031,7 +1031,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, UInt32>> fieldExpression, UInt32 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, UInt32>> fieldExpression, UInt32 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -1041,15 +1041,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int64 value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Int64 value)
 		{
 			if (field.FieldType != typeof(Int64))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1061,7 +1061,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Int64 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Int64 value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1073,7 +1073,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Int64 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Int64 value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1083,7 +1083,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Int64>> fieldExpression, Int64 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Int64>> fieldExpression, Int64 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1094,7 +1094,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Int64>> fieldExpression, Int64 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Int64>> fieldExpression, Int64 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -1105,16 +1105,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int64 value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Int64 value)
 		{
 			if (field.FieldType != typeof(Int64))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1126,7 +1126,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Int64 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Int64 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1138,7 +1138,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Int64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Int64 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Int64 value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1148,7 +1148,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Int64>> fieldExpression, Int64 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Int64>> fieldExpression, Int64 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1159,7 +1159,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Int64>> fieldExpression, Int64 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Int64>> fieldExpression, Int64 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -1169,15 +1169,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt64 value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, UInt64 value)
 		{
 			if (field.FieldType != typeof(UInt64))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1189,7 +1189,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, UInt64 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, UInt64 value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1201,7 +1201,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, UInt64 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, UInt64 value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1211,7 +1211,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<UInt64>> fieldExpression, UInt64 value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<UInt64>> fieldExpression, UInt64 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1222,7 +1222,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, UInt64>> fieldExpression, UInt64 value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, UInt64>> fieldExpression, UInt64 value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -1233,16 +1233,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt64 value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, UInt64 value)
 		{
 			if (field.FieldType != typeof(UInt64))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1254,7 +1254,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, UInt64 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, UInt64 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1266,7 +1266,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="UInt64" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, UInt64 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, UInt64 value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1276,7 +1276,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<UInt64>> fieldExpression, UInt64 value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<UInt64>> fieldExpression, UInt64 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1287,7 +1287,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, UInt64>> fieldExpression, UInt64 value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, UInt64>> fieldExpression, UInt64 value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -1297,15 +1297,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Single value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Single value)
 		{
 			if (field.FieldType != typeof(Single))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1317,7 +1317,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Single value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Single value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1329,7 +1329,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Single value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Single value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1339,7 +1339,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Single>> fieldExpression, Single value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Single>> fieldExpression, Single value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1350,7 +1350,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Single>> fieldExpression, Single value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Single>> fieldExpression, Single value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -1361,16 +1361,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Single value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Single value)
 		{
 			if (field.FieldType != typeof(Single))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1382,7 +1382,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Single value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Single value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1394,7 +1394,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Single" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Single value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Single value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1404,7 +1404,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Single>> fieldExpression, Single value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Single>> fieldExpression, Single value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1415,7 +1415,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Single>> fieldExpression, Single value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Single>> fieldExpression, Single value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 		/// <summary>
         /// Pops a reference from the evaluation stack and stores the given value in the given field for that object
@@ -1425,15 +1425,15 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Double value)
+		public static ILGenerator OverwriteFieldWith(this ILGenerator generator, FieldInfo field, Double value)
 		{
 			if (field.FieldType != typeof(Double))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1445,7 +1445,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Double value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Type type, string fieldName, Double value)
             => generator.OverwriteFieldWith(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1457,7 +1457,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Double value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, string fieldName, Double value)
             => generator.OverwriteFieldWith(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1467,7 +1467,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith(this ILGenerator generator, Expression<Func<Double>> fieldExpression, Double value)
+        public static ILGenerator OverwriteFieldWith(this ILGenerator generator, Expression<Func<Double>> fieldExpression, Double value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1478,7 +1478,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Double>> fieldExpression, Double value)
+        public static ILGenerator OverwriteFieldWith<T>(this ILGenerator generator, Expression<Func<T, Double>> fieldExpression, Double value)
             => generator.OverwriteFieldWith(GetFieldInfo(fieldExpression), value);
 
 		/// <summary>
@@ -1489,16 +1489,16 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
 		[PublicAPI]
-		public static void OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Double value)
+		public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, FieldInfo field, Double value)
 		{
 			if (field.FieldType != typeof(Double))
 			{
 				throw new InvalidOperationException("Type mismatch - field is of type " + field.FieldType);
 			}
 
-			generator.LoadConstant(value);
-			generator.Emit(OpCodes.Volatile);
-			generator.StoreInField(field);
+			return generator.LoadConstant(value)
+							.FluentEmit(OpCodes.Volatile)
+							.StoreInField(field);
 		}
 
 		/// <summary>
@@ -1510,7 +1510,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Double value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Type type, string fieldName, Double value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(type, fieldName), value);
 
         /// <summary>
@@ -1522,7 +1522,7 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The value to overwrite the field with</param>
 		/// <exception cref="InvalidOperationException">Thrown if the field is not of type <see cref="Double" /></exception>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Double value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, string fieldName, Double value)
             => generator.OverwriteFieldWithVolatile(typeof(T), fieldName, value);
 
         /// <summary>
@@ -1532,7 +1532,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Double>> fieldExpression, Double value)
+        public static ILGenerator OverwriteFieldWithVolatile(this ILGenerator generator, Expression<Func<Double>> fieldExpression, Double value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 
         /// <summary>
@@ -1543,7 +1543,7 @@ namespace ILGeneratorExtensions
         /// <param name="fieldExpression">An expression representing the field to load</param>
 		/// <param name="value">The value to overwrite the field with</param>
         [PublicAPI]
-        public static void OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Double>> fieldExpression, Double value)
+        public static ILGenerator OverwriteFieldWithVolatile<T>(this ILGenerator generator, Expression<Func<T, Double>> fieldExpression, Double value)
             => generator.OverwriteFieldWithVolatile(GetFieldInfo(fieldExpression), value);
 	}
 }

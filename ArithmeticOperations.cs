@@ -13,6 +13,6 @@ namespace ILGeneratorExtensions
         /// </remarks>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
-        public static void Negate(this ILGenerator generator) => generator.Emit(OpCodes.Neg);
+        public static ILGenerator Negate(this ILGenerator generator) => generator.FluentEmit(OpCodes.Neg);
     }
 }

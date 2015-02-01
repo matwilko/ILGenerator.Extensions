@@ -88,6 +88,15 @@
       <DependentUpon>Fields.tt</DependentUpon>
     </Compile>
     <Compile Include="Fields.cs" />
+    <Content Include="FluentInterface.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FluentInterface.autogen.cs</LastGenOutput>
+    </Content>
+    <Compile Include="FluentInterface.autogen.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FluentInterface.tt</DependentUpon>
+    </Compile>
     <Compile Include="FunctionPointers.cs" />
     <Compile Include="Members.autogen.cs">
       <AutoGen>True</AutoGen>

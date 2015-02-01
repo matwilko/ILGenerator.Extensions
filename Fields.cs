@@ -16,8 +16,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to load</param>
         [PublicAPI]
-        public static void LoadField(this ILGenerator generator, FieldInfo field)
-            => generator.Emit(field.IsStatic ? OpCodes.Ldsfld : OpCodes.Ldfld, field);
+        public static ILGenerator LoadField(this ILGenerator generator, FieldInfo field)
+            => generator.FluentEmit(field.IsStatic ? OpCodes.Ldsfld : OpCodes.Ldfld, field);
 
         /// <summary>
         /// Pops a reference from the evaluation stack and pushes the value of the field (with the given name on the given type) for that object
@@ -26,7 +26,7 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadField(this ILGenerator generator, Type type, string fieldName)
+        public static ILGenerator LoadField(this ILGenerator generator, Type type, string fieldName)
             => generator.LoadField(GetFieldInfo(type, fieldName));
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadField<T>(this ILGenerator generator, string fieldName)
+        public static ILGenerator LoadField<T>(this ILGenerator generator, string fieldName)
             => generator.LoadField(typeof(T), fieldName);
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadField<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
+        public static ILGenerator LoadField<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
             => generator.LoadField(GetFieldInfo(fieldExpression));
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadField<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
+        public static ILGenerator LoadField<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
             => generator.LoadField(GetFieldInfo(fieldExpression));
 
         #endregion
@@ -68,10 +68,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to load</param>
         [PublicAPI]
-        public static void LoadFieldVolatile(this ILGenerator generator, FieldInfo field)
+        public static ILGenerator LoadFieldVolatile(this ILGenerator generator, FieldInfo field)
         {
-            generator.Emit(OpCodes.Volatile);
-            generator.LoadField(field);
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .LoadField(field);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadFieldVolatile(this ILGenerator generator, Type type, string fieldName)
+        public static ILGenerator LoadFieldVolatile(this ILGenerator generator, Type type, string fieldName)
             => generator.LoadFieldVolatile(GetFieldInfo(type, fieldName));
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadFieldVolatile<T>(this ILGenerator generator, string fieldName)
+        public static ILGenerator LoadFieldVolatile<T>(this ILGenerator generator, string fieldName)
             => generator.LoadFieldVolatile(typeof(T), fieldName);
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadFieldVolatile<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
+        public static ILGenerator LoadFieldVolatile<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
             => generator.LoadFieldVolatile(GetFieldInfo(fieldExpression));
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadFieldVolatile<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
+        public static ILGenerator LoadFieldVolatile<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
             => generator.LoadFieldVolatile(GetFieldInfo(fieldExpression));
 
         #endregion
@@ -124,9 +124,9 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to load</param>
         [PublicAPI]
-        public static void LoadFieldAddress(this ILGenerator generator, FieldInfo field)
+        public static ILGenerator LoadFieldAddress(this ILGenerator generator, FieldInfo field)
         {
-            generator.Emit(field.IsStatic ? OpCodes.Ldsflda : OpCodes.Ldflda, field);
+            return generator.FluentEmit(field.IsStatic ? OpCodes.Ldsflda : OpCodes.Ldflda, field);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadFieldAddress(this ILGenerator generator, Type type, string fieldName)
+        public static ILGenerator LoadFieldAddress(this ILGenerator generator, Type type, string fieldName)
             => generator.LoadFieldAddress(GetFieldInfo(type, fieldName));
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadFieldAddress<T>(this ILGenerator generator, string fieldName)
+        public static ILGenerator LoadFieldAddress<T>(this ILGenerator generator, string fieldName)
             => generator.LoadFieldAddress(typeof(T), fieldName);
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadFieldAddress<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
+        public static ILGenerator LoadFieldAddress<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
             => generator.LoadFieldAddress(GetFieldInfo(fieldExpression));
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadFieldAddress<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
+        public static ILGenerator LoadFieldAddress<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
             => generator.LoadFieldAddress(GetFieldInfo(fieldExpression));
 
         #endregion
@@ -179,10 +179,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to load</param>
         [PublicAPI]
-        public static void LoadFieldAddressVolatile(this ILGenerator generator, FieldInfo field)
+        public static ILGenerator LoadFieldAddressVolatile(this ILGenerator generator, FieldInfo field)
         {
-            generator.Emit(OpCodes.Volatile);
-            generator.LoadFieldAddress(field);
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .LoadFieldAddress(field);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadFieldAddressVolatile(this ILGenerator generator, Type type, string fieldName)
+        public static ILGenerator LoadFieldAddressVolatile(this ILGenerator generator, Type type, string fieldName)
             => generator.LoadFieldAddressVolatile(GetFieldInfo(type, fieldName));
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void LoadFieldAddressVolatile<T>(this ILGenerator generator, string fieldName)
+        public static ILGenerator LoadFieldAddressVolatile<T>(this ILGenerator generator, string fieldName)
             => generator.LoadFieldAddressVolatile(typeof(T), fieldName);
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadFieldAddressVolatile<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
+        public static ILGenerator LoadFieldAddressVolatile<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
             => generator.LoadFieldAddressVolatile(GetFieldInfo(fieldExpression));
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void LoadFieldAddressVolatile<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
+        public static ILGenerator LoadFieldAddressVolatile<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
             => generator.LoadFieldAddressVolatile(GetFieldInfo(fieldExpression));
 
         #endregion
@@ -235,8 +235,8 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to store the value in</param>
         [PublicAPI]
-        public static void StoreInField(this ILGenerator generator, FieldInfo field)
-            => generator.Emit(field.IsStatic ? OpCodes.Stsfld : OpCodes.Stfld, field);
+        public static ILGenerator StoreInField(this ILGenerator generator, FieldInfo field)
+            => generator.FluentEmit(field.IsStatic ? OpCodes.Stsfld : OpCodes.Stfld, field);
 
         /// <summary>
         /// Pops a reference and a value from the evaluation stack and stores the value in the field (with the given name on the given type) for that object
@@ -245,7 +245,7 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void StoreInField(this ILGenerator generator, Type type, string fieldName)
+        public static ILGenerator StoreInField(this ILGenerator generator, Type type, string fieldName)
             => generator.StoreInField(GetFieldInfo(type, fieldName));
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void StoreInField<T>(this ILGenerator generator, string fieldName)
+        public static ILGenerator StoreInField<T>(this ILGenerator generator, string fieldName)
             => generator.StoreInField(typeof(T), fieldName);
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void StoreInField<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
+        public static ILGenerator StoreInField<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
             => generator.StoreInField(GetFieldInfo(fieldExpression));
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void StoreInField<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
+        public static ILGenerator StoreInField<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
             => generator.StoreInField(GetFieldInfo(fieldExpression));
 
         #endregion
@@ -288,10 +288,10 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="field">The field to store the value in</param>
         [PublicAPI]
-        public static void StoreInFieldVolatile(this ILGenerator generator, FieldInfo field)
+        public static ILGenerator StoreInFieldVolatile(this ILGenerator generator, FieldInfo field)
         {
-            generator.Emit(OpCodes.Volatile);
-            generator.StoreInField(field);
+            return generator.FluentEmit(OpCodes.Volatile)
+                            .StoreInField(field);
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace ILGeneratorExtensions
         /// <param name="type">The type the field is on</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void StoreInFieldVolatile(this ILGenerator generator, Type type, string fieldName)
+        public static ILGenerator StoreInFieldVolatile(this ILGenerator generator, Type type, string fieldName)
             => generator.StoreInFieldVolatile(GetFieldInfo(type, fieldName));
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldName">The name of the field</param>
         [PublicAPI]
-        public static void StoreInFieldVolatile<T>(this ILGenerator generator, string fieldName)
+        public static ILGenerator StoreInFieldVolatile<T>(this ILGenerator generator, string fieldName)
             => generator.StoreInFieldVolatile(typeof(T), fieldName);
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void StoreInFieldVolatile<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
+        public static ILGenerator StoreInFieldVolatile<TField>(this ILGenerator generator, Expression<Func<TField>> fieldExpression)
             => generator.StoreInFieldVolatile(GetFieldInfo(fieldExpression));
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="fieldExpression">An expression representing the field to load</param>
         [PublicAPI]
-        public static void StoreInFieldVolatile<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
+        public static ILGenerator StoreInFieldVolatile<T, TField>(this ILGenerator generator, Expression<Func<T, TField>> fieldExpression)
             => generator.StoreInFieldVolatile(GetFieldInfo(fieldExpression));
 
         #endregion

@@ -13,11 +13,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Boolean" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Boolean value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Boolean value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Boolean>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Boolean>();
         }
 
 		/// <summary>
@@ -27,11 +27,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Char" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Char value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Char value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Char>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Char>();
         }
 
 		/// <summary>
@@ -41,11 +41,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="SByte" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, SByte value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, SByte value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<SByte>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<SByte>();
         }
 
 		/// <summary>
@@ -55,11 +55,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Byte" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Byte value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Byte value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Byte>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Byte>();
         }
 
 		/// <summary>
@@ -69,11 +69,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Int16" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Int16 value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Int16 value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Int16>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Int16>();
         }
 
 		/// <summary>
@@ -83,11 +83,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="UInt16" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, UInt16 value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, UInt16 value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<UInt16>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<UInt16>();
         }
 
 		/// <summary>
@@ -97,11 +97,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Int32" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Int32 value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Int32 value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Int32>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Int32>();
         }
 
 		/// <summary>
@@ -111,11 +111,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="UInt32" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, UInt32 value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, UInt32 value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<UInt32>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<UInt32>();
         }
 
 		/// <summary>
@@ -125,11 +125,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Int64" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Int64 value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Int64 value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Int64>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Int64>();
         }
 
 		/// <summary>
@@ -139,11 +139,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="UInt64" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, UInt64 value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, UInt64 value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<UInt64>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<UInt64>();
         }
 
 		/// <summary>
@@ -153,11 +153,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Single" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Single value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Single value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Single>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Single>();
         }
 
 		/// <summary>
@@ -167,11 +167,11 @@ namespace ILGeneratorExtensions
 		/// <param name="value">The <see cref="Double" /> value to store in the array</param>
 		/// <param name="index">The index to store the value at</param>
 		[PublicAPI]
-		public static void StoreElementAtIndex(this ILGenerator generator, Double value, uint index)
+		public static ILGenerator StoreElementAtIndex(this ILGenerator generator, Double value, uint index)
         {
-            generator.LoadConstant(index);
-			generator.LoadConstant(value);
-            generator.StoreElement<Double>();
+            return generator.LoadConstant(index)
+							.LoadConstant(value)
+							.StoreElement<Double>();
         }
 
     }
