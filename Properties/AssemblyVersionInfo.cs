@@ -15,5 +15,5 @@ Copyright 2014 Matthew Wilkinson
 */
 using System.Reflection;
 
-[assembly: AssemblyVersion("1.1.0.12")]
-[assembly: AssemblyFileVersion("1.1.0.12")]
+[assembly: AssemblyVersion("1.2.0.13")]
+[assembly: AssemblyFileVersion("1.2.0.13")]
