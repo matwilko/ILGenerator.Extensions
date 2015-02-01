@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/matwilko/ILGenerator.Extensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Adding string and Expression based API to make accessing class members simpler</releaseNotes>
+    <releaseNotes>Adding fluent interface for local and label usage</releaseNotes>
     <copyright>Copyright Matthew Wilkinson 2014</copyright>
     <tags>IL CIL MSIL ILGenerator lwcg codegen</tags>
   </metadata>
