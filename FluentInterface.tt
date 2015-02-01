@@ -1,23 +1,57 @@
 ﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.IO" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="System.Reflection.Emit" #>
+<#@ import namespace="System.Xml.XPath" #>
 <#@ output extension=".autogen.cs" #>
+<#
+
+var docFile = File.OpenRead(@"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.xml");
+var doc = new XPathDocument(docFile);
+var nav = doc.CreateNavigator();
+	
+var methods =
+typeof(ILGenerator).GetMethods(BindingFlags.Public | BindingFlags.Instance)
+	.Where(method => method.Name == "Emit")
+	.Select(method => new {
+		Method = method,
+		FullSignature = string.Join(", ", method.GetParameters().Select(param => param.ParameterType + " " + param.Name)),
+		NameSignature = string.Join(", ", method.GetParameters().Select(param => param.Name)),
+		TypeSignature = string.Join(",", method.GetParameters().Select(param => param.ParameterType))
+	})
+	.Select(method => new {
+		method.FullSignature,
+		method.NameSignature,
+		Docs = string.Join("\r\n",
+					nav.SelectSingleNode(@"//doc/members/member[@name=""M:" + method.Method.DeclaringType + "." + method.Method.Name + "(" + method.TypeSignature + @")""]")
+						.InnerXml
+						.Split(new [] {'\r', '\n'}, StringSplitOptions.RemoveEmptyEntries)
+						.Select(str => str.Trim())
+						.Select(str => "        /// " + str)
+					)						
+	});
+
+docFile.Dispose(); // Can't use a 'using' block as we need to keep the anonymously-typed methods variable in scope!
+#>
 using System;
 using System.Reflection;
 using System.Reflection.Emit;
 
 namespace ILGeneratorExtensions
 {
-	public static class FluentInterface
+	public static partial class FluentInterface
 	{
-<# foreach (var method in typeof(ILGenerator).GetMethods(BindingFlags.Public | BindingFlags.Instance).Where(method => method.Name == "Emit")) { #>
-        public static ILGenerator FluentEmit(this ILGenerator generator, <#= string.Join(", ", method.GetParameters().Select(param => param.ParameterType.Name + " " + param.Name)) #>)
+<# foreach (var method in methods) { #>
+<#= method.Docs #>
+		/// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		public static ILGenerator FluentEmit(this ILGenerator generator, <#= method.FullSignature #>)
         {
-            generator.Emit(<#= string.Join(", ", method.GetParameters().Select(param => param.Name)) #>);
+            generator.Emit(<#= method.NameSignature #>);
             return generator;
         }
 
