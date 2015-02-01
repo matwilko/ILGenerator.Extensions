@@ -5,7 +5,7 @@ namespace ILGeneratorExtensions
 {
 	/// <summary>
 	/// Contains extension methods to convert integer and floating point values to another representation
-	/// <summary>
+	/// </summary>
 	[PublicAPI]
 	public static class ConvertTo
 	{

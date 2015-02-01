@@ -97,6 +97,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FluentInterface.tt</DependentUpon>
     </Compile>
+    <Compile Include="FluentInterface.cs" />
     <Compile Include="FunctionPointers.cs" />
     <Compile Include="Members.autogen.cs">
       <AutoGen>True</AutoGen>

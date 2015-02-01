@@ -31,6 +31,15 @@ namespace ILGeneratorExtensions
         /// Stores the given value in the given local
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Boolean" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Boolean value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Char" /></exception>
@@ -46,6 +55,15 @@ namespace ILGeneratorExtensions
 							.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Char" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Char value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
@@ -69,6 +87,15 @@ namespace ILGeneratorExtensions
         /// Stores the given value in the given local
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="SByte" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, SByte value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Byte" /></exception>
@@ -84,6 +111,15 @@ namespace ILGeneratorExtensions
 							.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Byte" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Byte value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
@@ -107,6 +143,15 @@ namespace ILGeneratorExtensions
         /// Stores the given value in the given local
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int16" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Int16 value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt16" /></exception>
@@ -122,6 +167,15 @@ namespace ILGeneratorExtensions
 							.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt16" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, UInt16 value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
@@ -145,6 +199,15 @@ namespace ILGeneratorExtensions
         /// Stores the given value in the given local
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int32" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Int32 value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt32" /></exception>
@@ -160,6 +223,15 @@ namespace ILGeneratorExtensions
 							.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt32" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, UInt32 value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
@@ -183,6 +255,15 @@ namespace ILGeneratorExtensions
         /// Stores the given value in the given local
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Int64" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Int64 value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt64" /></exception>
@@ -198,6 +279,15 @@ namespace ILGeneratorExtensions
 							.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="UInt64" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, UInt64 value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
 		/// <summary>
         /// Stores the given value in the given local
         /// </summary>
@@ -221,6 +311,15 @@ namespace ILGeneratorExtensions
         /// Stores the given value in the given local
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Single" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Single value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="local">The local to store value in</param>
 		/// <param name="value">The value to store in the local</param>
 		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Double" /></exception>
@@ -236,5 +335,14 @@ namespace ILGeneratorExtensions
 							.StoreInLocal(local);
 		}
 
+		/// <summary>
+        /// Stores the given value in the given local
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="localName">The name of the fluently-specified local</param>
+		/// <param name="value">The value to store in the local</param>
+		/// <exception cref="ArgumentException">Thrown if the local is not of type <see cref="Double" /></exception>
+		public static ILGenerator OverwriteLocalWith(this ILGenerator generator, string localName, Double value)
+			=> generator.OverwriteLocalWith(generator.GetLocal(localName), value);
 	}
 }

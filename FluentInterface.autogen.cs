@@ -6,6 +6,9 @@ namespace ILGeneratorExtensions
 {
 	public static partial class FluentInterface
 	{
+
+#pragma warning disable 1734
+
         /// <summary>Puts the specified instruction onto the stream of instructions.</summary>
         /// <param name="opcode">The Microsoft Intermediate Language (MSIL) instruction to be put onto the stream. </param>
 		/// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -191,6 +194,9 @@ namespace ILGeneratorExtensions
             generator.Emit(opcode, local);
             return generator;
         }
+
+
+#pragma warning restore 1734
 
     }
 }

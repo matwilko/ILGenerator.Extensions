@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using JetBrains.Annotations;
@@ -22,9 +23,27 @@ namespace ILGeneratorExtensions
         /// Branch unconditionally to the given label
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+        [PublicAPI]
+        public static ILGenerator BranchTo(this ILGenerator generator, string labelName)
+            => generator.BranchTo(generator.GetOrCreateLabel(labelName));
+
+        /// <summary>
+        /// Branch unconditionally to the given label
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
         public static ILGenerator BranchToShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Br_S, label);
+
+        /// <summary>
+        /// Branch unconditionally to the given label
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+        [PublicAPI]
+        public static ILGenerator BranchToShortForm(this ILGenerator generator, string labelName)
+            => generator.BranchToShortForm(generator.GetOrCreateLabel(labelName));
 
         /// <summary>
         /// Pops an integer value from the evaluation stack and branches to the corresponding zero-indexed label in the provided list, continuing to the next instruction if the value is outside the valid range
@@ -33,6 +52,15 @@ namespace ILGeneratorExtensions
         /// <param name="labels">The labels to form a jump table from</param>
         [PublicAPI]
         public static ILGenerator Switch(this ILGenerator generator, params Label[] labels) => generator.FluentEmit(OpCodes.Switch, labels);
+
+        /// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the corresponding zero-indexed label in the provided list, continuing to the next instruction if the value is outside the valid range
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelNames">The names of the fluently-specified labels to form a jump table from</param>
+        [PublicAPI]
+        public static ILGenerator Switch(this ILGenerator generator, params string[] labelNames)
+            => generator.Switch(labelNames.Select(generator.GetOrCreateLabel).ToArray());
 
         /// <summary>
         /// Branch to the given label, clearing the evaluation stack; can be used to leave a protected region
@@ -46,9 +74,27 @@ namespace ILGeneratorExtensions
         /// Branch to the given label, clearing the evaluation stack; can be used to leave a protected region
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+        [PublicAPI]
+        public static ILGenerator Leave(this ILGenerator generator, string labelName)
+            => generator.Leave(generator.GetOrCreateLabel(labelName));
+
+        /// <summary>
+        /// Branch to the given label, clearing the evaluation stack; can be used to leave a protected region
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
         [PublicAPI]
         public static ILGenerator LeaveShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Leave_S, label);
+
+        /// <summary>
+        /// Branch to the given label, clearing the evaluation stack; can be used to leave a protected region
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+        [PublicAPI]
+        public static ILGenerator LeaveShortForm(this ILGenerator generator, string labelName)
+            => generator.LeaveShortForm(generator.GetOrCreateLabel(labelName));
 
         /// <summary>
         /// Pops a reference to an exception off the evaluation stack and throws it

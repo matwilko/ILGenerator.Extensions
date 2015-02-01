@@ -17,6 +17,15 @@ namespace ILGeneratorExtensions
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqual(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Beq, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is equal to the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqual(this ILGenerator generator, string labelName)
+			=> generator.BranchIfEqual(generator.GetOrCreateLabel(labelName));
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is equal to the second
@@ -26,6 +35,15 @@ namespace ILGeneratorExtensions
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Beq_S, label);
 		
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is equal to the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfEqualShortForm(generator.GetOrCreateLabel(labelName));
+
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -44,6 +62,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Char value, Label label)
@@ -51,6 +79,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -69,6 +107,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Int32 value, Label label)
@@ -76,6 +124,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -94,6 +152,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, UInt32 value, Label label)
@@ -101,6 +169,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -119,6 +197,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Int64 value, Label label)
@@ -126,6 +214,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -144,6 +242,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, UInt64 value, Label label)
@@ -151,6 +259,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -169,6 +287,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Single value, Label label)
@@ -176,6 +304,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
         /// </summary>
@@ -194,6 +332,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualTo(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Double value, Label label)
@@ -201,6 +349,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfEqualToShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is equal to the second
         /// </summary>
@@ -301,9 +459,27 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is not equal to the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualUnsigned(this ILGenerator generator, string labelName)
+			=> generator.BranchIfNotEqualUnsigned(generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is not equal to the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfNotEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bne_Un_S, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is not equal to the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualUnsignedShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfNotEqualUnsignedShortForm(generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
@@ -319,6 +495,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -330,6 +516,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
         /// </summary>
@@ -344,6 +540,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -355,6 +561,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
         /// </summary>
@@ -369,6 +585,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -380,6 +606,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
         /// </summary>
@@ -394,6 +630,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -405,6 +651,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
         /// </summary>
@@ -419,6 +675,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -430,6 +696,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
         /// </summary>
@@ -444,6 +720,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -455,6 +741,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
         /// </summary>
@@ -469,6 +765,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsigned(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfNotEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -481,6 +787,16 @@ namespace ILGeneratorExtensions
 							.BranchIfNotEqualUnsignedShortForm(label);
 		}
 
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is not equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfNotEqualToUnsignedShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfNotEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
+
 		#endregion
 
 		#region GreaterThanOrEqual
@@ -492,6 +808,15 @@ namespace ILGeneratorExtensions
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqual(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bge, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqual(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterThanOrEqual(generator.GetOrCreateLabel(labelName));
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second
@@ -501,6 +826,15 @@ namespace ILGeneratorExtensions
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bge_S, label);
 		
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualShortForm(generator.GetOrCreateLabel(labelName));
+
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -519,6 +853,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Char value, Label label)
@@ -526,6 +870,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -544,6 +898,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Int32 value, Label label)
@@ -551,6 +915,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -569,6 +943,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, UInt32 value, Label label)
@@ -576,6 +960,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -594,6 +988,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Int64 value, Label label)
@@ -601,6 +1005,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -619,6 +1033,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, UInt64 value, Label label)
@@ -626,6 +1050,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -644,6 +1078,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Single value, Label label)
@@ -651,6 +1095,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
         /// </summary>
@@ -669,6 +1123,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualTo(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Double value, Label label)
@@ -676,6 +1140,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second, without regard for sign
         /// </summary>
@@ -688,9 +1162,27 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualUnsigned(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualUnsigned(generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanOrEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bge_Un_S, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than or equal to the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualUnsignedShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualUnsignedShortForm(generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
@@ -706,6 +1198,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -717,6 +1219,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
         /// </summary>
@@ -731,6 +1243,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -742,6 +1264,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
         /// </summary>
@@ -756,6 +1288,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -767,6 +1309,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
         /// </summary>
@@ -781,6 +1333,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -792,6 +1354,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
         /// </summary>
@@ -806,6 +1378,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -817,6 +1399,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
         /// </summary>
@@ -831,6 +1423,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -842,6 +1444,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
         /// </summary>
@@ -856,6 +1468,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsigned(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -868,6 +1490,16 @@ namespace ILGeneratorExtensions
 							.BranchIfGreaterThanOrEqualUnsignedShortForm(label);
 		}
 
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanOrEqualToUnsignedShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
+
 		#endregion
 
 		#region Greater
@@ -879,6 +1511,15 @@ namespace ILGeneratorExtensions
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreater(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bgt, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreater(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreater(generator.GetOrCreateLabel(labelName));
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second
@@ -888,6 +1529,15 @@ namespace ILGeneratorExtensions
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bgt_S, label);
 		
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterShortForm(generator.GetOrCreateLabel(labelName));
+
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -906,6 +1556,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Char value, Label label)
@@ -913,6 +1573,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -931,6 +1601,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Int32 value, Label label)
@@ -938,6 +1618,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -956,6 +1646,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, UInt32 value, Label label)
@@ -963,6 +1663,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -981,6 +1691,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Int64 value, Label label)
@@ -988,6 +1708,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -1006,6 +1736,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, UInt64 value, Label label)
@@ -1013,6 +1753,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -1031,6 +1781,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Single value, Label label)
@@ -1038,6 +1798,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
         /// </summary>
@@ -1056,6 +1826,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThan(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Double value, Label label)
@@ -1063,6 +1843,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second, without regard for sign
         /// </summary>
@@ -1075,9 +1865,27 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterUnsigned(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterUnsigned(generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfGreaterUnsignedShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Bgt_Un_S, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is greater than the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterUnsignedShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfGreaterUnsignedShortForm(generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
@@ -1093,6 +1901,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1104,6 +1922,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
         /// </summary>
@@ -1118,6 +1946,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1129,6 +1967,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
         /// </summary>
@@ -1143,6 +1991,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1154,6 +2012,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
         /// </summary>
@@ -1168,6 +2036,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1179,6 +2057,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
         /// </summary>
@@ -1193,6 +2081,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1204,6 +2102,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
         /// </summary>
@@ -1218,6 +2126,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1229,6 +2147,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
         /// </summary>
@@ -1243,6 +2171,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsigned(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1254,6 +2192,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfGreaterUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is greater than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfGreaterThanUnsignedShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfGreaterThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is greater than the second
@@ -1436,6 +2384,15 @@ namespace ILGeneratorExtensions
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqual(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Ble, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqual(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessThanOrEqual(generator.GetOrCreateLabel(labelName));
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second
@@ -1445,6 +2402,15 @@ namespace ILGeneratorExtensions
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Ble_S, label);
 		
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessThanOrEqualShortForm(generator.GetOrCreateLabel(labelName));
+
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1463,6 +2429,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Char value, Label label)
@@ -1470,6 +2446,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1488,6 +2474,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Int32 value, Label label)
@@ -1495,6 +2491,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1513,6 +2519,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, UInt32 value, Label label)
@@ -1520,6 +2536,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1538,6 +2564,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Int64 value, Label label)
@@ -1545,6 +2581,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1563,6 +2609,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, UInt64 value, Label label)
@@ -1570,6 +2626,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1588,6 +2654,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Single value, Label label)
@@ -1595,6 +2671,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
         /// </summary>
@@ -1613,6 +2699,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualTo(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanOrEqualTo(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Double value, Label label)
@@ -1620,6 +2716,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second, without regard for sign
         /// </summary>
@@ -1632,9 +2738,27 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualUnsigned(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessThanOrEqualUnsigned(generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanOrEqualUnsignedShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Ble_Un_S, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than or equal to the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualUnsignedShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessThanOrEqualUnsignedShortForm(generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
@@ -1650,6 +2774,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1661,6 +2795,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
         /// </summary>
@@ -1675,6 +2819,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1686,6 +2840,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
         /// </summary>
@@ -1700,6 +2864,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1711,6 +2885,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
         /// </summary>
@@ -1725,6 +2909,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1736,6 +2930,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
         /// </summary>
@@ -1750,6 +2954,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1761,6 +2975,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
         /// </summary>
@@ -1775,6 +2999,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1786,6 +3020,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
         /// </summary>
@@ -1800,6 +3044,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsigned(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -1812,6 +3066,16 @@ namespace ILGeneratorExtensions
 							.BranchIfLessThanOrEqualUnsignedShortForm(label);
 		}
 
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than or equal to the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanOrEqualToUnsignedShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanOrEqualToUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
+
 		#endregion
 
 		#region Less
@@ -1823,6 +3087,15 @@ namespace ILGeneratorExtensions
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLess(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Blt, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLess(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLess(generator.GetOrCreateLabel(labelName));
 		
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second
@@ -1832,6 +3105,15 @@ namespace ILGeneratorExtensions
 		[PublicAPI]
 		public static ILGenerator BranchIfLessShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Blt_S, label);
 		
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessShortForm(generator.GetOrCreateLabel(labelName));
+
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -1850,6 +3132,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Char value, Label label)
@@ -1857,6 +3149,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -1875,6 +3177,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Int32 value, Label label)
@@ -1882,6 +3194,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -1900,6 +3222,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, UInt32 value, Label label)
@@ -1907,6 +3239,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -1925,6 +3267,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Int64 value, Label label)
@@ -1932,6 +3284,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -1950,6 +3312,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, UInt64 value, Label label)
@@ -1957,6 +3329,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -1975,6 +3357,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Single value, Label label)
@@ -1982,6 +3374,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
         /// </summary>
@@ -2000,6 +3402,16 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
 		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThan(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThan(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Double value, Label label)
@@ -2007,6 +3419,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second, without regard for sign
         /// </summary>
@@ -2019,9 +3441,27 @@ namespace ILGeneratorExtensions
         /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second, without regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessUnsigned(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessUnsigned(generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         /// <param name="label">The label to branch to</param>
 		[PublicAPI]
 		public static ILGenerator BranchIfLessUnsignedShortForm(this ILGenerator generator, Label label) => generator.FluentEmit(OpCodes.Blt_Un_S, label);
+
+		/// <summary>
+        /// Pops two integer values from the evaluation stack and branches to the given label if the first is less than the second, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessUnsignedShortForm(this ILGenerator generator, string labelName)
+			=> generator.BranchIfLessUnsignedShortForm(generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
@@ -2037,6 +3477,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2048,6 +3498,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Char value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
         /// </summary>
@@ -2062,6 +3522,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2073,6 +3543,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Int32 value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
         /// </summary>
@@ -2087,6 +3567,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2098,6 +3588,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, UInt32 value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
         /// </summary>
@@ -2112,6 +3612,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2123,6 +3633,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Int64 value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
         /// </summary>
@@ -2137,6 +3657,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2148,6 +3678,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, UInt64 value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
         /// </summary>
@@ -2162,6 +3702,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2173,6 +3723,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Single value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
         /// </summary>
@@ -2187,6 +3747,16 @@ namespace ILGeneratorExtensions
 		}
 
 		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, without regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsigned(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanUnsigned(value, generator.GetOrCreateLabel(labelName));
+
+		/// <summary>
         /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
         /// </summary>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
@@ -2198,6 +3768,16 @@ namespace ILGeneratorExtensions
 			return generator.LoadConstant(value)
 							.BranchIfLessUnsignedShortForm(label);
 		}
+
+		/// <summary>
+        /// Pops an integer value from the evaluation stack and branches to the given label if it is less than the given value, with regard for sign
+        /// </summary>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+		/// <param name="value">The value to compare to the evaluation stack value</param>
+        /// <param name="labelName">The name of the fluently-specified label</param>
+		[PublicAPI]
+		public static ILGenerator BranchIfLessThanUnsignedShortForm(this ILGenerator generator, Double value, string labelName)
+			=> generator.BranchIfLessThanUnsignedShortForm(value, generator.GetOrCreateLabel(labelName));
 
 		/// <summary>
         /// Pops two integer values from the evaluation stack and pushes the result of comparing whether the first is less than the second
