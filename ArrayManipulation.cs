@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for manipulating an array and its elements
+    /// </summary>
     [PublicAPI]
     public static partial class ArrayManipulation
     {

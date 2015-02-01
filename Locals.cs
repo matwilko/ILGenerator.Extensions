@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for the manipulation of local variables
+    /// </summary>
     public static partial class Locals
     {
         /// <summary>

@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for performing arithmetic operations on integers and floating point values
+    /// </summary>
     public static partial class ArithmeticOperations
     {
         /// <summary>

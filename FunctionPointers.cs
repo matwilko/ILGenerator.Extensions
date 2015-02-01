@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods that create function pointers
+    /// </summary>
     public static class FunctionPointers
     {
         /// <summary>

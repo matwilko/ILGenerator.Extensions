@@ -6,6 +6,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for manipulating type members
+    /// </summary>
     public static partial class Members
     {
         /// <summary>

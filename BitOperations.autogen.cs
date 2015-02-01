@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+	/// <summary>
+    /// Contains extension methods for perofmring bitwise operations on integers
+    /// </summary>
 	public static class BitOperations
 	{
 		#region And

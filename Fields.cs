@@ -6,6 +6,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for manipulating fields
+    /// </summary>
     public static partial class Fields
     {
         #region LoadField

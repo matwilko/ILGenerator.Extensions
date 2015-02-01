@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for comparing objects on the stack
+    /// </summary>
     public static partial class CompareAndBranch
     {
         /// <summary>

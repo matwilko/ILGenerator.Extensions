@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for dealing with the manipulation of the type of objects on the stack
+    /// </summary>
     [PublicAPI]
     public static class TypeManipulation
     {

@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for operations useful to debuggers
+    /// </summary>
     [PublicAPI]
     public static class DebugOperations
     {

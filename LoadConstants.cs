@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for loading constant values onto the stack
+    /// </summary>
     public static class LoadConstants
     {
         /// <summary>

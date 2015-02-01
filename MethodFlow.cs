@@ -5,6 +5,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for controlling flow to other methods
+    /// </summary>
     [PublicAPI]
     public static partial class MethodFlow
     {

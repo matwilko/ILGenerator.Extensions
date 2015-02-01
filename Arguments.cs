@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for dealing with arguments to the method
+    /// </summary>
     [PublicAPI]
     public static partial class Arguments
     {
