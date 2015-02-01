@@ -50,7 +50,6 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Starts a new catch block which handles exceptions of any type
         /// </summary>
-        /// <returns></returns>
         [PublicAPI]
         public CatchBlock CatchBlock()
         {

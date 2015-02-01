@@ -19,7 +19,6 @@ namespace ILGeneratorExtensions
         /// </summary>
         /// <param name="generator"></param>
         /// <param name="labelName">The name of the fluently-specified label</param>
-        /// <returns></returns>
         [PublicAPI]
         public static ILGenerator MarkLabel(this ILGenerator generator, string labelName)
         {
@@ -94,7 +93,6 @@ namespace ILGeneratorExtensions
         /// <param name="generator"></param>
         /// <param name="localName">The name of the fluently-specified local</param>
         /// <param name="localType">The type of the fluently-specified local</param>
-        /// <returns></returns>
         [PublicAPI]
         public static ILGenerator CreatePinnedLocal(this ILGenerator generator, string localName, Type localType)
             => generator.CreateLocal(localName, localType, true);
