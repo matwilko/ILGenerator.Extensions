@@ -5,6 +5,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for manipulation of type, method and field tokens
+    /// </summary>
     [PublicAPI]
     public static class Tokens
     {

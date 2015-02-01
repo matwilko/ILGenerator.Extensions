@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods that emit instruction prefixes
+    /// </summary>
     [PublicAPI]
     public static class Prefixes
     {

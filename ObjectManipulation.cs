@@ -4,6 +4,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for the manipulation of objects
+    /// </summary>
     [PublicAPI]
     public static class ObjectManipulation
     {

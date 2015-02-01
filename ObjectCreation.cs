@@ -5,6 +5,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for the creation of objects
+    /// </summary>
     [PublicAPI]
     public static class ObjectCreation
     {

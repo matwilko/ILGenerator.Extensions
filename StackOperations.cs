@@ -3,6 +3,9 @@ using JetBrains.Annotations;
 
 namespace ILGeneratorExtensions
 {
+    /// <summary>
+    /// Contains extension methods for performing stack manipulation
+    /// </summary>
     [PublicAPI]
     public static class StackOperations
     {
