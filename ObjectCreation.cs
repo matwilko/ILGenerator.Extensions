@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Reflection;
 using System.Reflection.Emit;
 using JetBrains.Annotations;
@@ -31,11 +32,20 @@ namespace ILGeneratorExtensions
         /// <summary>
         /// Pops the address of the storage location of a value type and initializes each field of the type at that location
         /// </summary>
+        /// <param name="type">The type to initialize</param>
+        /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
+        [PublicAPI]
+        public static ILGenerator InitializeValueType(this ILGenerator generator, Type type)
+            => generator.FluentEmit(OpCodes.Initobj, type);
+
+        /// <summary>
+        /// Pops the address of the storage location of a value type and initializes each field of the type at that location
+        /// </summary>
         /// <typeparam name="T">The type to initialize</typeparam>
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
         public static ILGenerator InitializeValueType<T>(this ILGenerator generator) where T : struct
-            => generator.FluentEmit(OpCodes.Initobj, typeof (T));
+            => generator.InitializeValueType(typeof (T));
 
         /// <summary>
         /// Pops an address, initialization value and number of bytes off the evaluation stack, and initializes the block of memory at the address with the value to that size
