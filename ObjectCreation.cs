@@ -36,7 +36,14 @@ namespace ILGeneratorExtensions
         /// <param name="generator">The <see cref="T:System.Reflection.Emit.ILGenerator" /> to emit instructions from</param>
         [PublicAPI]
         public static ILGenerator InitializeValueType(this ILGenerator generator, Type type)
-            => generator.FluentEmit(OpCodes.Initobj, type);
+        {
+            if (!type.IsValueType)
+            {
+                throw new InvalidOperationException("Cannot initialize a non-value type");
+            }
+
+            return generator.FluentEmit(OpCodes.Initobj, type);
+        }
 
         /// <summary>
         /// Pops the address of the storage location of a value type and initializes each field of the type at that location
